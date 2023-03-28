@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:misafu/src/utils/theme/theme.dart';
 
 void main() {
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-  );
+  runApp(const MyApp()
+      // DevicePreview(
+      //   enabled: !kReleaseMode,
+      //   builder: (context) => const MyApp(), // Wrap your app
+      // ),
+      );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,9 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       title: 'MISAFU',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
@@ -98,7 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('You have pushed the button this many times:', style: Theme.of(context).textTheme.bodyLarge,),
+            Text(
+              'You have pushed the button this many times:',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
