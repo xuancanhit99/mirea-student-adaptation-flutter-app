@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const SplashScreen(),
+      home: const MyHomePage(title: "HOME"),
     );
   }
 }
