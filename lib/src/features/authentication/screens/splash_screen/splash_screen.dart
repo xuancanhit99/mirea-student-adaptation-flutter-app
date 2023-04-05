@@ -5,10 +5,13 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:misafu/main.dart';
 import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/image_strings.dart';
+import 'package:misafu/src/constants/assets_strings.dart';
 import 'package:misafu/src/constants/sizes.dart';
 import 'package:misafu/src/constants/text_strings.dart';
 import 'package:page_transition/page_transition.dart';
+
+import '../home/admin/admin_home.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,20 +20,13 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSplashScreen(
-          splash: Lottie.asset('assets/json/welcome.json'),
-          // Column(
-          //   children: [
-          //     Text(cAppName, style: Theme.of(context).textTheme.headlineSmall,),
-          //     Text(cAppNameDetailed, style: Theme.of(context).textTheme.titleLarge,),
-          //     Image.asset('assets/images/research.png')
-          //   ],
-          // ),
+          splash: Lottie.asset(cLoadingLineJson),
           backgroundColor: Theme.of(context).splashColor,
-          nextScreen: const MyHomePage(title: 'HOME',),
-          // duration: 4000,
+          nextScreen: const MyHomePage(title: cHomeUPCASE,),
+          duration: 1800,
           splashTransition: SplashTransition.fadeTransition,
-          // pageTransitionType: PageTransitionType.leftToRightWithFade,
-          // animationDuration: const Duration(seconds: 5),
+          pageTransitionType: PageTransitionType.leftToRight,
+          // animationDuration: const Duration(milliseconds: 180),
           splashIconSize: 240,
         ),
     );
