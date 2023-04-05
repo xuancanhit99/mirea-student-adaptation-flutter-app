@@ -64,11 +64,11 @@ flutter_native_splash:
   image_dark: assets/images/welcome.png
 #  branding_dark: assets/images/email-service.png
 
-  android_12:
-    image: assets/images/welcome.png
-    icon_background_color: "#ffffff"
-    image_dark: assets/images/welcome.png
-    icon_background_color_dark: "#000000"
+#  android_12:
+#    image: assets/images/welcome.png
+#    icon_background_color: "#ffffff"
+#    image_dark: assets/images/welcome.png
+#    icon_background_color_dark: "#000000"
 
   web: false
 

@@ -16,10 +16,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: AnimatedSplashScreen(
+      body: AnimatedSplashScreen(
           splash: Lottie.asset('assets/json/welcome.json'),
-
           // Column(
           //   children: [
           //     Text(cAppName, style: Theme.of(context).textTheme.headlineSmall,),
@@ -30,12 +28,11 @@ class SplashScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).splashColor,
           nextScreen: const MyHomePage(title: 'HOME',),
           // duration: 4000,
-          // splashTransition: SplashTransition.sizeTransition,
+          splashTransition: SplashTransition.fadeTransition,
           // pageTransitionType: PageTransitionType.leftToRightWithFade,
           // animationDuration: const Duration(seconds: 5),
-          splashIconSize: 300,
+          splashIconSize: 240,
         ),
-      ),
     );
   }
 }
