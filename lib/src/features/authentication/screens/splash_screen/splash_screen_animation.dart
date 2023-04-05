@@ -1,76 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:misafu/main.dart';
 import 'package:misafu/src/constants/colors.dart';
 import 'package:misafu/src/constants/assets_strings.dart';
 import 'package:misafu/src/constants/sizes.dart';
 import 'package:misafu/src/constants/text_strings.dart';
+import 'package:misafu/src/features/authentication/controllers/splash_screen_animation_controller.dart';
 
 import '../home/admin/admin_home.dart';
 
-class SplashScreenAnimation extends StatefulWidget {
-  const SplashScreenAnimation({Key? key}) : super(key: key);
+class SplashScreenAnimation extends StatelessWidget {
+  SplashScreenAnimation({Key? key}) : super(key: key);
 
-  @override
-  State<SplashScreenAnimation> createState() => _SplashScreenAnimationState();
-}
-
-class _SplashScreenAnimationState extends State<SplashScreenAnimation> {
-  bool animate = false;
-
-
-
-  @override
-  void initState() {
-    super.initState();
-    startAnimation();
-  }
+  final splashController = Get.put(SplashScreenAnimationController());
 
   @override
   Widget build(BuildContext context) {
+    splashController.startAnimation();
+
     return Scaffold(
       backgroundColor: Theme.of(context).splashColor,
       body: Stack(
         alignment: Alignment.center,
         children: [
-          AnimatedPositioned(
-              duration: const Duration(milliseconds: 5000),
-              top: animate ? 0 : -80,
-              left: animate ? 0 : -80,
-              child: Container(
-                width: 180,
-                height: 180,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: cLogoMireaColor),
-              )),
-          AnimatedPositioned(
-              duration: const Duration(milliseconds: 2500),
-              bottom: animate ? 60 : 30,
-              right: 30,
-              child: AnimatedOpacity(
-                opacity: animate ? 1 : 0,
-                duration: const Duration(milliseconds: 1500),
+          Obx(
+            () => AnimatedPositioned(
+                duration: const Duration(milliseconds: 5000),
+                top: splashController.animate.value ? 0 : -80,
+                left: splashController.animate.value ? 0 : -80,
                 child: Container(
-                  width: 50,
-                  height: 50,
+                  width: 180,
+                  height: 180,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: cLogoMireaColor,
+                      borderRadius: BorderRadius.circular(100),
+                      color: cLogoMireaColor),
+                )),
+          ),
+          Obx(
+            () => AnimatedPositioned(
+                duration: const Duration(milliseconds: 2500),
+                bottom: splashController.animate.value ? 60 : 30,
+                right: 30,
+                child: AnimatedOpacity(
+                  opacity: splashController.animate.value ? 1 : 0,
+                  duration: const Duration(milliseconds: 1500),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: cLogoMireaColor,
+                    ),
                   ),
-                ),
-              )),
+                )),
+          ),
           Positioned(
-
               top: 100,
               // left: cDefaultSize,
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 1500),
-                opacity: animate ? 1 : 0,
-                child: Text(
-                  cAppNameDetailed,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+              child: Obx(
+                () => AnimatedOpacity(
+                  duration: const Duration(milliseconds: 1500),
+                  opacity: splashController.animate.value ? 1 : 0,
+                  child: Text(
+                    cAppNameDetailed,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               )),
           Positioned(
@@ -92,17 +89,5 @@ class _SplashScreenAnimationState extends State<SplashScreenAnimation> {
     );
   }
 
-  Future startAnimation() async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    setState(() {
-      animate = true;
-    });
-    await Future.delayed(const Duration(milliseconds: 1800));
-    if (context.mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const MyHomePage(title: "HOME")));
-    }
-  }
+
 }
