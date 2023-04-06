@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
       body: AnimatedSplashScreen(
           splash: Lottie.asset(cLoadingLineJson),
           backgroundColor: Theme.of(context).splashColor,
-          nextScreen: const MyHomePage(title: cHomeUPCASE,),
+          nextScreen: MyHomePage(title: cHome.toUpperCase(),),
           duration: 1800,
           splashTransition: SplashTransition.fadeTransition,
           pageTransitionType: PageTransitionType.leftToRight,

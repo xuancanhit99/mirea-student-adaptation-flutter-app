@@ -28,13 +28,13 @@ class SplashScreenAnimation extends StatelessWidget {
           Obx(
             () => AnimatedPositioned(
                 duration: const Duration(milliseconds: 5000),
-                top: splashController.animate.value ? 0 : -80,
-                left: splashController.animate.value ? 0 : -80,
+                top: splashController.animate.value ? -30 : -80,
+                left: splashController.animate.value ? -30 : -80,
                 child: Container(
-                  width: 180,
-                  height: 180,
+                  width: 220,
+                  height: 220,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(200),
                       color: cLogoMireaColor),
                 )),
           ),
@@ -57,15 +57,18 @@ class SplashScreenAnimation extends StatelessWidget {
                 )),
           ),
           Positioned(
-              top: 100,
+              top: 130,
               // left: cDefaultSize,
               child: Obx(
                 () => AnimatedOpacity(
                   duration: const Duration(milliseconds: 1500),
                   opacity: splashController.animate.value ? 1 : 0,
                   child: Text(
-                    cAppNameDetailed,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    cAppNameDetailed.toUpperCase(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(color: cAppNameColor),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -88,6 +91,4 @@ class SplashScreenAnimation extends StatelessWidget {
       ),
     );
   }
-
-
 }

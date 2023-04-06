@@ -9,5 +9,6 @@ const cWhiteColor = Color(0xFFFFFFFF);
 const cDarkColor = Color(0xFF000000);
 
 const cLogoMireaColor = Color(0xFFf9c365);
+const cAppNameColor = Color(0xFF446cb4);
 
 

@@ -16,7 +16,7 @@ class SplashScreenAnimationController extends GetxController {
 
     await Future.delayed(const Duration(milliseconds: 1800));
 
-    Get.to(() => const MyHomePage(title: cHomeUPCASE));
+    Get.to(() => MyHomePage(title: cHome.toUpperCase()));
   }
 
 }
