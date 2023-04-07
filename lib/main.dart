@@ -7,11 +7,12 @@ import 'package:misafu/src/features/authentication/screens/splash_screen/splash_
 import 'package:misafu/src/utils/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp()
-      // DevicePreview(
-      //   enabled: !kReleaseMode,
-      //   builder: (context) => const MyApp(), // Wrap your app
-      // ),
+  runApp(
+      // const MyApp()
+      DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(), // Wrap your app
+      ),
       );
 }
 
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // useInheritedMediaQuery: true,
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       title: 'MISAFU',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,

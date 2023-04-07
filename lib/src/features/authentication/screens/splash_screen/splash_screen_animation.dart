@@ -9,7 +9,6 @@ import 'package:misafu/src/constants/sizes.dart';
 import 'package:misafu/src/constants/text_strings.dart';
 import 'package:misafu/src/features/authentication/controllers/splash_screen_animation_controller.dart';
 
-import '../home/admin/admin_home.dart';
 
 class SplashScreenAnimation extends StatelessWidget {
   SplashScreenAnimation({Key? key}) : super(key: key);

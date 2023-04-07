@@ -10,7 +10,7 @@ import 'package:misafu/src/constants/sizes.dart';
 import 'package:misafu/src/constants/text_strings.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../home/admin/admin_home.dart';
+import '../home_screen/admin/admin_home.dart';
 
 
 class SplashScreen extends StatelessWidget {

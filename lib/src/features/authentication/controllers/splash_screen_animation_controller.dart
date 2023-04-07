@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/screens/home/admin/admin_home.dart';
+import '../screens/home_screen/admin/admin_home.dart';
+import '../screens/on_boarding/on_boarding_screen.dart';
 
 
 class SplashScreenAnimationController extends GetxController {
@@ -16,7 +17,7 @@ class SplashScreenAnimationController extends GetxController {
 
     await Future.delayed(const Duration(milliseconds: 1800));
 
-    Get.to(() => MyHomePage(title: cHome.toUpperCase()));
+    Get.to(() => OnBoardingScreen());
   }
 
 }
