@@ -5,6 +5,9 @@ const String cCopyright = "© Vu Xuan Canh IKBO–07–19";
 
 const String cHome = "Home";
 
+const String cLogin = "Login";
+const String cRes = "Register";
+
 
 const cOnBoardingTitle1 = "Build Awesome Apps";
 const cOnBoardingTitle2 = "Build Awesome Apps";
@@ -17,3 +20,7 @@ const cOnBoardingSubTitle3 = "Let's start your journey with us on this amazing a
 const cOnBoardingCounter1 = "1/3";
 const cOnBoardingCounter2 = "2/3";
 const cOnBoardingCounter3 = "3/3";
+
+
+const String cWelcomeTitle = "Build Awesome Apps";
+const String cWelcomeSubTitle = "Let's put your creativity on the development highway";

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:misafu/src/constants/text_strings.dart';
+import 'package:misafu/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
 import '../screens/home_screen/admin/admin_home.dart';
 import '../screens/on_boarding/on_boarding_screen.dart';
 
@@ -17,7 +18,7 @@ class SplashScreenAnimationController extends GetxController {
 
     await Future.delayed(const Duration(milliseconds: 1800));
 
-    Get.to(() => OnBoardingScreen());
+    Get.to(() => WelcomeScreen());
   }
 
 }

@@ -11,6 +11,8 @@ const cDarkColor = Color(0xFF000000);
 const cLogoMireaColor = Color(0xFFf9c365);
 const cAppNameColor = Color(0xFF446cb4);
 
+const cSkyBlue = Color(0xFF87ceeb);
+
 
 const cOnBoardingPage2Color = Colors.white;
 const cOnBoardingPage3Color = Color(0xFFFDDCDF);
