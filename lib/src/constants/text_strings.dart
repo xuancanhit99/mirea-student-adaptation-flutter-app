@@ -55,4 +55,8 @@ const String cForgotPasswordEmailSubTitle = "Enter your registered Email number 
 
 const String cNext = "Next";
 
+const String cOtpTitle = "CO\nDE";
+const String cOtpSubTitle = "Verification";
+const String cOtpMessage = "Enter the verification code sent at ";
+
 // end -- Forgot Password --
