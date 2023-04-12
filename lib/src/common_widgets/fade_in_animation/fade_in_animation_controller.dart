@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/screens/welcome_screen/welcome_screen.dart';
-import '../../features/authentication/screens/home_screen/admin/admin_home.dart';
+
 import '../../features/authentication/screens/on_boarding/on_boarding_screen.dart';
+import '../../features/authentication/screens/welcome/welcome_screen.dart';
 
 
 class FadeInAnimationController extends GetxController {

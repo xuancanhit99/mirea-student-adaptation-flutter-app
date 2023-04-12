@@ -7,7 +7,7 @@ const String cHome = "Home";
 
 const String cLogin = "Login";
 const String cSignUp = "Sign Up";
-const String cPhoneNumber = "Phone number";
+const String cPhoneNo = "Phone No";
 const String cWelcomeBack = "Welcome Back,";
 const String cWelcomeBackSubTitle = "Make it work, make it right, make it fast.";
 const String cLoginSubTitle = "Let's start your journey with us on this amazing and easy platform.";
@@ -43,3 +43,16 @@ const String cAlreadyHaveAnAccount = "Already have an Account?";
 const String cDoNotHaveAccount = "Don't have Account? ";
 
 const String cFullName = "Full name";
+
+// start -- Forgot Password --
+const String cForgotPasswordTitle = "Make Selection!";
+const String cForgotPasswordSubTitle = "Select one of the option given below to reset your password.";
+const String cResetViaEmail = "Reset via Email Verification.";
+const String cResetViaPhone = "Reset via Phone Verification.";
+
+const String cForgotPasswordPhoneSubTitle = "Enter your registered Phone number to receive OTP";
+const String cForgotPasswordEmailSubTitle = "Enter your registered Email number to receive OTP";
+
+const String cNext = "Next";
+
+// end -- Forgot Password --

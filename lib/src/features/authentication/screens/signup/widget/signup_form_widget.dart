@@ -29,7 +29,7 @@ class SignUpFormWidget extends StatelessWidget {
               const SizedBox(height: 10),
               TextFormField(
                 decoration: const InputDecoration(
-                    label: Text(cPhoneNumber),
+                    label: Text(cPhoneNo),
                     prefixIcon: Icon(Icons.phone_outlined)),
               ),
               const SizedBox(height: 10),

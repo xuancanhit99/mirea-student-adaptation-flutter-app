@@ -1,9 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:misafu/src/features/authentication/screens/splash_screen/splash_screen.dart';
-import 'package:misafu/src/features/authentication/screens/splash_screen/splash_screen_animation.dart';
+import 'package:misafu/src/features/authentication/screens/splash/splash_screen_animation.dart';
 import 'package:misafu/src/utils/theme/theme.dart';
 
 void main() {
@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.leftToRightWithFade,
+      transitionDuration: const Duration(milliseconds: 500),
       title: 'MISAFU',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
