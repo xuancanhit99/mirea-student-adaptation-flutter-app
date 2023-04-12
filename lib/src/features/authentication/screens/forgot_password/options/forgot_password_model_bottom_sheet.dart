@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../mail/forgot_password_mail.dart';
+import '../phone/forgot_password_phone.dart';
 import 'forgot_password_btn_widget.dart';
 
 class ForgotPasswordScreen {
@@ -39,7 +40,8 @@ class ForgotPasswordScreen {
                 subTitle: cResetViaEmail,
                 onTap: (){
                   Navigator.pop(context);
-                  Get.to(() => const ForgetPasswordMailScreen()); },
+                  Get.to(() => const ForgetPasswordMailScreen());
+                  },
               ),
               const SizedBox(
                 height: 20,
@@ -48,7 +50,10 @@ class ForgotPasswordScreen {
                 btnIcon: Icons.mobile_friendly_outlined,
                 title: cPhoneNo,
                 subTitle: cResetViaPhone,
-                onTap: (){},
+                onTap: (){
+                  Navigator.pop(context);
+                  Get.to(() => const ForgetPasswordPhoneScreen());
+                },
               ),
             ],
           ),

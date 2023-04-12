@@ -2,7 +2,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:misafu/src/features/authentication/screens/splash/splash_screen_animation.dart';
 import 'package:misafu/src/utils/theme/theme.dart';
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.leftToRightWithFade,
+      defaultTransition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 500),
       title: 'MISAFU',
       theme: CAppTheme.lightTheme,
