@@ -6,6 +6,7 @@ const String cCopyright = "© Vu Xuan Canh IKBO–07–19";
 const String cHome = "Home";
 
 const String cLogin = "Login";
+const String cSignUp = "Sign Up";
 const String cWelcomeBack = "Welcome Back,";
 const String cWelcomeBackSubTitle = "Make it work, make it right, make it fast.";
 const String cLoginSubTitle = "Let's start your journey with us on this amazing and easy platform.";
@@ -35,6 +36,9 @@ const String cRememberMe = "Remember me";
 const String cForgotPassword = "Forgot Password?";
 
 const String cSignInWithGoogle = "Sign-In with Google";
+const String cSignUpWithGoogle = "Sign-Up with Google";
 
 const String cAlreadyHaveAnAccount = "Already have an Account?";
 const String cDoNotHaveAccount = "Don't have Account? ";
+
+const String cFullName = "Full Name";

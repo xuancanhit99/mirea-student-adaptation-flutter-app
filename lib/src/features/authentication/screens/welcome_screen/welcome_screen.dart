@@ -9,6 +9,8 @@ import 'package:misafu/src/constants/colors.dart';
 import 'package:misafu/src/constants/text_strings.dart';
 import 'package:misafu/src/features/authentication/screens/login/login_screen.dart';
 
+import '../signup/signup_screen.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -66,7 +68,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       Expanded(
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => Get.to(() => const SignUpScreen()),
 
                               child: Text(cRes.toUpperCase()))),
                     ],

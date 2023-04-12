@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:misafu/src/constants/colors.dart';
 import 'package:misafu/src/utils/theme/widget_themes/elevated_button_theme.dart';
 import 'package:misafu/src/utils/theme/widget_themes/outlined_button_theme.dart';
+import 'package:misafu/src/utils/theme/widget_themes/text_field_theme.dart';
 import 'package:misafu/src/utils/theme/widget_themes/text_theme.dart';
 
 import '../../constants/color_schemes.g.dart';
@@ -19,7 +20,8 @@ class CAppTheme {
     splashColor: Colors.white,
     textTheme: CTextTheme.lightTextTheme,
     outlinedButtonTheme: COutlinedButtonTheme.lightOutlinedButtonTheme,
-    elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme
+    elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme,
+    inputDecorationTheme: CTextFormFieldTheme.lightInputDecorationTheme,
     // colorSchemeSeed: const Color(0xFF87ceeb),
   );
 
@@ -33,6 +35,7 @@ class CAppTheme {
     textTheme: CTextTheme.darkTextTheme,
     outlinedButtonTheme: COutlinedButtonTheme.darkOutlinedButtonTheme,
     elevatedButtonTheme: CElevatedButtonTheme.darkElevatedButtonTheme,
+    inputDecorationTheme: CTextFormFieldTheme.darkInputDecorationTheme,
     // colorSchemeSeed: const Color(0xFF87ceeb),
   );
 }
