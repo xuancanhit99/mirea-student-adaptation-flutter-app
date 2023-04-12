@@ -7,6 +7,7 @@ import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_mo
 import 'package:misafu/src/constants/assets_strings.dart';
 import 'package:misafu/src/constants/colors.dart';
 import 'package:misafu/src/constants/text_strings.dart';
+import 'package:misafu/src/features/authentication/screens/login/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Expanded(
                           child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () => Get.to(() => const LoginScreen()),
                               child: Text(cLogin.toUpperCase()))),
                       const SizedBox(
                         width: 10.0,

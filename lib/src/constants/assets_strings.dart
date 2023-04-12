@@ -9,3 +9,6 @@ const String cCloudComputingJson = "assets/json/cloud-computing.json";
 const String cDeveloperWorkingJson = "assets/json/developer-working.json";
 const String cInternetShopJson = "assets/json/internet-shop.json";
 const String cOfficeIllustrationJson = "assets/json/office-illustration.json";
+
+
+const String cGoogleLogo = "assets/logo/google.png";
