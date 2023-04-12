@@ -29,6 +29,12 @@ class SignUpFormWidget extends StatelessWidget {
               const SizedBox(height: 10),
               TextFormField(
                 decoration: const InputDecoration(
+                    label: Text(cPhoneNumber),
+                    prefixIcon: Icon(Icons.phone_outlined)),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                decoration: const InputDecoration(
                     label: Text(cPassword),
                     prefixIcon: Icon(Icons.lock_outlined)),
               ),
