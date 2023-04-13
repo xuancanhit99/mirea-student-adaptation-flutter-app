@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:misafu/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
+import 'package:misafu/src/features/core/screens/dashboard/dashboard.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../../forgot_password/options/forgot_password_btn_widget.dart';
@@ -48,7 +51,8 @@ class LoginFormWidget extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                         onPressed: () {
-                          ForgotPasswordScreen.buildShowModalBottomSheet(context);
+                          ForgotPasswordScreen.buildShowModalBottomSheet(
+                              context);
                         },
                         child: const Text(
                           cForgotPassword,
@@ -60,11 +64,11 @@ class LoginFormWidget extends StatelessWidget {
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {}, child: Text(cLogin.toUpperCase())))
+                onPressed: () => Get.to(() => const Dashboard()),
+                child: Text(cLogin.toUpperCase()),
+              ))
         ],
       ),
     ));
   }
-
-
 }

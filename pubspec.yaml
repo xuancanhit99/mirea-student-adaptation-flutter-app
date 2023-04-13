@@ -92,7 +92,6 @@ flutter:
     - assets/images/
     - assets/logo/
     - assets/json/
-    - assets/zip/
     - assets/gif/
 #    - assets/fonts/
 
