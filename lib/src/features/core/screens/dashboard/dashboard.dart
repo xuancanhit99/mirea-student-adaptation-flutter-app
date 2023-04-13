@@ -46,9 +46,9 @@ class Dashboard extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(
                   border: Border(left: BorderSide(width: 4)),
-
                 ),
                 child: Row(
+
                   children: [
                     Text(cDashboardSearch, style: txtTheme.headlineSmall?.apply(color: Colors.grey.withOpacity(0.5)),)
                   ],
