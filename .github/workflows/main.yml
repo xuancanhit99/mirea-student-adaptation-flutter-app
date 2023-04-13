@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build APK
+#    name: Build APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,8 +28,8 @@ jobs:
         run: flutter pub get
       - name: Flutter test
         run: flutter test
-      - name: Flutter build APK
-        run: flutter build apk --debug --split-per-abi
+#      - name: Flutter build APK
+#        run: flutter build apk --debug --split-per-abi
 #      - name: Create a Release APK
 #        uses: ncipollo/release-action@v1
 #          with:
