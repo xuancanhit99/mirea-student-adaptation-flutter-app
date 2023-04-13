@@ -21,7 +21,8 @@ const String cBannerImage1 = "assets/images/research.png";
 const String cBannerImage2 = "assets/images/research.png";
 const String cTopCourseImage1 = "assets/images/research.png";
 const String cTopCourseImage2 = "assets/images/research.png";
+const String cBookmarkIcon = "assets/images/research.png";
 
 const String cDashboardTitle = "Hey, Xuan Canh";
 const String cDashboardHeading = "Explore Courses";
-const String cDashboardSearch = "Search";
+const String cDashboardSearch = "Search...";

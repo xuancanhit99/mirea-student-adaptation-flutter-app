@@ -60,3 +60,11 @@ const String cOtpSubTitle = "Verification";
 const String cOtpMessage = "Enter the verification code sent at ";
 
 // end -- Forgot Password --
+
+
+
+const String cDashboardBannerTitle1 = "Flutter for Beginners";
+const String cDashboardBannerTitle2 = "Kotlin";
+const String cDashboardBannerSubTitle = "10 Lessons";
+const String cViewAll = "View All";
+const String cDashboardTopCourses = "Top Courses";

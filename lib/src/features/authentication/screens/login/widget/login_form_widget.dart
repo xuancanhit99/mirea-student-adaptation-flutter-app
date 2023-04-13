@@ -43,22 +43,33 @@ class LoginFormWidget extends StatelessWidget {
             height: 20,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(child: Text(cRememberMe)),
-              // SizedBox(width: 50,),
-              Expanded(
-                child: Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                        onPressed: () {
-                          ForgotPasswordScreen.buildShowModalBottomSheet(
-                              context);
-                        },
-                        child: const Text(
-                          cForgotPassword,
-                          style: TextStyle(color: Colors.blue),
-                        ))),
-              ),
+              const Text(cRememberMe),
+              TextButton(
+                      onPressed: () {
+                        ForgotPasswordScreen.buildShowModalBottomSheet(
+                            context);
+                      },
+                      child: const Text(
+                        cForgotPassword,
+                        style: TextStyle(color: Colors.blue),
+                      )),
+              // const Expanded(child: Text(cRememberMe)),
+              // // SizedBox(width: 50,),
+              // Expanded(
+              //   child: Align(
+              //       alignment: Alignment.centerRight,
+              //       child: TextButton(
+              //           onPressed: () {
+              //             ForgotPasswordScreen.buildShowModalBottomSheet(
+              //                 context);
+              //           },
+              //           child: const Text(
+              //             cForgotPassword,
+              //             style: TextStyle(color: Colors.blue),
+              //           ))),
+              // ),
             ],
           ),
           SizedBox(
