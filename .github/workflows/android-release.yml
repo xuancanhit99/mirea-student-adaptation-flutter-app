@@ -1,0 +1,59 @@
+#name: Android Release
+#
+#on:
+#  push:
+#    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
+#
+#  workflow_dispatch:
+#
+#jobs:
+#  version:
+#    name: Create version number
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Install GitVersion
+#        uses: gittools/actions/gitversion/setup@v0.10.2
+#        with:
+#          versionSpec: "5.x"
+#      - name: Use GitVersion
+#        id: gitversion
+#        uses: gittools/actions/gitversion/execute@v0.10.2
+#      - name: Create version.txt with nuGetVersion
+#        run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
+#      - name: Upload version.txt
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: gitversion
+#          path: version.txt
+#
+#
+#  build:
+#    name: Create Android Build
+#    needs: version
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Get version.txt
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: gitversion
+#      - uses: actions/setup-java@v3
+#        with:
+#          distribution: 'zulu'
+#          java-version: "11"
+##          java-version: "12.x"
+#      - uses: subosito/flutter-action@v2
+#        with:
+#          flutter-version: "3.7.8"
+#          channel: 'stable'
+#      - name: Check Flutter version
+#        run: flutter --version
+#      - name: Get dependencies
+#        run: flutter pub get
+#
+#      - name: Start release build
+#        run: flutter build appbundle
