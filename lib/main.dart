@@ -1,13 +1,18 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:misafu/firebase_options.dart';
 import 'package:misafu/src/features/authentication/screens/splash/splash_screen_animation.dart';
+import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:misafu/src/utils/theme/theme.dart';
 
 void main() {
-  runApp(
-      const MyApp()
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
+  runApp(const MyApp()
       // DevicePreview(
       //   enabled: !kReleaseMode,
       //   builder: (context) => const MyApp(), // Wrap your app
@@ -32,8 +37,7 @@ class MyApp extends StatelessWidget {
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: SplashScreenAnimation(),
+      home: const CircularProgressIndicator(),
     );
   }
 }
-

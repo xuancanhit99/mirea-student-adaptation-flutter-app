@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/colors.dart';
@@ -30,7 +31,9 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100), color: cCardBgColor),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              AuthenticationRepository.instance.logout();
+            },
             icon: const Image(
               image: AssetImage(cUserProfileImage),
             ),

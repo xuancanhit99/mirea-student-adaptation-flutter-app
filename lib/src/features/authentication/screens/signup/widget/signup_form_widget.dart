@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:misafu/src/features/authentication/controllers/signup_controller.dart';
 
 import '../../../../../constants/text_strings.dart';
 
@@ -9,31 +12,39 @@ class SignUpFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
+    final _formKey = GlobalKey<FormState>();
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Form(
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
+                controller: controller.fullName,
                 decoration: const InputDecoration(
                     label: Text(cFullName),
                     prefixIcon: Icon(Icons.person_outline_outlined)),
               ),
               const SizedBox(height: 10),
               TextFormField(
+                  controller: controller.email,
                 decoration: const InputDecoration(
                     label: Text(cEmail),
                     prefixIcon: Icon(Icons.email_outlined)),
               ),
               const SizedBox(height: 10),
               TextFormField(
+                  controller: controller.phoneNo,
                 decoration: const InputDecoration(
                     label: Text(cPhoneNo),
                     prefixIcon: Icon(Icons.phone_outlined)),
               ),
               const SizedBox(height: 10),
               TextFormField(
+                  controller: controller.password,
                 decoration: const InputDecoration(
                     label: Text(cPassword),
                     prefixIcon: Icon(Icons.lock_outlined)),
@@ -42,7 +53,11 @@ class SignUpFormWidget extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if(_formKey.currentState!.validate()) {
+                          SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                        }
+                      },
                       child: Text(cSignUp.toUpperCase())))
             ],
           )),

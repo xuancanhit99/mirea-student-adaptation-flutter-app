@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "865289058733",
+    "project_id": "misafu-de5a1",
+    "storage_bucket": "misafu-de5a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865289058733:android:081fcd03f48e160e1a4924",
+        "android_client_info": {
+          "package_name": "com.example.misafu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865289058733-p9fqnek09chhvs0injsp5nskbs6a7k75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACVUe4TqPUl6dUmEfxysagEJMf-UZWEIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865289058733-p9fqnek09chhvs0injsp5nskbs6a7k75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865289058733:android:f36ec062a5548c9e1a4924",
+        "android_client_info": {
+          "package_name": "dev.xuancanhit.misafu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865289058733-p9fqnek09chhvs0injsp5nskbs6a7k75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACVUe4TqPUl6dUmEfxysagEJMf-UZWEIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865289058733-p9fqnek09chhvs0injsp5nskbs6a7k75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
