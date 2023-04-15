@@ -4,6 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:misafu/src/features/authentication/controllers/signup_controller.dart';
 
 import '../../../../../constants/text_strings.dart';
+import '../../../controllers/otp_controller.dart';
+import '../../forgot_password/otp/otp_screen.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({
@@ -55,7 +57,9 @@ class SignUpFormWidget extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         if(_formKey.currentState!.validate()) {
-                          SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                          // SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                          SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
+                          Get.to(() => const OTPScreen());
                         }
                       },
                       child: Text(cSignUp.toUpperCase())))

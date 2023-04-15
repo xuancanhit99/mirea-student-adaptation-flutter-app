@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '865289058733',
     projectId: 'misafu-de5a1',
     storageBucket: 'misafu-de5a1.appspot.com',
+    androidClientId: '865289058733-856bheb7bhfaklc4kj7ds9vtt54j4dn2.apps.googleusercontent.com',
     iosClientId: '865289058733-8vi59ch0pqn55jmqm1utgd34m9kecrqt.apps.googleusercontent.com',
     iosBundleId: 'com.example.misafu',
   );
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '865289058733',
     projectId: 'misafu-de5a1',
     storageBucket: 'misafu-de5a1.appspot.com',
+    androidClientId: '865289058733-856bheb7bhfaklc4kj7ds9vtt54j4dn2.apps.googleusercontent.com',
     iosClientId: '865289058733-8vi59ch0pqn55jmqm1utgd34m9kecrqt.apps.googleusercontent.com',
     iosBundleId: 'com.example.misafu',
   );

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:misafu/src/constants/text_strings.dart';
+import 'package:misafu/src/features/authentication/controllers/otp_controller.dart';
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var otp;
+    final controller = Get.put(OTPController());
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(30),
@@ -26,13 +31,18 @@ class OTPScreen extends StatelessWidget {
               numberOfFields: 6,
               fillColor: Colors.black.withOpacity(0.1),
               filled: true,
-              onSubmit: (code){print("OTP is => $code");},
+              onSubmit: (code){
+                otp = code;
+                controller.verifyOTP(otp);
+              },
               // keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 20,),
             SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: (){}, child: const Text(cNext)))
+                child: ElevatedButton(onPressed: (){
+                  controller.verifyOTP(otp);
+                }, child: const Text(cNext)))
           ],
         ),
       ),
