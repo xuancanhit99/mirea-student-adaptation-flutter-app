@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:misafu/src/features/core/screens/profile/profile_screen.dart';
 import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../../../constants/assets_strings.dart';
@@ -32,7 +35,8 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
               borderRadius: BorderRadius.circular(100), color: cCardBgColor),
           child: IconButton(
             onPressed: () {
-              AuthenticationRepository.instance.logout();
+              // AuthenticationRepository.instance.logout();
+              Get.to(() => const ProfileScreen());
             },
             icon: const Image(
               image: AssetImage(cUserProfileImage),

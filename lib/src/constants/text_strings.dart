@@ -59,6 +59,10 @@ const String cOtpTitle = "CO\nDE";
 const String cOtpSubTitle = "Verification";
 const String cOtpMessage = "Enter the verification code sent at ";
 
+const String cDashboardTitle = "Hey, Xuan Canh";
+const String cDashboardHeading = "Explore Courses";
+const String cDashboardSearch = "Search...";
+
 // end -- Forgot Password --
 
 
@@ -68,3 +72,26 @@ const String cDashboardBannerTitle2 = "Kotlin";
 const String cDashboardBannerSubTitle = "10 Lessons";
 const String cViewAll = "View All";
 const String cDashboardTopCourses = "Top Courses";
+
+
+
+// -- Profile Screen
+const String cProfile = "Profile";
+const String cEditProfile = "Edit Profile";
+const String cLogout = "Logout";
+const String cProfileHeading = "XUAN CANH";
+const String cProfileSubHeading = "xuancanhit99@gmail.com";
+
+//
+const String cMenu1 = "Settings";
+const String cMenu2 = "Billing Details";
+const String cMenu3 = "User Management";
+const String cMenu4 = "Information";
+const String cMenu5 = cLogout;
+
+const String cDelete = "Delete";
+const String cJoined = "Joined";
+const String cJoinedAt = " 16 April 2023";
+
+
+
