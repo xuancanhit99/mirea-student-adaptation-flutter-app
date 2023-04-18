@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:lottie/lottie.dart';
-import 'package:misafu/main.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/sizes.dart';
-import 'package:misafu/src/constants/text_strings.dart';
+import 'package:msa/main.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/sizes.dart';
+import 'package:msa/src/constants/text_strings.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../home/admin/admin_home.dart';

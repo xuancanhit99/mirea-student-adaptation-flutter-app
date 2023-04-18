@@ -3,8 +3,8 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/controllers/otp_controller.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/authentication/controllers/otp_controller.dart';
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({Key? key}) : super(key: key);

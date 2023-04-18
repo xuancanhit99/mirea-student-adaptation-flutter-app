@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
 
 import '../../features/authentication/screens/welcome/welcome_screen.dart';
 import 'exceptions/signup_email_password_failure.dart';

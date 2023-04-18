@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:misafu/src/common_widgets/form/form_header_widget.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/text_strings.dart';
+import 'package:msa/src/common_widgets/form/form_header_widget.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/text_strings.dart';
 
 class ForgetPasswordPhoneScreen extends StatelessWidget {
   const ForgetPasswordPhoneScreen({Key? key}) : super(key: key);

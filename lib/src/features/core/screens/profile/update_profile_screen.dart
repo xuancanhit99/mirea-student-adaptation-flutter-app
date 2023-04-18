@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/models/student_model.dart';
-import 'package:misafu/src/features/core/controllers/profile_controller.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/authentication/models/student_model.dart';
+import 'package:msa/src/features/core/controllers/profile_controller.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);

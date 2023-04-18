@@ -1,8 +1,8 @@
 
 
 import 'package:get/get.dart';
-import 'package:misafu/src/features/core/screens/dashboard/dashboard.dart';
-import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 
 class OTPController extends GetxController {
   static OTPController get instance => Get.find();

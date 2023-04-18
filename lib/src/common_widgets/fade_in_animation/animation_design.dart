@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
 
 
 import '../../constants/colors.dart';

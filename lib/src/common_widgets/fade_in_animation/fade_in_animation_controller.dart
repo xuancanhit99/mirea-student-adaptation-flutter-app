@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/constants/text_strings.dart';
+import 'package:msa/src/constants/text_strings.dart';
 
 import '../../features/authentication/screens/on_boarding/on_boarding_screen.dart';
 import '../../features/authentication/screens/welcome/welcome_screen.dart';

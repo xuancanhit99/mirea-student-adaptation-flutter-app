@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/utils/theme/widget_themes/elevated_button_theme.dart';
-import 'package:misafu/src/utils/theme/widget_themes/outlined_button_theme.dart';
-import 'package:misafu/src/utils/theme/widget_themes/text_field_theme.dart';
-import 'package:misafu/src/utils/theme/widget_themes/text_theme.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/utils/theme/widget_themes/elevated_button_theme.dart';
+import 'package:msa/src/utils/theme/widget_themes/outlined_button_theme.dart';
+import 'package:msa/src/utils/theme/widget_themes/text_field_theme.dart';
+import 'package:msa/src/utils/theme/widget_themes/text_theme.dart';
 
 import '../../constants/color_schemes.g.dart';
 

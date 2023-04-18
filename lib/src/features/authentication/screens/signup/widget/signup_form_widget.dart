@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:misafu/src/features/authentication/controllers/signup_controller.dart';
-import 'package:misafu/src/features/authentication/models/student_model.dart';
+import 'package:msa/src/features/authentication/controllers/signup_controller.dart';
+import 'package:msa/src/features/authentication/models/student_model.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../../../controllers/otp_controller.dart';

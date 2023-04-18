@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:misafu/src/features/core/models/dashboard/categories_model.dart';
+import 'package:msa/src/features/core/models/dashboard/categories_model.dart';
 
 import '../../../../../constants/colors.dart';
 

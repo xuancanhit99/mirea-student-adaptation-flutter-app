@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/text_strings.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/text_strings.dart';
 
 import '../../../../common_widgets/form/form_header_widget.dart';
 import 'widget/login_footer_widget.dart';

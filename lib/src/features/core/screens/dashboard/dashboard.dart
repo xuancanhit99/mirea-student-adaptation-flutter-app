@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/core/screens/dashboard/widgets/appbar.dart';
-import 'package:misafu/src/features/core/screens/dashboard/widgets/banners.dart';
-import 'package:misafu/src/features/core/screens/dashboard/widgets/categories.dart';
-import 'package:misafu/src/features/core/screens/dashboard/widgets/search.dart';
-import 'package:misafu/src/features/core/screens/dashboard/widgets/top_courses.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/core/screens/dashboard/widgets/appbar.dart';
+import 'package:msa/src/features/core/screens/dashboard/widgets/banners.dart';
+import 'package:msa/src/features/core/screens/dashboard/widgets/categories.dart';
+import 'package:msa/src/features/core/screens/dashboard/widgets/search.dart';
+import 'package:msa/src/features/core/screens/dashboard/widgets/top_courses.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);

@@ -44,41 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAPNkp5KmVGa6BGN9LXV3LX7qh4LEe6Eo0',
-    appId: '1:865289058733:web:01e816142c8f7d521a4924',
-    messagingSenderId: '865289058733',
-    projectId: 'misafu-de5a1',
-    authDomain: 'misafu-de5a1.firebaseapp.com',
-    storageBucket: 'misafu-de5a1.appspot.com',
+    apiKey: 'AIzaSyDVJYWJqwqSU9vjaJ2loeVii30UPsLUCqA',
+    appId: '1:741215904307:web:4b1c85c8e4361b795d3946',
+    messagingSenderId: '741215904307',
+    projectId: 'mirea-student-adaptation',
+    authDomain: 'mirea-student-adaptation.firebaseapp.com',
+    storageBucket: 'mirea-student-adaptation.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyACVUe4TqPUl6dUmEfxysagEJMf-UZWEIY',
-    appId: '1:865289058733:android:081fcd03f48e160e1a4924',
-    messagingSenderId: '865289058733',
-    projectId: 'misafu-de5a1',
-    storageBucket: 'misafu-de5a1.appspot.com',
+    apiKey: 'AIzaSyB5g1vK3QU6YoxWhwv2lFrC73hs4k3y5ac',
+    appId: '1:741215904307:android:66d9954c5dae71835d3946',
+    messagingSenderId: '741215904307',
+    projectId: 'mirea-student-adaptation',
+    storageBucket: 'mirea-student-adaptation.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBaX2itrWb2ZxZJKPd4efB_lyS9ahJl3cA',
-    appId: '1:865289058733:ios:00cadd4794d727041a4924',
-    messagingSenderId: '865289058733',
-    projectId: 'misafu-de5a1',
-    storageBucket: 'misafu-de5a1.appspot.com',
-    androidClientId: '865289058733-856bheb7bhfaklc4kj7ds9vtt54j4dn2.apps.googleusercontent.com',
-    iosClientId: '865289058733-8vi59ch0pqn55jmqm1utgd34m9kecrqt.apps.googleusercontent.com',
-    iosBundleId: 'com.example.misafu',
+    apiKey: 'AIzaSyC5uVCxYNmpWMGeptLKqx5kiZMBTie6vJ4',
+    appId: '1:741215904307:ios:1d6abc93aa7ce2465d3946',
+    messagingSenderId: '741215904307',
+    projectId: 'mirea-student-adaptation',
+    storageBucket: 'mirea-student-adaptation.appspot.com',
+    iosClientId: '741215904307-krd3iifni166qbgbdfu7ingpv4nkhthm.apps.googleusercontent.com',
+    iosBundleId: 'dev.xuancanhit.msa',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBaX2itrWb2ZxZJKPd4efB_lyS9ahJl3cA',
-    appId: '1:865289058733:ios:00cadd4794d727041a4924',
-    messagingSenderId: '865289058733',
-    projectId: 'misafu-de5a1',
-    storageBucket: 'misafu-de5a1.appspot.com',
-    androidClientId: '865289058733-856bheb7bhfaklc4kj7ds9vtt54j4dn2.apps.googleusercontent.com',
-    iosClientId: '865289058733-8vi59ch0pqn55jmqm1utgd34m9kecrqt.apps.googleusercontent.com',
-    iosBundleId: 'com.example.misafu',
+    apiKey: 'AIzaSyC5uVCxYNmpWMGeptLKqx5kiZMBTie6vJ4',
+    appId: '1:741215904307:ios:1d6abc93aa7ce2465d3946',
+    messagingSenderId: '741215904307',
+    projectId: 'mirea-student-adaptation',
+    storageBucket: 'mirea-student-adaptation.appspot.com',
+    iosClientId: '741215904307-krd3iifni166qbgbdfu7ingpv4nkhthm.apps.googleusercontent.com',
+    iosBundleId: 'dev.xuancanhit.msa',
   );
 }

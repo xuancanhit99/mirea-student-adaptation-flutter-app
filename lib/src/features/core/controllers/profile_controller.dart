@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../repository/student_repository/student_repository.dart';
 import '../../authentication/models/student_model.dart';

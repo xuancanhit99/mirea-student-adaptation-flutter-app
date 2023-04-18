@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:misafu/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
-import 'package:misafu/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
+import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../../forgot_password/options/forgot_password_btn_widget.dart';

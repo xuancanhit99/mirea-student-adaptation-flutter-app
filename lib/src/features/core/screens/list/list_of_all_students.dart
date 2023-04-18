@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:misafu/src/features/core/controllers/all_students_controller.dart';
+import 'package:msa/src/features/core/controllers/all_students_controller.dart';
 
 
 class ListOfAllStudents extends StatelessWidget {

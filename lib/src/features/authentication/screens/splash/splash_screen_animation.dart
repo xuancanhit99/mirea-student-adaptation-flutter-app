@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
-import 'package:misafu/main.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/sizes.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
+import 'package:msa/main.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/sizes.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
 
 import '../../../../common_widgets/fade_in_animation/animation_design.dart';
 

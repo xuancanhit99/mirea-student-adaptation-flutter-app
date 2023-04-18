@@ -1,4 +1,4 @@
-# misafu
+# msa
 
 Mobile Information System for Adaptation of Foreign University Students
 

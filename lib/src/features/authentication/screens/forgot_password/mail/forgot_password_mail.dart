@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:misafu/src/common_widgets/form/form_header_widget.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/screens/forgot_password/otp/otp_screen.dart';
+import 'package:msa/src/common_widgets/form/form_header_widget.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/authentication/screens/forgot_password/otp/otp_screen.dart';
 
 class ForgetPasswordMailScreen extends StatelessWidget {
   const ForgetPasswordMailScreen({Key? key}) : super(key: key);

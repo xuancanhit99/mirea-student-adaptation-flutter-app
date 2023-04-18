@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:misafu/src/features/core/screens/profile/profile_screen.dart';
-import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:msa/src/features/core/screens/profile/profile_screen.dart';
+import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/colors.dart';

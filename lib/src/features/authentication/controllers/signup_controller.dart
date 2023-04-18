@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/features/authentication/models/student_model.dart';
-import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
-import 'package:misafu/src/repository/student_repository/student_repository.dart';
+import 'package:msa/src/features/authentication/models/student_model.dart';
+import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:msa/src/repository/student_repository/student_repository.dart';
 
 import '../screens/forgot_password/otp/otp_screen.dart';
 class SignUpController extends GetxController {

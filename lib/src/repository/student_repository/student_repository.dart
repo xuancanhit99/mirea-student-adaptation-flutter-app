@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/features/authentication/models/student_model.dart';
+import 'package:msa/src/features/authentication/models/student_model.dart';
 
 class StudentRepository extends GetxController {
   static StudentRepository get instance => Get.find();

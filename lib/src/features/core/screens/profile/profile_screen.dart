@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/core/screens/list/list_of_all_students.dart';
-import 'package:misafu/src/features/core/screens/profile/update_profile_screen.dart';
-import 'package:misafu/src/features/core/screens/profile/widget/profile_menu.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
+import 'package:msa/src/features/core/screens/profile/update_profile_screen.dart';
+import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
 
 import '../../../../repository/authentication_repository/authentication_repository.dart';
 

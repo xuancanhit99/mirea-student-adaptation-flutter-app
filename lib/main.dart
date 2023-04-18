@@ -3,10 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/firebase_options.dart';
-import 'package:misafu/src/features/authentication/screens/splash/splash_screen_animation.dart';
-import 'package:misafu/src/repository/authentication_repository/authentication_repository.dart';
-import 'package:misafu/src/utils/theme/theme.dart';
+import 'package:msa/firebase_options.dart';
+import 'package:msa/src/features/authentication/screens/splash/splash_screen_animation.dart';
+import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:msa/src/utils/theme/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 500),
-      title: 'MISAFU',
+      title: 'msa',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       themeMode: ThemeMode.system,

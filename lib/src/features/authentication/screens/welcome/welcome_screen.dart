@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/animation_design.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
-import 'package:misafu/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
-import 'package:misafu/src/constants/assets_strings.dart';
-import 'package:misafu/src/constants/colors.dart';
-import 'package:misafu/src/constants/text_strings.dart';
-import 'package:misafu/src/features/authentication/screens/login/login_screen.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/animation_design.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
+import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
+import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/colors.dart';
+import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/authentication/screens/login/login_screen.dart';
 
 import '../signup/signup_screen.dart';
 
