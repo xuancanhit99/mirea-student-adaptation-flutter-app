@@ -26,4 +26,16 @@ class StudentRepository extends GetxController {
     });
   }
 
+  Future<StudentModel> getStudentDetailsRepo(String email) async {
+    final snapshot = await _db.collection("Students").where("Email", isEqualTo: email).get();
+    final studentData = snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).single;
+    return studentData;
+  }
+
+  Future<List<StudentModel>> getAllStudentRepo() async {
+    final snapshot = await _db.collection("Students").get();
+    final studentData = snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).toList();
+    return studentData;
+  }
+
 }

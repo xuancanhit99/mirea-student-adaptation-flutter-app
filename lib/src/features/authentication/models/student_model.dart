@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class StudentModel {
   final String? id;
   final String fullName;
@@ -22,4 +24,14 @@ class StudentModel {
     };
   }
 
+  factory StudentModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data()!;
+    return StudentModel(
+      id: document.id,
+        email: data["Email"],
+        password: data["Password"],
+        fullName: data["FullName"],
+        phoneNo: data["Phone"],
+    );
+  }
 }

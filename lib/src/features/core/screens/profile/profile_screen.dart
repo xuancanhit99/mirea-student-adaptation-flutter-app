@@ -5,8 +5,11 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:misafu/src/constants/assets_strings.dart';
 import 'package:misafu/src/constants/colors.dart';
 import 'package:misafu/src/constants/text_strings.dart';
+import 'package:misafu/src/features/core/screens/list/list_of_all_students.dart';
 import 'package:misafu/src/features/core/screens/profile/update_profile_screen.dart';
 import 'package:misafu/src/features/core/screens/profile/widget/profile_menu.dart';
+
+import '../../../../repository/authentication_repository/authentication_repository.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -82,7 +85,8 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                   width: 200,
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() => const UpdateProfileScreen()),
+                      onPressed: () =>
+                          Get.to(() => const UpdateProfileScreen()),
                       style: ElevatedButton.styleFrom(
                           side: BorderSide.none, shape: const StadiumBorder()),
                       child: const Text(cEditProfile))),
@@ -95,16 +99,39 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               // Menu
-              ProfileMenuWidget(title: "Setting", icon: LineAwesomeIcons.cog, onPress: (){},),
-              ProfileMenuWidget(title: "Time Table", icon: LineAwesomeIcons.wallet, onPress: (){},),
-              ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: (){},),
-              const Divider(color: Colors.grey,),
-              const SizedBox(height: 10,),
-              ProfileMenuWidget(title: "Information", icon: LineAwesomeIcons.info, onPress: (){}),
-              ProfileMenuWidget(title: "Logout", icon: LineAwesomeIcons.alternate_sign_out,
+              ProfileMenuWidget(
+                title: "Setting",
+                icon: LineAwesomeIcons.cog,
+                onPress: () {},
+              ),
+              ProfileMenuWidget(
+                title: "Time Table",
+                icon: LineAwesomeIcons.wallet,
+                onPress: () {},
+              ),
+              ProfileMenuWidget(
+                title: "User Management",
+                icon: LineAwesomeIcons.user_check,
+                onPress: () => Get.to(() => const ListOfAllStudents()),
+              ),
+              const Divider(
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ProfileMenuWidget(
+                  title: "Information",
+                  icon: LineAwesomeIcons.info,
+                  onPress: () {}),
+              ProfileMenuWidget(
+                  title: "Logout",
+                  icon: LineAwesomeIcons.alternate_sign_out,
                   textColor: Colors.red,
                   endIcon: false,
-                  onPress: (){}),
+                  onPress: () {
+                    AuthenticationRepository.instance.logout();
+                  }),
             ],
           ),
         ),
@@ -112,4 +139,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
