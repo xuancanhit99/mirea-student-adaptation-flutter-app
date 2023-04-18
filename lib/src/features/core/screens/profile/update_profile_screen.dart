@@ -30,9 +30,19 @@ class UpdateProfileScreen extends StatelessWidget {
           child: FutureBuilder(
             future: controller.getStudentData(),
             builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.done) {
-                if(snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
                   StudentModel studentData = snapshot.data as StudentModel;
+
+                  final id = TextEditingController(text: studentData.id);
+                  final email = TextEditingController(text: studentData.email);
+                  final password =
+                      TextEditingController(text: studentData.password);
+                  final fullName =
+                      TextEditingController(text: studentData.fullName);
+                  final phoneNo =
+                      TextEditingController(text: studentData.phoneNo);
+
                   return Column(
                     children: [
                       Stack(
@@ -69,86 +79,105 @@ class UpdateProfileScreen extends StatelessWidget {
                       ),
                       Form(
                           child: Column(
+                        children: [
+                          TextFormField(
+                            controller: fullName,
+                            // initialValue: studentData.fullName,
+                            decoration: const InputDecoration(
+                                label: Text(cFullName),
+                                prefixIcon:
+                                    Icon(Icons.person_outline_outlined)),
+                          ),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: email,
+                            // initialValue: studentData.email,
+                            decoration: const InputDecoration(
+                                label: Text(cEmail),
+                                prefixIcon: Icon(Icons.email_outlined)),
+                          ),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: phoneNo,
+                            // initialValue: studentData.phoneNo,
+                            decoration: const InputDecoration(
+                                label: Text(cPhoneNo),
+                                prefixIcon: Icon(Icons.phone_outlined)),
+                          ),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: password,
+                            // initialValue: studentData.password,
+                            decoration: const InputDecoration(
+                                label: Text(cPassword),
+                                prefixIcon: Icon(Icons.lock_outlined)),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                final student = StudentModel(
+                                    id: id.text,
+                                    email: email.text.trim(),
+                                    password: password.text.trim(),
+                                    fullName: fullName.text.trim(),
+                                    phoneNo: phoneNo.text.trim());
+                                await controller.updateStudent(student);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: cPrimaryColor,
+                                  side: BorderSide.none,
+                                  shape: const StadiumBorder()),
+                              child: const Text(
+                                "Update",
+                                style: TextStyle(color: cDarkColor),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TextFormField(
-                                initialValue: studentData.fullName,
-                                decoration: const InputDecoration(
-                                    label: Text(cFullName),
-                                    prefixIcon: Icon(Icons.person_outline_outlined)),
-                              ),
-                              const SizedBox(height: 10),
-                              TextFormField(
-                                initialValue: studentData.email,
-                                decoration: const InputDecoration(
-                                    label: Text(cEmail),
-                                    prefixIcon: Icon(Icons.email_outlined)),
-                              ),
-                              const SizedBox(height: 10),
-                              TextFormField(
-                                initialValue: studentData.phoneNo,
-                                decoration: const InputDecoration(
-                                    label: Text(cPhoneNo),
-                                    prefixIcon: Icon(Icons.phone_outlined)),
-                              ),
-                              const SizedBox(height: 10),
-                              TextFormField(
-                                initialValue: studentData.password,
-                                decoration: const InputDecoration(
-                                    label: Text(cPassword),
-                                    prefixIcon: Icon(Icons.lock_outlined)),
-                              ),
-                              const SizedBox(height: 20),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () =>
-                                      Get.to(() => const UpdateProfileScreen()),
+                              const Text.rich(TextSpan(
+                                  text: cJoined,
+                                  style: TextStyle(fontSize: 12),
+                                  children: [
+                                    TextSpan(
+                                        text: cJoinedAt,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12))
+                                  ])),
+                              ElevatedButton(
+                                  onPressed: () {},
                                   style: ElevatedButton.styleFrom(
-                                      backgroundColor: cPrimaryColor,
-                                      side: BorderSide.none,
-                                      shape: const StadiumBorder()),
-                                  child: const Text(
-                                    cEditProfile,
-                                    style: TextStyle(color: cDarkColor),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text.rich(TextSpan(
-                                      text: cJoined,
-                                      style: TextStyle(fontSize: 12),
-                                      children: [
-                                        TextSpan(
-                                            text: cJoinedAt,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold, fontSize: 12))
-                                      ])),
-                                  ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor:
+                                      backgroundColor:
                                           Colors.redAccent.withOpacity(0.1),
-                                          elevation: 0,
-                                          foregroundColor: Colors.red,
-                                          shape: const StadiumBorder(),
-                                          side: BorderSide.none),
-                                      child: const Text(cDelete))
-                                ],
-                              )
+                                      elevation: 0,
+                                      foregroundColor: Colors.red,
+                                      shape: const StadiumBorder(),
+                                      side: BorderSide.none),
+                                  child: const Text(cDelete))
                             ],
-                          ))
+                          )
+                        ],
+                      ))
                     ],
                   );
-                } else if(snapshot.hasError) {
-                  return Center(child: Text(snapshot.error.toString()),);
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text(snapshot.error.toString()),
+                  );
                 } else {
-                  return const Center(child: Text("Something went wrong."),);
+                  return const Center(
+                    child: Text("Something went wrong."),
+                  );
                 }
               } else {
-                return const Center(child: CircularProgressIndicator(),);
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             },
           ),

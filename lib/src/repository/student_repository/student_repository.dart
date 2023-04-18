@@ -18,11 +18,9 @@ class StudentRepository extends GetxController {
     ).catchError((error, stackTrace){
       Get.snackbar("Error", "Some thing went wrong. Try again.",
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.green.withOpacity(0.1),
-          colorText: Colors.green
-      );
-      print(error.toString());
-
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red);
+      print("ERROR - $error");
     });
   }
 
@@ -36,6 +34,10 @@ class StudentRepository extends GetxController {
     final snapshot = await _db.collection("Students").get();
     final studentData = snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).toList();
     return studentData;
+  }
+
+  Future<void> updateStudentRepo(StudentModel student) async {
+    await _db.collection("Students").doc(student.id).update(student.toJson());
   }
 
 }
