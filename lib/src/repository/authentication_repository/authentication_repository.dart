@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
 import '../../features/authentication/screens/welcome/welcome_screen.dart';
 import 'exceptions/signup_email_password_failure.dart';
@@ -48,14 +49,15 @@ class AuthenticationRepository extends GetxController {
   }
 
   Future<bool> verifyOTP(String otp) async {
-    var credentials = await _auth.signInWithCredential(PhoneAuthProvider.credential(
-        verificationId: verificationId.value, smsCode: otp));
+    var credentials = await _auth.signInWithCredential(
+        PhoneAuthProvider.credential(
+            verificationId: verificationId.value, smsCode: otp));
 
     return credentials.user != null ? true : false;
   }
 
-  Future<void> createUserWithEmailAndPassword(
-      String email, String password) async {
+  Future<void> createUserWithEmailAndPassword(String email,
+      String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -73,12 +75,24 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  Future<void> loginUserWithEmailAndPassword(
-      String email, String password) async {
+  Future<void> loginUserWithEmailAndPassword(String email,
+      String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      firebaseUser.value != null
+          ? {
+      Get.offAll(() => const Dashboard())
+    }: Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
-    } catch (_) {}
+    final ex = SignInWithEmailAndPasswordFailure.code(e.code);
+    print('FIREBASE AUTH EXCEPTION - ${ex.message}');
+    throw ex;
+    }
+    catch (_) {
+    const ex = SignInWithEmailAndPasswordFailure();
+    print('EXCEPTION - ${ex.message}');
+    throw ex;
+    }
   }
 
   Future<void> logout() async => await _auth.signOut();

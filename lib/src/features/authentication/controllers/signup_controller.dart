@@ -30,7 +30,7 @@ class SignUpController extends GetxController {
     await studentRepo.createStudent(student);
     registerUser(student.email, student.password);
     //phoneAuthentication(student.phoneNo);
-    Get.to(() => const OTPScreen());
+    // Get.to(() => const OTPScreen());
   }
 
 }

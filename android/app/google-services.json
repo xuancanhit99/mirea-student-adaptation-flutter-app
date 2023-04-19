@@ -29,6 +29,13 @@
             {
               "client_id": "741215904307-vvlh878sub3rhm08rapds82smbn6lbee.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "741215904307-krd3iifni166qbgbdfu7ingpv4nkhthm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.xuancanhit.msa"
+              }
             }
           ]
         }
