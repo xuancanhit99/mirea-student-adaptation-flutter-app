@@ -11,8 +11,8 @@ class COutlinedButtonTheme {
             borderRadius: BorderRadius.circular(20)
         ),
         foregroundColor: cSecondaryColor,
-        side: BorderSide(color: cSecondaryColor),
-        padding: EdgeInsets.symmetric(vertical: 15)
+        side: const BorderSide(color: cSecondaryColor),
+        padding: const EdgeInsets.symmetric(vertical: 15)
     ),
   );
   static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
@@ -21,8 +21,8 @@ class COutlinedButtonTheme {
             borderRadius: BorderRadius.circular(20)
         ),
         foregroundColor: cWhiteColor,
-        side: BorderSide(color: cWhiteColor),
-        padding: EdgeInsets.symmetric(vertical: 15)
+        side: const BorderSide(color: cWhiteColor),
+        padding: const EdgeInsets.symmetric(vertical: 15)
     ),
   );
 

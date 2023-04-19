@@ -11,7 +11,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
@@ -20,7 +19,10 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            FormHeaderWidget(image: cResearchImage, title: cWelcomeTitle, subtitle: cWelcomeSubTitle),
+            FormHeaderWidget(
+                image: cWelcomeImage,
+                title: cStudentLogin,
+                subtitle: '$cAppName - $cAppNameDetailed'),
             LoginFormWidget(),
             LoginFooterWidget(),
           ],

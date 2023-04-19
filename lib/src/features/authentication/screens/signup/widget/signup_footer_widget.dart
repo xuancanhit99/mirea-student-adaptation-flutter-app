@@ -26,7 +26,7 @@ class SignUpFooterWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () => {},
             child: Text.rich(TextSpan(
                 style: Theme.of(context).textTheme.bodyLarge,
                 children: const [

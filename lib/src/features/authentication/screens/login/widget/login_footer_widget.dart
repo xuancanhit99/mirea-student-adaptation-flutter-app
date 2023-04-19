@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:msa/src/features/authentication/screens/signup/signup_screen.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/text_strings.dart';
@@ -14,6 +17,9 @@ class LoginFooterWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text("OR"),
+        const SizedBox(
+          height: 20,
+        ),
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
@@ -21,6 +27,7 @@ class LoginFooterWidget extends StatelessWidget {
                 image: AssetImage(cGoogleLogo),
                 width: 20.0,
               ),
+              style: OutlinedButton.styleFrom(shape: const StadiumBorder()),
               onPressed: () {},
               label: Text(cSignInWithGoogle.toUpperCase())),
         ),
@@ -28,13 +35,12 @@ class LoginFooterWidget extends StatelessWidget {
           height: 10,
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () => Get.to(() => const SignUpScreen()),
             child: Text.rich(TextSpan(
                 text: cDoNotHaveAccount,
                 style: Theme.of(context).textTheme.bodyLarge,
                 children: const [
-                  TextSpan(
-                      text: cRes, style: TextStyle(color: Colors.blue))
+                  TextSpan(text: cRes, style: TextStyle(color: Colors.blue))
                 ])))
       ],
     );

@@ -13,8 +13,8 @@ class CElevatedButtonTheme {
         ),
         foregroundColor: cWhiteColor,
         backgroundColor: cSecondaryColor,
-        side: BorderSide(color: cSecondaryColor),
-        padding: EdgeInsets.symmetric(vertical: 15)
+        side: const BorderSide(color: cSecondaryColor),
+        padding: const EdgeInsets.symmetric(vertical: 15)
     ),
   );
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
@@ -25,8 +25,8 @@ class CElevatedButtonTheme {
         ),
         foregroundColor: cSecondaryColor,
         backgroundColor: cWhiteColor,
-        side: BorderSide(color: cWhiteColor),
-        padding: EdgeInsets.symmetric(vertical: 15)
+        side: const BorderSide(color: cWhiteColor),
+        padding: const EdgeInsets.symmetric(vertical: 15)
     ),
   );
 

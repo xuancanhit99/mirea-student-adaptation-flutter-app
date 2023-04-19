@@ -1,11 +1,15 @@
 
-const String cAppName = "msa";
-const String cAppNameDetailed = "Mobile Information System\nfor Adaptation of\nForeign University Students";
+const String cAppName = "MSA";
+const String cAppNameDetailed = "MIREA Student Adaptation";
+const String cAppNameDiploma = "Mobile Information System\nfor Adaptation of\nForeign University Students";
 const String cCopyright = "© Vu Xuan Canh IKBO–07–19";
 
 const String cHome = "Home";
 
+
+
 const String cLogin = "Login";
+const String cStudentLogin = "Student Login";
 const String cSignUp = "Sign Up";
 const String cPhoneNo = "Phone No";
 const String cWelcomeBack = "Welcome Back,";

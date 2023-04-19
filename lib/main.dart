@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/firebase_options.dart';
-import 'package:msa/src/features/authentication/screens/splash/splash_screen_animation.dart';
+import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:msa/src/utils/theme/theme.dart';
 
@@ -33,11 +33,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 500),
-      title: 'msa',
+      title: 'MSA',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const Center(child: CircularProgressIndicator()),
+      home: const Scaffold(
+        // backgroundColor: Theme.of(context).splashColor,
+        body: Center(
+            child: CircularProgressIndicator(
+          color: cSkyBlue,
+        )),
+      ),
     );
   }
 }
