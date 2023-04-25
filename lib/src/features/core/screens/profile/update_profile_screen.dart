@@ -5,14 +5,14 @@ import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
-import 'package:msa/src/features/core/controllers/profile_controller.dart';
+import 'package:msa/src/features/core/controllers/student_controller.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProfileController());
+    final controller = Get.put(StudentController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

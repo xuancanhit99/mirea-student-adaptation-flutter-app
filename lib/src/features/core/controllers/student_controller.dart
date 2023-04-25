@@ -5,8 +5,8 @@ import 'package:msa/src/repository/authentication_repository/authentication_repo
 import '../../../repository/student_repository/student_repository.dart';
 import '../../authentication/models/student_model.dart';
 
-class ProfileController extends GetxController {
-  static ProfileController get instance => Get.find();
+class StudentController extends GetxController {
+  static StudentController get instance => Get.find();
 
   // final email = TextEditingController();
   // final password = TextEditingController();
@@ -22,6 +22,16 @@ class ProfileController extends GetxController {
     final email = _authRepo.firebaseUser.value?.email;
     if (email != null) {
       return _studentRepo.getStudentDetailsRepo(email);
+    } else {
+      Get.snackbar("Error", "Login to continue");
+    }
+  }
+
+  getStudentFromUid() {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    // print(uid);
+    if (uid != null) {
+      return _studentRepo.getStudentDetailsByUid(uid);
     } else {
       Get.snackbar("Error", "Login to continue");
     }

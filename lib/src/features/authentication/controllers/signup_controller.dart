@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
@@ -15,22 +17,13 @@ class SignUpController extends GetxController {
 
   final studentRepo = Get.put(StudentRepository());
 
-  void registerUser(String email, String password) {
-    String? error = AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password) as String?;
-    if (error != null) {
-      Get.showSnackbar(GetSnackBar(message: error.toString()));
-    }
+  Future<void> signUpController(StudentModel student) async {
+    String uid = await AuthenticationRepository.instance.createUserWithEmailAndPasswordRepo(student);
+    await studentRepo.createStudentRepo(student, uid);
   }
 
   void phoneAuthentication(String phoneNo) {
     AuthenticationRepository.instance.phoneAuthentication(phoneNo);
-  }
-
-  Future<void> createStudent(StudentModel student) async {
-    await studentRepo.createStudent(student);
-    registerUser(student.email, student.password);
-    //phoneAuthentication(student.phoneNo);
-    // Get.to(() => const OTPScreen());
   }
 
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -58,7 +59,7 @@ class SignUpFormWidget extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          // SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                          // SignUpController.instance.signUpController(controller.email.text.trim(), controller.password.text.trim());
                           // SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
                           // Get.to(() => const OTPScreen());
                           final student = StudentModel(
@@ -67,7 +68,7 @@ class SignUpFormWidget extends StatelessWidget {
                               fullName: controller.fullName.text.trim(),
                               phoneNo: controller.phoneNo.text.trim());
 
-                          SignUpController.instance.createStudent(student);
+                          SignUpController.instance.signUpController(student);
 
                         }
                       },

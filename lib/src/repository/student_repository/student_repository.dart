@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
@@ -8,8 +9,8 @@ class StudentRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-  createStudent(StudentModel student) async {
-    await _db.collection("Students").add(student.toJson()).whenComplete(() =>
+  createStudentRepo(StudentModel student, String uid) async {
+    await _db.collection("Students").doc(uid).set(student.toJson()).whenComplete(() =>
       Get.snackbar("Success", "Your account has been created.",
       snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green.withOpacity(0.1),
@@ -27,6 +28,12 @@ class StudentRepository extends GetxController {
   Future<StudentModel> getStudentDetailsRepo(String email) async {
     final snapshot = await _db.collection("Students").where("Email", isEqualTo: email).get();
     final studentData = snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).single;
+    return studentData;
+  }
+
+  Future<StudentModel> getStudentDetailsByUid(String uid) async {
+    final snapshot = await _db.collection("Students").doc(uid).get();
+    final studentData = StudentModel.fromSnapshot(snapshot);
     return studentData;
   }
 

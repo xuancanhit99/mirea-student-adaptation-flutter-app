@@ -63,7 +63,8 @@ const String cOtpTitle = "CO\nDE";
 const String cOtpSubTitle = "Verification";
 const String cOtpMessage = "Enter the verification code sent at ";
 
-const String cDashboardTitle = "Hey, Xuan Canh";
+const String cDashboardHi = "Hi, ";
+const String cDashboardGroup = "Group: ";
 const String cDashboardHeading = "Explore Courses";
 const String cDashboardSearch = "Search...";
 

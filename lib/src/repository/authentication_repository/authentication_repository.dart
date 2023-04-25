@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
 import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
 import '../../features/authentication/screens/welcome/welcome_screen.dart';
+import '../student_repository/student_repository.dart';
 import 'exceptions/signup_email_password_failure.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -37,7 +39,7 @@ class AuthenticationRepository extends GetxController {
           if (e.code == 'invalid-phone-number') {
             Get.snackbar('Error', 'The provided phone number is not valid.');
           } else {
-            Get.snackbar('Error', 'Something went wrong. Try again.');
+             Get.snackbar('Error', 'Something went wrong. Try again.');
           }
         },
         codeSent: (verificationId, resendToken) {
@@ -56,23 +58,34 @@ class AuthenticationRepository extends GetxController {
     return credentials.user != null ? true : false;
   }
 
-  Future<void> createUserWithEmailAndPassword(String email,
-      String password) async {
+  Future<String> createUserWithEmailAndPasswordRepo(StudentModel student) async {
+    String uid = '';
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: student.email, password: student.password).then((value) {
+        uid = value.user!.uid;
+      });
       firebaseUser.value != null
           ? Get.offAll(() => const Dashboard())
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
+      Get.snackbar("Error", ex.message,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red);
       print('FIREBASE AUTH EXCEPTION - ${ex.message}');
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();
+      Get.snackbar("Error", ex.message,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red);
       print('EXCEPTION - ${ex.message}');
       throw ex;
     }
+    return uid;
   }
 
   Future<void> loginUserWithEmailAndPassword(String email,
@@ -85,11 +98,19 @@ class AuthenticationRepository extends GetxController {
     }: Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
     final ex = SignInWithEmailAndPasswordFailure.code(e.code);
+    Get.snackbar("Error", ex.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red);
     print('FIREBASE AUTH EXCEPTION - ${ex.message}');
     throw ex;
     }
     catch (_) {
     const ex = SignInWithEmailAndPasswordFailure();
+    Get.snackbar("Error", ex.message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red);
     print('EXCEPTION - ${ex.message}');
     throw ex;
     }
