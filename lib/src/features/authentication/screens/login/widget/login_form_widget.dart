@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../../constants/text_strings.dart';
 import '../../../controllers/login_controller.dart';
 
@@ -52,7 +50,8 @@ class LoginFormWidget extends StatelessWidget {
                               ? Icons.visibility
                               : Icons.visibility_off,
                         ),
-                      )),
+                      )
+                  ),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your password';

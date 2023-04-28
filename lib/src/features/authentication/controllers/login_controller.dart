@@ -12,8 +12,8 @@ class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  // Show password
   var showPassword = false.obs;
-
   void toggleShowPassword() {
     showPassword.toggle();
   }

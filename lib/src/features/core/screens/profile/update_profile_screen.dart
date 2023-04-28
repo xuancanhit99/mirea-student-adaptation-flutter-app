@@ -42,6 +42,8 @@ class UpdateProfileScreen extends StatelessWidget {
                       TextEditingController(text: studentData.fullName);
                   final phoneNo =
                       TextEditingController(text: studentData.phoneNo);
+                  final group =
+                      TextEditingController(text: studentData.group);
 
                   return Column(
                     children: [
@@ -106,6 +108,14 @@ class UpdateProfileScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
+                            controller: group,
+                            // initialValue: studentData.phoneNo,
+                            decoration: const InputDecoration(
+                                label: Text(cGroup),
+                                prefixIcon: Icon(Icons.class_outlined)),
+                          ),
+                          const SizedBox(height: 10),
+                          TextFormField(
                             controller: password,
                             // initialValue: studentData.password,
                             decoration: const InputDecoration(
@@ -122,7 +132,9 @@ class UpdateProfileScreen extends StatelessWidget {
                                     email: email.text.trim(),
                                     password: password.text.trim(),
                                     fullName: fullName.text.trim(),
-                                    phoneNo: phoneNo.text.trim());
+                                    phoneNo: phoneNo.text.trim(),
+                                    group: group.text.trim(),
+                                );
                                 await controller.updateStudent(student);
                               },
                               style: ElevatedButton.styleFrom(

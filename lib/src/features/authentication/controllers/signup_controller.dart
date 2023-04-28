@@ -10,10 +10,18 @@ import '../screens/forgot_password/otp/otp_screen.dart';
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 
-  final email = TextEditingController();
-  final password = TextEditingController();
-  final fullName = TextEditingController();
-  final phoneNo = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final fullNameController = TextEditingController();
+  final groupController = TextEditingController();
+
+  // Show password
+  var showPassword = false.obs;
+  void toggleShowPassword() {
+    showPassword.toggle();
+  }
+
+  var validatePassword = false.obs;
 
   final studentRepo = Get.put(StudentRepository());
 

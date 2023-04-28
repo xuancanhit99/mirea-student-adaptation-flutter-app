@@ -4,7 +4,8 @@ class StudentModel {
   final String? id;
   final String fullName;
   final String email;
-  final String phoneNo;
+  final String? phoneNo;
+  final String group;
   final String password;
 
   const StudentModel({
@@ -12,7 +13,8 @@ class StudentModel {
     required this.email,
     required this.password,
     required this.fullName,
-    required this.phoneNo,
+    this.phoneNo,
+    required this.group,
   });
 
   toJson() {
@@ -21,6 +23,7 @@ class StudentModel {
       "FullName": fullName,
       "Email": email,
       "Phone": phoneNo,
+      "Group": group,
       "Password": password,
     };
   }
@@ -33,6 +36,7 @@ class StudentModel {
         password: data["Password"],
         fullName: data["FullName"],
         phoneNo: data["Phone"],
+        group: data["Group"],
     );
   }
 }

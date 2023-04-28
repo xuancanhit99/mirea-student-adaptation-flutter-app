@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/text_strings.dart';
 
-
 class SignUpFooterWidget extends StatelessWidget {
   const SignUpFooterWidget({
     super.key,
@@ -12,8 +11,12 @@ class SignUpFooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text("OR"),
+        const SizedBox(
+          height: 20,
+        ),
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
@@ -22,8 +25,12 @@ class SignUpFooterWidget extends StatelessWidget {
               image: AssetImage(cGoogleLogo),
               width: 20,
             ),
+            style: OutlinedButton.styleFrom(shape: const StadiumBorder()),
             label: Text(cSignUpWithGoogle.toUpperCase()),
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         TextButton(
             onPressed: () => {},
@@ -31,9 +38,7 @@ class SignUpFooterWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
                 children: const [
                   TextSpan(text: cAlreadyHaveAnAccount),
-                  TextSpan(
-                      text: cLogin,
-                      style: TextStyle(color: Colors.blue))
+                  TextSpan(text: cLogin, style: TextStyle(color: Colors.blue))
                 ])))
       ],
     );

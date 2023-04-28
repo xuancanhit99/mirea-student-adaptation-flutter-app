@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/constants/sizes.dart';
 import 'package:msa/src/constants/text_strings.dart';
 
 import '../../../../common_widgets/form/form_header_widget.dart';
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
           body: SingleChildScrollView(
               child: Container(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(cDefaultSize),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
