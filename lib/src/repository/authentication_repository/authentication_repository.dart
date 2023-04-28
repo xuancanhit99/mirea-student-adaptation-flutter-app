@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
+import 'package:msa/src/features/authentication/screens/login/login_screen.dart';
 import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
 import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
@@ -25,7 +26,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const WelcomeScreen())
+        ? Get.offAll(() => const LoginScreen())
         : Get.offAll(() => const Dashboard());
   }
 
@@ -72,7 +73,7 @@ class AuthenticationRepository extends GetxController {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       Get.snackbar("Error", ex.message,
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          backgroundColor: Colors.white,
           colorText: Colors.red);
       print('FIREBASE AUTH EXCEPTION - ${ex.message}');
       throw ex;
@@ -80,7 +81,7 @@ class AuthenticationRepository extends GetxController {
       const ex = SignUpWithEmailAndPasswordFailure();
       Get.snackbar("Error", ex.message,
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          backgroundColor: Colors.white,
           colorText: Colors.red);
       print('EXCEPTION - ${ex.message}');
       throw ex;
@@ -100,7 +101,7 @@ class AuthenticationRepository extends GetxController {
     final ex = SignInWithEmailAndPasswordFailure.code(e.code);
     Get.snackbar("Error", ex.message,
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        backgroundColor: Colors.white,
         colorText: Colors.red);
     print('FIREBASE AUTH EXCEPTION - ${ex.message}');
     throw ex;
@@ -109,7 +110,7 @@ class AuthenticationRepository extends GetxController {
     const ex = SignInWithEmailAndPasswordFailure();
     Get.snackbar("Error", ex.message,
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        backgroundColor: Colors.white,
         colorText: Colors.red);
     print('EXCEPTION - ${ex.message}');
     throw ex;

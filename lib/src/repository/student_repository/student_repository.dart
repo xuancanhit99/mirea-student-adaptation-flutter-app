@@ -13,13 +13,13 @@ class StudentRepository extends GetxController {
     await _db.collection("Students").doc(uid).set(student.toJson()).whenComplete(() =>
       Get.snackbar("Success", "Your account has been created.",
       snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green.withOpacity(0.1),
+        backgroundColor: Colors.white,
         colorText: Colors.green
       )
     ).catchError((error, stackTrace){
       Get.snackbar("Error", "Some thing went wrong. Try again.",
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          backgroundColor: Colors.white,
           colorText: Colors.red);
       print("ERROR - $error");
     });

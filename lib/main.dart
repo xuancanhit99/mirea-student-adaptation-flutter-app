@@ -7,11 +7,14 @@ import 'package:msa/firebase_options.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:msa/src/utils/theme/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+// void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
+  await Get.putAsync(() => SharedPreferences.getInstance());
   runApp(const MyApp()
       // DevicePreview(
       //   enabled: !kReleaseMode,
