@@ -33,6 +33,8 @@ class StudentRepository extends GetxController {
 
   Future<StudentModel> getStudentDetailsByUid(String uid) async {
     final snapshot = await _db.collection("Students").doc(uid).get();
+
+
     final studentData = StudentModel.fromSnapshot(snapshot);
     return studentData;
   }

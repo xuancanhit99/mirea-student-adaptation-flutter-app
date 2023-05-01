@@ -6,7 +6,7 @@ import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:msa/src/repository/student_repository/student_repository.dart';
 
-import '../screens/forgot_password/otp/otp_screen.dart';
+import '../../screens/forgot_password/otp/otp_screen.dart';
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 

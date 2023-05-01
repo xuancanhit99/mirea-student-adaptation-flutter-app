@@ -10,6 +10,7 @@ const String cHome = "Home";
 // Login and Register
 const String cLogin = "Login";
 const String cStudentLogin = "Student Login";
+const String cAdminLogin = "Admin Login";
 const String cStudentRegister = "Student Register";
 const String cSignUp = "Sign Up";
 const String cPhoneNo = "Phone No";
@@ -45,7 +46,9 @@ const String cForgotPassword = "Forgot Password?";
 const String cSignInWithGoogle = "Sign-In with Google";
 const String cSignUpWithGoogle = "Sign-Up with Google";
 
-const String cAlreadyHaveAnAccount = "Already have an Account?";
+const String cAlreadyHaveAnAccount = "Already have an Account? ";
+const String cAreYouAnAdmin = "Are you an admin? ";
+const String cAreYouAStudent = "Are you a student? ";
 const String cDoNotHaveAccount = "Don't have Account? ";
 
 const String cFullName = "Full Name";

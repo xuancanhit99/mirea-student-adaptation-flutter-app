@@ -7,7 +7,7 @@ import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/constants/text_strings.dart';
-import 'package:msa/src/features/authentication/screens/login/login_screen.dart';
+import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 
 import '../signup/signup_screen.dart';
 
@@ -95,7 +95,7 @@ class WelcomeScreen extends StatelessWidget {
                       Expanded(
                           child: OutlinedButton(
                               onPressed: () =>
-                                  Get.offAll(() => const LoginScreen()),
+                                  Get.offAll(() => const StudentLoginScreen()),
                               child: Text(cLogin.toUpperCase()))),
                       const SizedBox(
                         width: 20.0,

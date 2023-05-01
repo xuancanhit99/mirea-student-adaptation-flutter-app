@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../repository/authentication_repository/authentication_repository.dart';
-import '../../../repository/student_repository/student_repository.dart';
+import '../../../../repository/admin_repository/admin_repository.dart';
+import '../../../../repository/authentication_repository/authentication_repository.dart';
 
-class LoginController extends GetxController {
-  static LoginController get instance => Get.find();
+class AdminLoginController extends GetxController {
+  static AdminLoginController get instance => Get.find();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -20,13 +20,9 @@ class LoginController extends GetxController {
 
   // Remember me
   final _prefs = Get.find<SharedPreferences>();
-  final _emailKey = 'email';
-  final _passwordKey = 'password';
+  final _emailKey = 'admin_email';
+  final _passwordKey = 'admin_password';
   var rememberMe = false.obs;
-
-  LoginController() {
-    loadRememberMe();
-  }
 
   @override
   void onInit() {
@@ -35,7 +31,7 @@ class LoginController extends GetxController {
   }
 
 
-  final studentRepo = Get.put(StudentRepository());
+  final adminRepo = Get.put(AdminRepository());
 
   Future<void> loadRememberMe() async {
     // emailController.text = "xuancanhit99@gmail.com";
@@ -51,11 +47,15 @@ class LoginController extends GetxController {
     rememberMe.value = savedEmail != null && savedPassword != null;
   }
 
-  Future<void> loginStudent(String email, String password) async {
+  Future<void> loginAdmin(String email, String password) async {
     String? error = await AuthenticationRepository.instance
         .loginUserWithEmailAndPassword(email, password) as String?;
     if (error != null) {
-      Get.showSnackbar(GetSnackBar(message: error.toString()));
+      Get.snackbar("Error", error.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red
+      );
     } else {
       if (rememberMe.value) {
         _prefs.setString(_emailKey, email);
@@ -67,11 +67,23 @@ class LoginController extends GetxController {
       final currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
         final uid = currentUser.uid;
-        final studentData = await studentRepo.getStudentDetailsByUid(uid);
-        final name = studentData.fullName;
-        Get.snackbar('Welcome to MSA', 'Hi, $name!',
-            snackPosition: SnackPosition.TOP,
-            backgroundColor: Colors.white);
+        final adminData = await adminRepo.getAdminDetailsByUid(uid);
+        final isAdmin = adminData.isAdmin;
+        print(isAdmin);
+        if (!isAdmin) {
+          Get.snackbar("Error", "You are not an admin. Please login as a student.",
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.white,
+              colorText: Colors.red
+          );
+          await AuthenticationRepository.instance.logout();
+          return;
+        } else {
+          final name = adminData.fullName;
+          Get.snackbar('Welcome to MSA', 'Hi, $name!',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: Colors.white);
+        }
       }
     }
   }

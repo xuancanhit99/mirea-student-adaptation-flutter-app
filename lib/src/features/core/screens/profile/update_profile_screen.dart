@@ -42,8 +42,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       TextEditingController(text: studentData.fullName);
                   final phoneNo =
                       TextEditingController(text: studentData.phoneNo);
-                  final group =
-                      TextEditingController(text: studentData.group);
+                  final group = TextEditingController(text: studentData.group);
 
                   return Column(
                     children: [
@@ -128,12 +127,13 @@ class UpdateProfileScreen extends StatelessWidget {
                             child: ElevatedButton(
                               onPressed: () async {
                                 final student = StudentModel(
-                                    id: id.text,
-                                    email: email.text.trim(),
-                                    password: password.text.trim(),
-                                    fullName: fullName.text.trim(),
-                                    phoneNo: phoneNo.text.trim(),
-                                    group: group.text.trim(),
+                                  id: id.text,
+                                  email: email.text.trim(),
+                                  password: password.text.trim(),
+                                  fullName: fullName.text.trim(),
+                                  phoneNo: phoneNo.text.trim(),
+                                  group: group.text.trim(),
+                                  isAdmin: false,
                                 );
                                 await controller.updateStudent(student);
                               },

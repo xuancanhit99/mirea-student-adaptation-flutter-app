@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
@@ -16,7 +15,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    var isDark = MediaQuery
+        .of(context)
+        .platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -25,7 +26,10 @@ class ProfileScreen extends StatelessWidget {
         ),
         title: Text(
           cProfile,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme
+              .of(context)
+              .textTheme
+              .headlineSmall,
         ),
         centerTitle: true,
         actions: [
@@ -36,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             children: [
               Stack(
@@ -73,11 +77,17 @@ class ProfileScreen extends StatelessWidget {
               ),
               Text(
                 cProfileHeading,
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headlineSmall,
               ),
               Text(
                 cProfileSubHeading,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .bodySmall,
               ),
               const SizedBox(
                 height: 20,
@@ -129,9 +139,20 @@ class ProfileScreen extends StatelessWidget {
                   icon: LineAwesomeIcons.alternate_sign_out,
                   textColor: Colors.red,
                   endIcon: false,
-                  onPress: () {
-                    AuthenticationRepository.instance.logout();
-                  }),
+                  onPress: () => showDialog(context: context, builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text("Logging out"),
+                      content: const Text("Are you sure?"),
+                      actions: [
+                        TextButton(onPressed: () => Get.back(), child: const Text("No")),
+                        TextButton(onPressed: () {
+                          AuthenticationRepository.instance.logout();
+                          Get.back();
+                        }, child: const Text("Yes")),
+                      ],
+                    );
+                  })
+              ),
             ],
           ),
         ),

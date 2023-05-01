@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
-import 'package:msa/src/features/authentication/controllers/signup_controller.dart';
+import 'package:msa/src/features/authentication/controllers/student/student_signup_controller.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 
+import '../../../../../common_widgets/list_alert_dialog/list_alert_dialog_widget.dart';
 import '../../../../../constants/text_strings.dart';
+import '../../../../core/controllers/institute_controller.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({
@@ -14,6 +16,7 @@ class SignUpFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
+    final instituteController = Get.put(InstituteController());
     final formKey = GlobalKey<FormState>();
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
@@ -25,6 +28,7 @@ class SignUpFormWidget extends StatelessWidget {
               // Full Name
               TextFormField(
                 controller: controller.fullNameController,
+                keyboardType: TextInputType.name,
                 decoration: const InputDecoration(
                     label: Text(cFullName),
                     prefixIcon: Icon(Icons.person_outline_outlined)),
@@ -39,6 +43,30 @@ class SignUpFormWidget extends StatelessWidget {
               // Group
               TextFormField(
                 controller: controller.groupController,
+                showCursor: false,
+                keyboardType: TextInputType.none,
+                readOnly: true,
+                onTap: () {
+                  Get.bottomSheet(
+                    BottomSheet(
+                      onClosing: () {},
+                      builder: (context) => Container(
+                        padding: const EdgeInsets.all(20),
+                        child: ListView.builder(
+                          itemCount: instituteController.groups.length,
+                          itemBuilder: (context, index) => ListTile(
+                            title: Text(instituteController.groups[index]),
+                            onTap: () {
+                              controller.groupController.text =
+                                instituteController.groups[index];
+                              Get.back();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
                 decoration: const InputDecoration(
                     label: Text(cGroup),
                     prefixIcon: Icon(Icons.class_outlined)),
@@ -53,6 +81,7 @@ class SignUpFormWidget extends StatelessWidget {
               // Email
               TextFormField(
                 controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                     label: Text(cEmail),
                     prefixIcon: Icon(Icons.email_outlined)),
@@ -70,6 +99,7 @@ class SignUpFormWidget extends StatelessWidget {
               Obx(() => TextFormField(
                     controller: controller.passwordController,
                     obscureText: !controller.showPassword.value,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                         label: const Text(cPassword),
                         suffixIcon: IconButton(
@@ -117,6 +147,7 @@ class SignUpFormWidget extends StatelessWidget {
                             password: controller.passwordController.text.trim(),
                             fullName: controller.fullNameController.text.trim(),
                             group: controller.groupController.text.trim(),
+                            isAdmin: false,
                           );
                           SignUpController.instance.signUpController(student);
                         }

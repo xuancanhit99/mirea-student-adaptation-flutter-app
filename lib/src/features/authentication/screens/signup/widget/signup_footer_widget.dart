@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/text_strings.dart';
@@ -33,13 +35,13 @@ class SignUpFooterWidget extends StatelessWidget {
           height: 10,
         ),
         TextButton(
-            onPressed: () => {},
+            onPressed: () => Get.off(() => const StudentLoginScreen()),
             child: Text.rich(TextSpan(
                 style: Theme.of(context).textTheme.bodyLarge,
                 children: const [
                   TextSpan(text: cAlreadyHaveAnAccount),
                   TextSpan(text: cLogin, style: TextStyle(color: Colors.blue))
-                ])))
+                ]))),
       ],
     );
   }

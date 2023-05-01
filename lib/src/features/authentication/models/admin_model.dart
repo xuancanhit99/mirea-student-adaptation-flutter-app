@@ -1,21 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StudentModel {
+class AdminModel {
   final String? id;
   final String fullName;
   final String email;
   final String? phoneNo;
-  final String group;
   final String password;
   final bool isAdmin;
 
-  const StudentModel({
+  const AdminModel({
     this.id,
     required this.email,
     required this.password,
     required this.fullName,
     this.phoneNo,
-    required this.group,
     required this.isAdmin,
   });
 
@@ -25,33 +23,32 @@ class StudentModel {
       "FullName": fullName,
       "Email": email,
       "Phone": phoneNo,
-      "Group": group,
       "Password": password,
       "IsAdmin": isAdmin,
     };
   }
 
-  factory StudentModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory AdminModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data();
     if (data != null) {
-      return StudentModel(
+      return AdminModel(
         id: document.id,
         email: data["Email"],
         password: data["Password"],
         fullName: data["FullName"],
         phoneNo: data["Phone"],
-        group: data["Group"],
         isAdmin: data["IsAdmin"],
       );
     }
-    return StudentModel(
-      id: document.id,
-      email: "",
-      password: "",
-      fullName: "",
-      phoneNo: "",
-      group: "",
-      isAdmin: true,
-    );
+    else {
+      return AdminModel(
+        id: document.id,
+        email: "",
+        password: "",
+        fullName: "",
+        phoneNo: "",
+        isAdmin: false,
+      );
+    }
   }
 }

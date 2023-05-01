@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
-import '../../../../../constants/text_strings.dart';
-import '../../../controllers/login_controller.dart';
 
-class LoginFormWidget extends StatelessWidget {
-  const LoginFormWidget({
+import '../../../../../../constants/text_strings.dart';
+import '../../../../controllers/admin/admin_login_controller.dart';
+import '../../../../controllers/student/student_login_controller.dart';
+
+
+class AdminLoginFormWidget extends StatelessWidget {
+  const AdminLoginFormWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final loginController = Get.put(LoginController());
+    final loginController = Get.put(AdminLoginController());
     final formKey = GlobalKey<FormState>();
     return Form(
         key: formKey,
@@ -23,6 +26,7 @@ class LoginFormWidget extends StatelessWidget {
               // Email
               TextFormField(
                 controller: loginController.emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
                   labelText: cEmail,
@@ -40,6 +44,7 @@ class LoginFormWidget extends StatelessWidget {
                 () => TextFormField(
                   controller: loginController.passwordController,
                   obscureText: !loginController.showPassword.value,
+                  keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock_outlined),
                       labelText: cPassword,
@@ -102,7 +107,7 @@ class LoginFormWidget extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        loginController.loginStudent(
+                        loginController.loginAdmin(
                             loginController.emailController.text.trim(),
                             loginController.passwordController.text.trim());
                       }

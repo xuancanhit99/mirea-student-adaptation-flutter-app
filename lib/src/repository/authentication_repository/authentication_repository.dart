@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
-import 'package:msa/src/features/authentication/screens/login/login_screen.dart';
+import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
 import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
@@ -26,7 +26,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const LoginScreen())
+        ? Get.offAll(() => const StudentLoginScreen())
         : Get.offAll(() => const Dashboard());
   }
 
