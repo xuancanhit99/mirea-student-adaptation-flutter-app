@@ -80,9 +80,9 @@ class AdminLoginController extends GetxController {
           return;
         } else {
           final name = adminData.fullName;
-          Get.snackbar('Welcome to MSA', 'Hi, $name!',
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: Colors.white);
+          // Get.snackbar('Welcome to MSA', 'Hi, $name!',
+          //     snackPosition: SnackPosition.TOP,
+          //     backgroundColor: Colors.white);
         }
       }
     }

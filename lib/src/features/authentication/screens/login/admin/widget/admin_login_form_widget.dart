@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
@@ -34,6 +35,8 @@ class AdminLoginFormWidget extends StatelessWidget {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
+                  } else if (!EmailValidator.validate(value, true)) {
+                    return 'Please enter a valid email';
                   }
                   return null;
                 },

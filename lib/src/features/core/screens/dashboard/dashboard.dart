@@ -40,7 +40,7 @@ class Dashboard extends StatelessWidget {
                     children: [
                       // Heading
                       Text(cDashboardHi + studentData.fullName, style: txtTheme.headlineSmall),
-                      Text(cDashboardGroup + studentData.email, style: txtTheme.bodyMedium),
+                      Text(cDashboardGroup + studentData.group, style: txtTheme.bodyMedium),
                       const SizedBox(height: 10),
 
                       // Search Box

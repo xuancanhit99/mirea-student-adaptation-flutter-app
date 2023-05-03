@@ -78,12 +78,13 @@ class StudentLoginController extends GetxController {
           );
           await AuthenticationRepository.instance.logout();
           return;
-        } else {
-          final name = studentData.fullName;
-          Get.snackbar('Welcome to MSA', 'Hi, $name!',
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: Colors.white);
         }
+        // else {
+        //   final name = studentData.fullName;
+        //   Get.snackbar('Welcome to MSA', 'Hi, $name!',
+        //       snackPosition: SnackPosition.TOP,
+        //       backgroundColor: Colors.white);
+        // }
       }
     }
   }

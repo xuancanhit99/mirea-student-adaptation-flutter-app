@@ -66,6 +66,7 @@ dependencies:
 
   # Password Validator
   flutter_pw_validator: ^1.5.0
+  email_validator: ^2.1.17
 
 
 

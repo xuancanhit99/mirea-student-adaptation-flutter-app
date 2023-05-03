@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
@@ -58,7 +59,7 @@ class SignUpFormWidget extends StatelessWidget {
                             title: Text(instituteController.groups[index]),
                             onTap: () {
                               controller.groupController.text =
-                                instituteController.groups[index];
+                                  instituteController.groups[index];
                               Get.back();
                             },
                           ),
@@ -88,8 +89,8 @@ class SignUpFormWidget extends StatelessWidget {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
-                  } else if (controller.validatePassword.value == false) {
-                    return 'Password is not matched';
+                  } else if (!EmailValidator.validate(value, true)) {
+                    return 'Please enter a valid email';
                   }
                   return null;
                 },
@@ -111,6 +112,14 @@ class SignUpFormWidget extends StatelessWidget {
                           ),
                         ),
                         prefixIcon: const Icon(Icons.lock_outlined)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      } else if (controller.validatePassword.value == false) {
+                        return 'Password is not matched';
+                      }
+                      return null;
+                    },
                   )),
               const SizedBox(height: 7),
               Padding(
@@ -124,8 +133,8 @@ class SignUpFormWidget extends StatelessWidget {
                   specialCharCount: 1,
                   onSuccess: () {
                     controller.validatePassword.value = true;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Password is matched")));
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(content: Text("Password is matched")));
                   },
                   onFail: () {
                     controller.validatePassword.value = false;
