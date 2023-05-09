@@ -4,8 +4,8 @@ import 'package:msa/src/features/authentication/screens/signup/signup_screen.dar
 
 import '../../../../../../constants/assets_strings.dart';
 import '../../../../../../constants/text_strings.dart';
+import '../../../../controllers/student/student_login_controller.dart';
 import '../../admin/admin_login_screen.dart';
-
 
 class StudentLoginFooterWidget extends StatelessWidget {
   const StudentLoginFooterWidget({
@@ -14,6 +14,7 @@ class StudentLoginFooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loginController = Get.put(StudentLoginController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -29,7 +30,9 @@ class StudentLoginFooterWidget extends StatelessWidget {
                 width: 20.0,
               ),
               style: OutlinedButton.styleFrom(shape: const StadiumBorder()),
-              onPressed: () {},
+              onPressed: () {
+                loginController.signInWithGoogle();
+              },
               label: Text(cSignInWithGoogle.toUpperCase())),
         ),
         const SizedBox(

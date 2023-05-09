@@ -6,17 +6,22 @@ import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:msa/src/repository/student_repository/student_repository.dart';
 
-import '../../screens/forgot_password/otp/otp_screen.dart';
-class SignUpController extends GetxController {
-  static SignUpController get instance => Get.find();
+
+class StudentSignUpController extends GetxController {
+  static StudentSignUpController get instance => Get.find();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final fullNameController = TextEditingController();
   final groupController = TextEditingController();
 
+  final now = DateTime.now();
+
+  final uid = FirebaseAuth.instance.currentUser?.uid;
+
   // Show password
   var showPassword = false.obs;
+
   void toggleShowPassword() {
     showPassword.toggle();
   }
@@ -26,12 +31,33 @@ class SignUpController extends GetxController {
   final studentRepo = Get.put(StudentRepository());
 
   Future<void> signUpController(StudentModel student) async {
-    String uid = await AuthenticationRepository.instance.createUserWithEmailAndPasswordRepo(student);
+    String uid = await AuthenticationRepository.instance
+        .createUserWithEmailAndPasswordAuthRepo(student);
     await studentRepo.createStudentRepo(student, uid);
+  }
+
+  Future<void> signUpWithGoogleSignUpController() async {
+    String uid = await AuthenticationRepository.instance.signUpWithGoogleAuthRepo();
+    final firebaseUser = AuthenticationRepository.instance.firebaseUser.value;
+    if (firebaseUser != null) {
+      final student = StudentModel(
+        id: uid,
+        fullName: firebaseUser.displayName ?? '',
+        email: firebaseUser.email ?? '',
+        password: '',
+        group: '',
+        phoneNo: '',
+        img: '',
+        dob: '',
+        gender: null,
+        isActive: false,
+        isAdmin: false,
+      );
+      await studentRepo.createStudentRepo(student, uid);
+    }
   }
 
   void phoneAuthentication(String phoneNo) {
     AuthenticationRepository.instance.phoneAuthentication(phoneNo);
   }
-
 }

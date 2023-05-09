@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 import 'package:msa/src/features/authentication/screens/signup/email_verification/email_verification.dart';
@@ -31,7 +32,7 @@ class AuthenticationRepository extends GetxController {
       if (user.emailVerified) {
         Get.offAll(() => const Dashboard());
       } else {
-        sendEmailVerification();
+        sendEmailVerificationAuthRepo();
         Get.offAll(() => const EmailVerificationScreen());
       }
     } else {
@@ -44,7 +45,7 @@ class AuthenticationRepository extends GetxController {
   //   return user != null;
   // }
 
-  Future<void> sendEmailVerification() async {
+  Future<void> sendEmailVerificationAuthRepo() async {
     final user = firebaseUser.value;
     if (user != null && !user.emailVerified) {
       await user.sendEmailVerification();
@@ -81,7 +82,7 @@ class AuthenticationRepository extends GetxController {
     return credentials.user != null ? true : false;
   }
 
-  Future<String> createUserWithEmailAndPasswordRepo(
+  Future<String> createUserWithEmailAndPasswordAuthRepo(
       StudentModel student) async {
     String uid = '';
     try {
@@ -117,7 +118,47 @@ class AuthenticationRepository extends GetxController {
     return uid;
   }
 
-  Future<void> loginUserWithEmailAndPassword(
+  Future<String> signUpWithGoogleAuthRepo() async {
+    String uid = '';
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser!.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final userCredential = await _auth.signInWithCredential(credential);
+      final user = userCredential.user;
+      if (user != null) {
+        uid = user.uid;
+      }
+    } catch (e) {
+      print('Error signing in with Google: $e');
+      rethrow;
+    }
+    return uid;
+  }
+
+  Future<UserCredential> signInWithGoogleAuthRepo() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication googleAuth =
+    await googleUser!.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    try {
+      final userCredential = await _auth.signInWithCredential(credential);
+      // final UserCredential userCredential = await _auth.signInWithCredential(googleProvider);
+      return userCredential;
+    } catch (e) {
+      print('FIREBASE AUTH EXCEPTION - $e');
+      rethrow;
+    }
+  }
+
+  Future<void> loginUserWithEmailAndPasswordAuthRepo(
       String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -147,5 +188,24 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  Future<void> logout() async => await _auth.signOut();
+  Future<void> sendPasswordResetEmailAuthRepo(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar("Error", e.message!,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw e;
+    } catch (e) {
+      final ex = Exception('An error occurred while resetting your password. Please try again later.');
+      Get.snackbar("Error", ex.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw ex;
+    }
+  }
+
+  Future<void> logoutAuthRepo() async => await _auth.signOut();
 }

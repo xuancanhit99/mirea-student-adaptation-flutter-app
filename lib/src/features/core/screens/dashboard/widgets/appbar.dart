@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:msa/src/features/core/screens/profile/profile_screen.dart';
+import 'package:msa/src/features/core/screens/profile/student_profile_page.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../../../constants/assets_strings.dart';
@@ -36,7 +37,7 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: IconButton(
             onPressed: () {
               // AuthenticationRepository.instance.logout();
-              Get.to(() => const ProfileScreen());
+              Get.to(() => const StudentProfilePage());
             },
             icon: const Image(
               image: AssetImage(cUserProfileImage),

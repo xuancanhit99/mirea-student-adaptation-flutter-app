@@ -67,7 +67,13 @@ dependencies:
   # Password Validator
   flutter_pw_validator: ^1.5.0
   email_validator: ^2.1.17
-
+  google_sign_in: ^6.1.0
+  otp_timer_button: ^1.1.0
+  intl_phone_number_input: ^0.7.3+1
+  image_picker: ^0.8.7+4
+  firebase_storage: ^11.1.2
+  path: ^1.8.2
+  intl: ^0.17.0
 
 
 

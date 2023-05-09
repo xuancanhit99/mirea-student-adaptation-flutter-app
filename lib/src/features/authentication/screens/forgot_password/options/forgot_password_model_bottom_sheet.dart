@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:msa/src/common_widgets/page_not_found/page_not_found1.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../mail/forgot_password_mail.dart';
@@ -52,7 +53,7 @@ class ForgotPasswordScreen {
                 subTitle: cResetViaPhone,
                 onTap: (){
                   Navigator.pop(context);
-                  Get.to(() => const ForgetPasswordPhoneScreen());
+                  Get.to(() => const PageNotFound1());
                 },
               ),
             ],

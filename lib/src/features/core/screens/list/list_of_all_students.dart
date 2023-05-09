@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../controllers/student_controller.dart';
+import '../../controllers/student_profile_controller.dart';
 
 
 
@@ -11,7 +11,7 @@ class ListOfAllStudents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(StudentController());
+    final controller = Get.put(StudentProfileController());
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(

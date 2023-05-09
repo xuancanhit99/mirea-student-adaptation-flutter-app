@@ -5,7 +5,7 @@ import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
-import 'package:msa/src/features/core/screens/profile/update_profile_screen.dart';
+import 'package:msa/src/features/core/screens/profile/admin_student_update_profile_page.dart';
 import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
 
 import '../../../../repository/authentication_repository/authentication_repository.dart';
@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 120,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: const Image(image: AssetImage(cShinzImage)),
+                      child: const Image(image: AssetImage(cUserProfileImage)),
                     ),
                   ),
                   Positioned(
@@ -96,7 +96,7 @@ class ProfileScreen extends StatelessWidget {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () =>
-                          Get.to(() => const UpdateProfileScreen()),
+                          Get.to(() => const AdminStudentUpdateProfilePage()),
                       style: ElevatedButton.styleFrom(
                           side: BorderSide.none, shape: const StadiumBorder()),
                       child: const Text(cEditProfile))),
@@ -146,7 +146,7 @@ class ProfileScreen extends StatelessWidget {
                       actions: [
                         TextButton(onPressed: () => Get.back(), child: const Text("No")),
                         TextButton(onPressed: () {
-                          AuthenticationRepository.instance.logout();
+                          AuthenticationRepository.instance.logoutAuthRepo();
                           Get.back();
                         }, child: const Text("Yes")),
                       ],

@@ -49,7 +49,7 @@ class AdminLoginController extends GetxController {
 
   Future<void> loginAdmin(String email, String password) async {
     String? error = await AuthenticationRepository.instance
-        .loginUserWithEmailAndPassword(email, password) as String?;
+        .loginUserWithEmailAndPasswordAuthRepo(email, password) as String?;
     if (error != null) {
       Get.snackbar("Error", error.toString(),
           snackPosition: SnackPosition.BOTTOM,
@@ -76,7 +76,7 @@ class AdminLoginController extends GetxController {
               backgroundColor: Colors.white,
               colorText: Colors.red
           );
-          await AuthenticationRepository.instance.logout();
+          await AuthenticationRepository.instance.logoutAuthRepo();
           return;
         } else {
           final name = adminData.fullName;

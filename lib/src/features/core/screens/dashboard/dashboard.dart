@@ -12,14 +12,14 @@ import 'package:msa/src/features/core/screens/dashboard/widgets/categories.dart'
 import 'package:msa/src/features/core/screens/dashboard/widgets/search.dart';
 import 'package:msa/src/features/core/screens/dashboard/widgets/top_courses.dart';
 
-import '../../controllers/student_controller.dart';
+import '../../controllers/student_profile_controller.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final studentController = Get.put(StudentController());
+    final studentController = Get.put(StudentProfileController());
     final txtTheme = Theme
         .of(context)
         .textTheme;

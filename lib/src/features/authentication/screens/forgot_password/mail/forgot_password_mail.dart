@@ -6,9 +6,12 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/common_widgets/form/form_header_widget.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/features/authentication/controllers/student/student_login_controller.dart';
+import 'package:msa/src/features/authentication/screens/forgot_password/mail/forgot_password_email_sent.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/otp/otp_screen.dart';
 import 'package:msa/src/features/authentication/screens/signup/email_verification/email_verification.dart';
 
+import '../../../controllers/student/student_forgot_password_controller.dart';
 import '../../login/student/student_login_screen.dart';
 
 class ForgetPasswordMailScreen extends StatelessWidget {
@@ -16,6 +19,8 @@ class ForgetPasswordMailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final studentForgotPasswordController =
+        Get.put(StudentForgotPasswordController());
     final formKey = GlobalKey<FormState>();
     return WillPopScope(
       onWillPop: () async {
@@ -58,6 +63,8 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           TextFormField(
+                            controller: studentForgotPasswordController
+                                .emailForgotPasswordController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                                 label: Text(cEmail),
@@ -66,7 +73,8 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your email';
-                              } else if (!EmailValidator.validate(value, true)) {
+                              } else if (!EmailValidator.validate(
+                                  value, true)) {
                                 return 'Please enter a valid email';
                               }
                               return null;
@@ -80,8 +88,14 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (formKey.currentState!.validate()) {
+                                      studentForgotPasswordController
+                                          .forgotPassword(
+                                        studentForgotPasswordController
+                                            .emailForgotPasswordController.text
+                                            .trim(),
+                                      );
                                       Get.to(() =>
-                                          const EmailVerificationScreen());
+                                          const ForgotPasswordEmailSent());
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(

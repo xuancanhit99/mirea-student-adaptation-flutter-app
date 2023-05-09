@@ -16,7 +16,7 @@ class SignUpFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
+    final controller = Get.put(StudentSignUpController());
     final instituteController = Get.put(InstituteController());
     final formKey = GlobalKey<FormState>();
     return Container(
@@ -152,13 +152,21 @@ class SignUpFormWidget extends StatelessWidget {
                           // SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
                           // Get.to(() => const OTPScreen());
                           final student = StudentModel(
+                            no: "",
+                            fullName: controller.fullNameController.text.trim(),
                             email: controller.emailController.text.trim(),
                             password: controller.passwordController.text.trim(),
-                            fullName: controller.fullNameController.text.trim(),
                             group: controller.groupController.text.trim(),
+                            phoneNo: "",
+                            img: "",
+                            dob: "",
+                            gender: null,
+                            createdAt: controller.now,
+                            updatedAt: controller.now,
+                            isActive: false,
                             isAdmin: false,
                           );
-                          SignUpController.instance.signUpController(student);
+                          StudentSignUpController.instance.signUpController(student);
                         }
                       },
                       style: ElevatedButton.styleFrom(

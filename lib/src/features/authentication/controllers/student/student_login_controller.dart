@@ -14,6 +14,7 @@ class StudentLoginController extends GetxController {
 
   // Show password
   var showPassword = false.obs;
+
   void toggleShowPassword() {
     showPassword.toggle();
   }
@@ -24,13 +25,11 @@ class StudentLoginController extends GetxController {
   final _passwordKey = 'student_password';
   var rememberMe = false.obs;
 
-
   @override
   void onInit() {
     super.onInit();
     loadRememberMe();
   }
-
 
   final studentRepo = Get.put(StudentRepository());
 
@@ -50,13 +49,12 @@ class StudentLoginController extends GetxController {
 
   Future<void> loginStudent(String email, String password) async {
     String? error = await AuthenticationRepository.instance
-        .loginUserWithEmailAndPassword(email, password) as String?;
+        .loginUserWithEmailAndPasswordAuthRepo(email, password) as String?;
     if (error != null) {
       Get.snackbar("Error", error.toString(),
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.white,
-          colorText: Colors.red
-      );
+          colorText: Colors.red);
     } else {
       if (rememberMe.value) {
         _prefs.setString(_emailKey, email);
@@ -71,12 +69,12 @@ class StudentLoginController extends GetxController {
         final studentData = await studentRepo.getStudentDetailsByUid(uid);
         final isAdmin = studentData.isAdmin;
         if (isAdmin) {
-          Get.snackbar("Error", "You are not a student. Please login as an admin.",
+          Get.snackbar(
+              "Error", "You are not a student. Please login as an admin.",
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.white,
-              colorText: Colors.red
-          );
-          await AuthenticationRepository.instance.logout();
+              colorText: Colors.red);
+          await AuthenticationRepository.instance.logoutAuthRepo();
           return;
         }
         // else {
@@ -86,6 +84,35 @@ class StudentLoginController extends GetxController {
         //       backgroundColor: Colors.white);
         // }
       }
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    final UserCredential userCredential =
+        await AuthenticationRepository.instance.signInWithGoogleAuthRepo();
+    final User? user = userCredential.user;
+
+    if (user != null) {
+      final uid = user.uid;
+      final studentData = await studentRepo.getStudentDetailsByUid(uid);
+      final isAdmin = studentData.isAdmin;
+      if (isAdmin) {
+        await AuthenticationRepository.instance.logoutAuthRepo();
+        Get.snackbar(
+            "Error", "You are not a student. Please login as an admin.",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.white,
+            colorText: Colors.red);
+        return;
+      }
+      // else {
+      // final name = studentData.fullName;
+      // Get.snackbar('Welcome to MSA', 'Hi, $name!',
+      //     snackPosition: SnackPosition.TOP,
+      //     backgroundColor: Colors.white);
+      // Navigate to dashboard screen
+      //   Get.offAll(() => const Dashboard());
+      // }
     }
   }
 }

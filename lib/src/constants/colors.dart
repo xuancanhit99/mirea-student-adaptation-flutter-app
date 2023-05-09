@@ -12,6 +12,7 @@ const cLogoMireaColor = Color(0xFFf9c365);
 const cAppNameColor = Color(0xFF446cb4);
 
 const cSkyBlue = Color(0xFF87ceeb);
+const cBlue404Space= Color(0xFF4393ff);
 
 
 const cOnBoardingPage2Color = Colors.white;

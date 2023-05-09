@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '741215904307',
     projectId: 'mirea-student-adaptation',
     storageBucket: 'mirea-student-adaptation.appspot.com',
+    androidClientId: '741215904307-3bq24905f98guqfbqh2i7l3qsj720cru.apps.googleusercontent.com',
     iosClientId: '741215904307-krd3iifni166qbgbdfu7ingpv4nkhthm.apps.googleusercontent.com',
     iosBundleId: 'dev.xuancanhit.msa',
   );
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '741215904307',
     projectId: 'mirea-student-adaptation',
     storageBucket: 'mirea-student-adaptation.appspot.com',
+    androidClientId: '741215904307-3bq24905f98guqfbqh2i7l3qsj720cru.apps.googleusercontent.com',
     iosClientId: '741215904307-krd3iifni166qbgbdfu7ingpv4nkhthm.apps.googleusercontent.com',
     iosBundleId: 'dev.xuancanhit.msa',
   );
