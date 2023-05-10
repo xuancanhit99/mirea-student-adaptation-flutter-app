@@ -17,8 +17,6 @@ class StudentRepository extends GetxController {
   File? _photo;
   final ImagePicker _picker = ImagePicker();
 
-
-
   createStudentRepo(StudentModel student, String uid) async {
     await _db
         .collection("Students")
@@ -52,6 +50,12 @@ class StudentRepository extends GetxController {
     return studentData;
   }
 
+  Stream<StudentModel> getStudentDetailsByUidRealtime(String uid) {
+    final snapshot = _db.collection("Students").doc(uid).snapshots();
+    final studentData = snapshot.map((e) => StudentModel.fromSnapshot(e));
+    return studentData;
+  }
+
   Future<List<StudentModel>> getAllStudentRepo() async {
     final snapshot = await _db.collection("Students").get();
     final studentData =
@@ -60,7 +64,22 @@ class StudentRepository extends GetxController {
   }
 
   Future<void> updateStudentRepo(StudentModel student) async {
-    await _db.collection("Students").doc(student.id).update(student.toJson());
+    await _db
+        .collection("Students")
+        .doc(student.id)
+        .update(student.toJson())
+        .whenComplete(() => Get.snackbar(
+            "Success", "Student information has been updated.",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.white,
+            colorText: Colors.green))
+        .catchError((error, stackTrace) {
+      Get.snackbar("Error", "Error while updating student information.",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      print("ERROR - $error");
+    });
   }
 
   Future<void> updateImgUrl(String imgUrl, String uid) async {

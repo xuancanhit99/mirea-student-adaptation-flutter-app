@@ -4,7 +4,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/sizes.dart';
 import 'package:msa/src/constants/text_strings.dart';
-import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 
 import '../../../../../common_widgets/form/from_header_lottie_widget.dart';
 import '../../login/student/student_login_screen.dart';
@@ -63,7 +63,7 @@ class EmailVerificationScreen extends StatelessWidget {
                             child: Text(cBackToLogin.toUpperCase()))),
                     const SizedBox(height: 20),
                     TextButton.icon(
-                        onPressed: () => Get.off(() => const Dashboard()),
+                        onPressed: () => Get.off(() => const StudentDashboard()),
                         icon: const Icon(LineAwesomeIcons.arrow_right, color: Colors.blue,),
                         label: const Text(
                           cSkipForNow,

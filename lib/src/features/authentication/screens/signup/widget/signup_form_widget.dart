@@ -160,7 +160,7 @@ class SignUpFormWidget extends StatelessWidget {
                             phoneNo: "",
                             img: "",
                             dob: "",
-                            gender: null,
+                            gender: "",
                             createdAt: controller.now,
                             updatedAt: controller.now,
                             isActive: false,

@@ -26,6 +26,9 @@ const String cGroup = "Group";
 const String cGender = "Gender";
 const String cDateOfBirth = "Date of birth";
 const String cAge = "Age";
+const String cMale = "Male";
+const String cFemale = "Female";
+const String cOther = "Other";
 const String cIDStudent = "ID Student";
 const String cCourse = "Course";
 const String cStatus = "Status";
@@ -97,17 +100,23 @@ const String cDashboardSearch = "Search...";
 
 
 
-const String cDashboardBannerTitle1 = "Flutter for Beginners";
-const String cDashboardBannerTitle2 = "Kotlin";
+const String cMyProfile = "My Profile";
+const String cStudyDetails = "Study Details";
+const String cStudySchedule = "Study Schedule";
+const String cTodayIs = "Today is ";
+const String cUniversityMap = "University Map";
+const String cFrequentlyAskedQuestions = "Frequently Asked Questions (FAQs)";
 const String cDashboardBannerSubTitle = "10 Lessons";
 const String cViewAll = "View All";
-const String cDashboardTopCourses = "Top Courses";
+const String cGroupCurator = "Group Curator";
+const String cInstituteOfInternationalEducation = "Institute of International Education";
 
 
 
 // -- Profile Screen
 const String cProfile = "Profile";
 const String cEditProfile = "Edit Profile";
+const String cStudentUpdateProfile = "Student Update Profile";
 const String cLogout = "Logout";
 const String cProfileHeading = "XUAN CANH";
 const String cProfileSubHeading = "xuancanhit99@gmail.com";
@@ -120,8 +129,8 @@ const String cMenu4 = "Information";
 const String cMenu5 = cLogout;
 
 const String cDelete = "Delete";
-const String cJoined = "Joined";
-const String cJoinedAt = " 16 April 2023";
+const String cJoinedAt = "Joined at ";
+const String cUpdatedAt = "Updated at ";
 
 
 

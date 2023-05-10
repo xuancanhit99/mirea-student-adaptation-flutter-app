@@ -10,7 +10,7 @@ class StudentModel {
   final String? phoneNo;
   final String? img;
   final String? dob;
-  final bool? gender;
+  final String? gender;
   final bool? isActive;
   final bool isAdmin;
   final DateTime? createdAt;
@@ -81,7 +81,7 @@ class StudentModel {
       phoneNo: "",
       img: "",
       dob: "",
-      gender: null,
+      gender: "",
       isActive: false,
       isAdmin: true,
       createdAt: null,

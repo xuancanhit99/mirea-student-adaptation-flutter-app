@@ -5,10 +5,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 import 'package:msa/src/features/authentication/screens/signup/email_verification/email_verification.dart';
-import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
 import '../../features/authentication/screens/welcome/welcome_screen.dart';
+import '../../features/core/screens/profile/student/student_profile_page.dart';
 import '../student_repository/student_repository.dart';
 import 'exceptions/signup_email_password_failure.dart';
 
@@ -30,7 +31,7 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAll(() => const Dashboard());
+        Get.offAll(() => const StudentDashboard());
       } else {
         sendEmailVerificationAuthRepo();
         Get.offAll(() => const EmailVerificationScreen());
@@ -162,12 +163,9 @@ class AuthenticationRepository extends GetxController {
       String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-
-
       // firebaseUser.value != null
       //     ? {Get.offAll(() => const Dashboard())}
       //     : Get.to(() => const WelcomeScreen());
-
 
     } on FirebaseAuthException catch (e) {
       final ex = SignInWithEmailAndPasswordFailure.code(e.code);
@@ -188,6 +186,28 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  Future<void> updateEmailAuthRepo(String newEmail) async {
+    final user = _auth.currentUser;
+    try {
+      await user?.updateEmail(newEmail);
+      await user?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar("Error", e.message!,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw e;
+    } catch (e) {
+      final ex = Exception('An error occurred while updating your email. Please try again later.');
+      Get.snackbar("Error", ex.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw ex;
+    }
+  }
+
+
   Future<void> sendPasswordResetEmailAuthRepo(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -207,5 +227,30 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  Future<void> deleteUserAuthRepo() async {
+    final user = _auth.currentUser;
+    try {
+      await user?.delete();
+      await StudentRepository.instance.deleteStudentRepo(user!.uid);
+      // logoutAuthRepo();
+      // Get.offAll(() => const StudentLoginScreen());
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar("Error", e.message!,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      rethrow;
+    } catch (e) {
+      final ex = Exception('An error occurred while deleting your account. Please try again later.');
+      Get.snackbar("Error", ex.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw ex;
+    }
+  }
+
   Future<void> logoutAuthRepo() async => await _auth.signOut();
 }
+
+

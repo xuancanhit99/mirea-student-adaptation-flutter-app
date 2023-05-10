@@ -5,7 +5,7 @@ import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
-import 'package:msa/src/features/core/screens/profile/admin_student_update_profile_page.dart';
+import 'package:msa/src/features/core/screens/profile/admin/admin_student_update_profile_page.dart';
 import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
 
 import '../../../../repository/authentication_repository/authentication_repository.dart';

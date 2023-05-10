@@ -15,6 +15,7 @@ Future<void> main() async {
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
   await Get.putAsync(() => SharedPreferences.getInstance());
+
   runApp(const MyApp()
       // DevicePreview(
       //   enabled: !kReleaseMode,
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.leftToRight,
+      defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 500),
       title: 'MSA',
       theme: CAppTheme.lightTheme,

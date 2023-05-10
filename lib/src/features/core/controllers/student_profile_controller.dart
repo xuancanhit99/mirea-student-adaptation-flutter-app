@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../repository/student_repository/student_repository.dart';
 import '../../authentication/models/student_model.dart';
@@ -20,15 +21,21 @@ class StudentProfileController extends GetxController {
   final phoneNo = TextEditingController();
   var img = "".obs;
   final dob = TextEditingController();
-  final age = TextEditingController();
-  final gender = TextEditingController();
-  final isActive = TextEditingController();
+
+  // final age = TextEditingController();
+  var gender = "".obs;
+  var isActive = false.obs;
   final isAdmin = TextEditingController();
   late final DateTime createAt;
-  late final DateTime updateAt;
+  var updateAt = DateTime.now().obs;
 
-
-
+  void toggleSwitchIsActive(bool value) {
+    if (isActive.value == false) {
+      isActive.value = true;
+    } else {
+      isActive.value = false;
+    }
+  }
 
   final _authRepo = Get.put(AuthenticationRepository());
   final _studentRepo = Get.put(StudentRepository());
@@ -39,17 +46,17 @@ class StudentProfileController extends GetxController {
     getStudentData();
   }
 
-  // int calculateAge(String dateOfBirth) {
-  //   final parts = dateOfBirth.split('-');
-  //   final birthDate = DateTime(int.parse(parts[2]), int.parse(parts[1]), int.parse(parts[0]));
-  //   final now = DateTime.now();
-  //   int age = now.year - birthDate.year;
-  //   if (now.month < birthDate.month ||
-  //       (now.month == birthDate.month && now.day < birthDate.day)) {
-  //     age--;
-  //   }
-  //   return age;
-  // }
+  int calculateAge(String dateOfBirth) {
+    final parts = dateOfBirth.split('-');
+    final birthDate = DateTime(int.parse(parts[2]), int.parse(parts[1]), int.parse(parts[0]));
+    final now = DateTime.now();
+    int age = now.year - birthDate.year;
+    if (now.month < birthDate.month ||
+        (now.month == birthDate.month && now.day < birthDate.day)) {
+      age--;
+    }
+    return age;
+  }
 
   getStudentData() async {
     final uid = _authRepo.firebaseUser.value?.uid;
@@ -65,25 +72,15 @@ class StudentProfileController extends GetxController {
       img.value = student.img!;
       dob.text = student.dob!;
       // age.text = calculateAge(student.dob!).toString();
-      if(student.gender == null) {
-        gender.text = "";
-      } else if (student.gender == true) {
-        gender.text = "Male";
-      } else {
-        gender.text = "Female";
-      }
-      if (student.isActive == true) {
-        isActive.text = "Active";
-      } else {
-        isActive.text = "Inactive";
-      }
+      gender.value = student.gender!;
+      isActive.value = student.isActive!;
       if (student.isAdmin == true) {
         isAdmin.text = "Admin";
       } else {
         isAdmin.text = "Student";
       }
       createAt = student.createdAt!;
-      updateAt = student.updatedAt!;
+      updateAt.value = student.updatedAt!;
     } else {
       Get.snackbar("Error", "Login to continue");
     }
@@ -103,7 +100,7 @@ class StudentProfileController extends GetxController {
     final uid = _authRepo.firebaseUser.value?.uid;
     // print(uid);
     if (uid != null) {
-      return _studentRepo.getStudentDetailsByUid(uid);
+      return _studentRepo.getStudentDetailsByUidRealtime(uid);
     } else {
       Get.snackbar("Error", "Login to continue");
     }
@@ -112,7 +109,6 @@ class StudentProfileController extends GetxController {
   Future<List<StudentModel>> getAllStudent() async {
     return await _studentRepo.getAllStudentRepo();
   }
-
 
   Future<void> updateStudent(StudentModel student) async {
     await _studentRepo.updateStudentRepo(student);
@@ -136,10 +132,56 @@ class StudentProfileController extends GetxController {
         firstDate: DateTime(1990),
         lastDate: DateTime(2101));
     if (picked != null) {
-      String formattedDate = DateFormat('yyyy-MM-dd').format(picked);
+      String formattedDate = DateFormat('dd-MM-yyyy').format(picked);
       dob.text = formattedDate;
-    } else{
+    } else {
       print("Date is not selected");
     }
+  }
+
+  String getDate(DateTime date) {
+    final DateFormat formatter = DateFormat.yMMMMd('en_US').add_jm();
+    final String formatted = formatter.format(date);
+    return formatted;
+  }
+
+  int getCourse(String group) {
+    // Split the group string into its components
+    List<String> components = group.split('-');
+
+    // Extract the last two digits of the starting school year
+    String schoolYearString = components.last;
+    int schoolYear = int.parse(schoolYearString);
+
+    // Get the current year
+    DateTime now = DateTime.now();
+    int currentYear = now.year;
+
+    // Calculate the current school year
+    int currentCourse = currentYear - (schoolYear + 2000);
+
+    return currentCourse;
+  }
+
+  String getCurrentTime() {
+    final now = DateTime.now();
+    final formatter = DateFormat('EEEE, MMMM d, y');
+    return formatter.format(now);
+  }
+
+  Future<void> launchInWebViewOrVC(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'my_header_key': 'my_header_value'}),
+    )) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+
+  Future<void> deleteStudent() async {
+    await _authRepo.deleteUserAuthRepo();
   }
 }

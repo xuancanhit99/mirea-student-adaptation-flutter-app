@@ -9,7 +9,7 @@ import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/controllers/student_profile_controller.dart';
 
-import '../../controllers/institute_controller.dart';
+import '../../../controllers/institute_controller.dart';
 
 class AdminStudentUpdateProfilePage extends StatelessWidget {
   const AdminStudentUpdateProfilePage({Key? key}) : super(key: key);
@@ -19,7 +19,6 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
     final studentProfileController = Get.put(StudentProfileController());
     final instituteController = Get.put(InstituteController());
     final formKey = GlobalKey<FormState>();
-    String initialCountry = 'RU';
     PhoneNumber number = PhoneNumber(isoCode: 'RU');
     return Scaffold(
       appBar: AppBar(
@@ -28,11 +27,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cEditProfile,
-          style: Theme
-              .of(context)
-              .textTheme
-              .headlineSmall,
+          cStudentUpdateProfile,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
       ),
@@ -50,7 +46,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(100),
                       child: Obx(() => studentProfileController.img.value == ""
                           ? Image.asset(cUserProfileImage, fit: BoxFit.cover)
-                          : Image.network(studentProfileController.img.value, fit: BoxFit.cover)),
+                          : Image.network(studentProfileController.img.value,
+                              fit: BoxFit.cover)),
                     ),
                   ),
                   // Change profile image
@@ -73,13 +70,12 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   child: Text.rich(TextSpan(children: [
                                     WidgetSpan(
                                         child: Padding(
-                                          padding:
-                                          EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            LineAwesomeIcons.camera,
-                                            size: 20,
-                                          ),
-                                        )),
+                                      padding: EdgeInsets.only(right: 5),
+                                      child: Icon(
+                                        LineAwesomeIcons.camera,
+                                        size: 20,
+                                      ),
+                                    )),
                                     TextSpan(text: 'Take a photo')
                                   ])),
                                 ),
@@ -88,13 +84,12 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   child: Text.rich(TextSpan(children: [
                                     WidgetSpan(
                                         child: Padding(
-                                          padding:
-                                          EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            LineAwesomeIcons.image,
-                                            size: 20,
-                                          ),
-                                        )),
+                                      padding: EdgeInsets.only(right: 5),
+                                      child: Icon(
+                                        LineAwesomeIcons.image,
+                                        size: 20,
+                                      ),
+                                    )),
                                     TextSpan(text: 'Select a photo')
                                   ])),
                                 )
@@ -102,11 +97,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
 
                           if (selectedOption == 'take_photo') {
                             // Handle "Take a photo" option
-                            final String? imgUrl = await studentProfileController.takePhoto();
+                            final String? imgUrl =
+                                await studentProfileController.takePhoto();
                             studentProfileController.img.value = imgUrl!;
                           } else if (selectedOption == 'select_photo') {
                             // Handle "Select a photo" option
-                            final String? imgUrl = await studentProfileController.selectPhoto();
+                            final String? imgUrl =
+                                await studentProfileController.selectPhoto();
                             studentProfileController.img.value = imgUrl!;
                           }
                         },
@@ -173,26 +170,21 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                           Get.bottomSheet(
                             BottomSheet(
                               onClosing: () {},
-                              builder: (context) =>
-                                  Container(
-                                    padding: const EdgeInsets.all(20),
-                                    child: ListView.builder(
-                                      itemCount: instituteController.groups
-                                          .length,
-                                      itemBuilder: (context, index) =>
-                                          ListTile(
-                                            title:
-                                            Text(instituteController
-                                                .groups[index]),
-                                            onTap: () {
-                                              studentProfileController.group
-                                                  .text =
-                                              instituteController.groups[index];
-                                              Get.back();
-                                            },
-                                          ),
-                                    ),
+                              builder: (context) => Container(
+                                padding: const EdgeInsets.all(20),
+                                child: ListView.builder(
+                                  itemCount: instituteController.groups.length,
+                                  itemBuilder: (context, index) => ListTile(
+                                    title:
+                                        Text(instituteController.groups[index]),
+                                    onTap: () {
+                                      studentProfileController.group.text =
+                                          instituteController.groups[index];
+                                      Get.back();
+                                    },
                                   ),
+                                ),
+                              ),
                             ),
                           );
                         },
@@ -275,31 +267,143 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                           return null;
                         },
                       ),
+                      const SizedBox(height: 10),
+                      IntrinsicHeight(
+                        // Dung cai nay de hien thi Divider
+                        child: Row(
+                          children: [
+                            const Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    cGender,
+                                  ),
+                                )),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 19),
+                              child: VerticalDivider(
+                                color: Colors.black54,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Column(
+                                children: [
+                                  Obx(
+                                    () => RadioListTile(
+                                      title: const Text(cMale),
+                                      value: "male",
+                                      groupValue: studentProfileController
+                                          .gender
+                                          .toString(),
+                                      onChanged: (value) {
+                                        studentProfileController.gender.value =
+                                            value!;
+                                      },
+                                    ),
+                                  ),
+                                  Obx(
+                                    () => RadioListTile(
+                                      title: const Text(cFemale),
+                                      value: "female",
+                                      groupValue: studentProfileController
+                                          .gender
+                                          .toString(),
+                                      onChanged: (value) {
+                                        studentProfileController.gender.value =
+                                            value!;
+                                      },
+                                    ),
+                                  ),
+                                  Obx(
+                                    () => RadioListTile(
+                                      title: const Text(cOther),
+                                      value: "other",
+                                      groupValue: studentProfileController
+                                          .gender
+                                          .toString(),
+                                      onChanged: (value) {
+                                        studentProfileController.gender.value =
+                                            value!;
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      IntrinsicHeight(
+                        child: Row(
+                          children: [
+                            const Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(cStatus),
+                                )),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 19),
+                              child: VerticalDivider(
+                                color: Colors.black54,
+                              ),
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: Obx(
+                                  () => Switch(
+                                    thumbIcon:
+                                        MaterialStateProperty.resolveWith(
+                                      (Set<MaterialState> states) {
+                                        if (states
+                                            .contains(MaterialState.selected)) {
+                                          return const Icon(Icons.check);
+                                        }
+                                        return const Icon(Icons.close);
+                                      },
+                                    ),
+                                    value:
+                                        studentProfileController.isActive.value,
+                                    onChanged: studentProfileController
+                                        .toggleSwitchIsActive,
+                                  ),
+                                )),
+                          ],
+                        ),
+                      ),
+
                       const SizedBox(height: 20),
+                      // Update button
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
+                              studentProfileController.updateAt.value =
+                                  DateTime.now();
                               final student = StudentModel(
                                 id: studentProfileController.id.text.trim(),
                                 no: studentProfileController.no.text.trim(),
                                 fullName: studentProfileController.fullName.text
                                     .trim(),
                                 email:
-                                studentProfileController.email.text.trim(),
+                                    studentProfileController.email.text.trim(),
                                 password: studentProfileController.password.text
                                     .trim(),
                                 group:
-                                studentProfileController.group.text.trim(),
+                                    studentProfileController.group.text.trim(),
                                 phoneNo: studentProfileController.phoneNo.text
                                     .trim(),
                                 img: studentProfileController.img.value,
                                 dob: studentProfileController.dob.text.trim(),
-                                gender: null,
+                                gender: studentProfileController.gender.value,
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
-                                isActive: false,
+                                isActive:
+                                    studentProfileController.isActive.value,
                                 isAdmin: false,
                               );
                               await studentProfileController
@@ -320,21 +424,51 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text.rich(TextSpan(
-                              text: cJoined,
-                              style: TextStyle(fontSize: 12),
-                              children: [
-                                TextSpan(
-                                    text: cJoinedAt,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12))
-                              ])),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Obx(
+                                () => Text.rich(TextSpan(
+                                    text: cUpdatedAt,
+                                    style: const TextStyle(fontSize: 12),
+                                    children: [
+                                      TextSpan(
+                                          text: studentProfileController.getDate(studentProfileController.updateAt.value),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12)),
+                                    ])),
+                              ),
+                              Text.rich(TextSpan(
+                                  text: cJoinedAt,
+                                  style: const TextStyle(fontSize: 12),
+                                  children: [
+                                    TextSpan(
+                                        text: studentProfileController.getDate(
+                                            studentProfileController.createAt),
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12)),
+                                  ])),
+                            ],
+                          ),
                           ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => showDialog(context: context, builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Delete all student data!"),
+                                  content: const Text("Are you sure?"),
+                                  actions: [
+                                    TextButton(onPressed: () => Get.back(), child: const Text("No")),
+                                    TextButton(onPressed: () {
+                                      studentProfileController.deleteStudent();
+                                      Get.back();
+                                    }, child: const Text("Yes")),
+                                  ],
+                                );
+                              }),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                  Colors.redAccent.withOpacity(0.1),
+                                      Colors.redAccent.withOpacity(0.1),
                                   elevation: 0,
                                   foregroundColor: Colors.red,
                                   shape: const StadiumBorder(),

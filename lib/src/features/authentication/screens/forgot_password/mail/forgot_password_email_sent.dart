@@ -5,7 +5,7 @@ import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/sizes.dart';
 import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/controllers/student/student_forgot_password_controller.dart';
-import 'package:msa/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 
 import '../../../../../common_widgets/form/from_header_lottie_widget.dart';
