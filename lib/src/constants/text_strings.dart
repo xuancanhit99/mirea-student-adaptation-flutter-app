@@ -132,5 +132,21 @@ const String cDelete = "Delete";
 const String cJoinedAt = "Joined at ";
 const String cUpdatedAt = "Updated at ";
 
+const String cGeneralInformation = "General Info";
+const String cContact = "Contact";
+const String cStaff = "Staff";
+const String cIMO = "IMO";
+const String cReceptionHours = "Reception Hours";
+const String c918 = " 9:00 — 18:00";
+const String c917 = " 9:00 — 17:00";
+const String cAddress = "Address";
+const String cOffice = "Office";
+const String cPhone = "Phone";
+const String cExt = "ext.";
+const String cInfoTitle1 = "The main functions of the Institute";
+const String cInfoTitle2 = "General Information about the Institute";
+const String cInfoSubTitle1 = "are to provide educational activities on the basis of educational and training programs of higher education for foreign citizens, involving: specialty programs, undergraduate programs, graduate programs specialization programs (different in educational levels, with various organizational forms (full-time, part-time, by correspondence, and different terms of study), as well as secondary special education programs.";
+const String cInfoSubTitle2 = "The Institute of International Education has been teaching foreign students in the areas and specialties of the University since its establishment in 1990 (until March 2015 it had the name the International Department of Informatics). The organization of the learning process for foreign undergraduate and graduate students is carried out by the Institutes training department. Training of foreign students for the development of undergraduate and graduate programs is carried out by the Pre-university Training Department for foreign citizens of the Institute. Training of foreign students and non-degree students is carried out both on contractual basis with payment of tuition fees by individuals or legal entities, and in accordance with the international treaties and intergovernmental agreements of the Russian Federation with the budget funds. To date, the Institute has gained a lot of experience in organizing the process of training foreign students which is based on the Russian state standards with the account of the specifics of the international education system. The institute has provided education and training to citizens of more than 80 countries. In accordance with higher education programs, foreign students study together with those from Russia. They actively participate in cultural events of the university, in university, city and international student competitions, have the opportunity to actively engage in sports and participate in sports competitions. Foreign students are actively involved in research work in graduating departments and student design bureaus. The topics of course projects and graduation works for foreign students are selected with the account of their professional interests and plans for working in their home countries. The most successful foreign students upon graduation receive ad valorem degrees. While studying at the university, foreign students get to know Moscow and its cultural traditions. Studying at the university is an important part of life for foreign students, a background for their future professional activity.";
+
 
 

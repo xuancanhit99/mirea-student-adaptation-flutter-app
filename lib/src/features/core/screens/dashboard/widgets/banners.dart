@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
+import 'package:msa/src/features/core/screens/imo/imo.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/colors.dart';
@@ -42,49 +43,55 @@ class StudentDashboardBanners extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(LineAwesomeIcons.door_closed,
-                                color: Theme.of(context).colorScheme.outline),
-                            const SizedBox(
-                              height: 55,
-                            ),
-                            Text(
-                              cInstituteOfInternationalEducation,
-                              style: txtTheme.headlineSmall
-                                  ?.copyWith(fontSize: 20),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            // Text.rich(TextSpan(
-                            //     text: cUpdatedAt,
-                            //     style: txtTheme.bodySmall,
-                            //     children: [
-                            //       TextSpan(
-                            //           text: studentProfileController.getDate(
-                            //               studentProfileController.updateAt.value),
-                            //           style: const TextStyle(
-                            //               fontWeight: FontWeight.bold, fontSize: 12)),
-                            //     ])),
-                          ],
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () {
+                    Get.to(() => const IMO());
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(LineAwesomeIcons.door_closed,
+                                  color: Theme.of(context).colorScheme.outline),
+                              const SizedBox(
+                                height: 55,
+                              ),
+                              Text(
+                                cInstituteOfInternationalEducation,
+                                style: txtTheme.headlineSmall
+                                    ?.copyWith(fontSize: 20),
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              // Text.rich(TextSpan(
+                              //     text: cUpdatedAt,
+                              //     style: txtTheme.bodySmall,
+                              //     children: [
+                              //       TextSpan(
+                              //           text: studentProfileController.getDate(
+                              //               studentProfileController.updateAt.value),
+                              //           style: const TextStyle(
+                              //               fontWeight: FontWeight.bold, fontSize: 12)),
+                              //     ])),
+                            ],
+                          ),
                         ),
-                      ),
-                      const Flexible(
-                        child:
-                        // Lottie.asset(
-                        //     frameRate: FrameRate.max,
-                        //     cDataManagementJson
-                        // ),
-                        Image(image: AssetImage(cDataManagement))
-                      )
-                    ],
+                        const Flexible(
+                          child:
+                          // Lottie.asset(
+                          //     frameRate: FrameRate.max,
+                          //     cDataManagementJson
+                          // ),
+                          Image(image: AssetImage(cDataManagement))
+                        )
+                      ],
+                    ),
                   ),
                 )),
             const SizedBox(height: 10),
