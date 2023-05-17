@@ -47,6 +47,9 @@ class StudentProfileController extends GetxController {
   }
 
   int calculateAge(String dateOfBirth) {
+    if (dateOfBirth == "") {
+      return 0;
+    }
     final parts = dateOfBirth.split('-');
     final birthDate = DateTime(int.parse(parts[2]), int.parse(parts[1]), int.parse(parts[0]));
     final now = DateTime.now();
@@ -104,6 +107,10 @@ class StudentProfileController extends GetxController {
     } else {
       Get.snackbar("Error", "Login to continue");
     }
+  }
+
+  Stream<List<StudentModel>> getAllStudentRealTime()  {
+    return _studentRepo.getAllStudentRealTimeRepo();
   }
 
   Future<List<StudentModel>> getAllStudent() async {

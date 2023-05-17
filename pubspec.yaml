@@ -31,17 +31,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  ## -- ICON PACKAGES
+  ## -- UI PACKAGES
   cupertino_icons: ^1.0.5
   line_awesome_flutter: ^2.0.0
-
-  device_preview: ^1.1.0
-  google_fonts: ^4.0.3
+  page_transition: ^2.0.9
   animated_splash_screen: ^1.3.0
+  google_fonts: ^4.0.3
   lottie: ^2.3.2
   flutter_native_splash: ^2.2.19
-  page_transition: ^2.0.9
-
+  device_preview: ^1.1.0
   ## -- STATE MANAGEMENT
   get: ^4.6.5
 
@@ -49,11 +47,7 @@ dependencies:
   liquid_swipe: ^3.1.0
   smooth_page_indicator: ^1.0.1
 
-
-
   shared_preferences: ^2.1.0
-
-  ## -- OTP TEXT FIELD PACKAGE
   flutter_otp_text_field: ^1.1.1
 
   ## -- FIREBASE PACKAGES
@@ -61,20 +55,22 @@ dependencies:
   firebase_auth: ^4.4.1
   firebase_database: ^10.1.0
   cloud_firestore: ^4.5.1
+  firebase_storage: ^11.1.2
   firebase_performance: ^0.9.1+1
+  google_sign_in: ^6.1.0
   #  firebase_analytics: ^10.2.0
 
-  # Password Validator
+  # Validator
   flutter_pw_validator: ^1.5.0
   email_validator: ^2.1.17
-  google_sign_in: ^6.1.0
-  otp_timer_button: ^1.1.0
   intl_phone_number_input: ^0.7.3+1
+
+  otp_timer_button: ^1.1.0
   image_picker: ^0.8.7+4
-  firebase_storage: ^11.1.2
   path: ^1.8.2
   intl: ^0.17.0
   url_launcher: ^6.1.11
+  font_awesome_flutter: ^10.4.0
 
 
 

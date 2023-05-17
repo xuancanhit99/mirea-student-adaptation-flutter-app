@@ -22,6 +22,7 @@ class CAppTheme {
     outlinedButtonTheme: COutlinedButtonTheme.lightOutlinedButtonTheme,
     elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme,
     inputDecorationTheme: CTextFormFieldTheme.lightInputDecorationTheme,
+    scaffoldBackgroundColor: Colors.white,
     // colorSchemeSeed: const Color(0xFF87ceeb),
   );
 

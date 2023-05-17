@@ -30,6 +30,7 @@ const String cMaleUser = "assets/images/male-user.png";
 const String cPersonFemale = "assets/images/person-female.png";
 const String cPersonMale = "assets/images/person-male.png";
 const String cShinz = "assets/images/shinz.jpg";
+const String cMan = "assets/images/man.jpg";
 const String cTechSupport = "assets/images/tech-support.png";
 const String cSupportCentre2 = "assets/images/support-centre-2.png";
 const String cDataManagement= "assets/images/data-management.png";

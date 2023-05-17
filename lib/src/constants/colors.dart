@@ -14,6 +14,8 @@ const cAppNameColor = Color(0xFF446cb4);
 
 const cSkyBlue = Color(0xFF87ceeb);
 const cBlue404Space= Color(0xFF4393ff);
+const cBGColorM3= Color(0xFFFAFAFA);
+const cBGButtonMenuColor= Color(0xFFFAFAFA);
 
 
 const cOnBoardingPage2Color = Colors.white;

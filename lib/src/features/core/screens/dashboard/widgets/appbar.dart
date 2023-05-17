@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:msa/src/features/core/screens/profile/profile_screen.dart';
 import 'package:msa/src/features/core/screens/profile/student/student_profile_page.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
@@ -20,9 +19,9 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final studentController = Get.put(StudentProfileController());
     return AppBar(
-      leading: const Icon(
+      leading: Icon(
         Icons.menu,
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.onSecondaryContainer,
       ),
       title: Text(
         cAppNameDetailed,
@@ -47,7 +46,7 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
             return Container(
               margin: const EdgeInsets.only(right: 20, top: 7),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100), color: cCardBgColor),
+                  borderRadius: BorderRadius.circular(100), color: Colors.blue.withOpacity(0.1)),
               child: IconButton(
                 onPressed: () {
                   // AuthenticationRepository.instance.logout();

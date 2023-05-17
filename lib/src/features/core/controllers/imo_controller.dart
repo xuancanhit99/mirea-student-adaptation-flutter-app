@@ -28,16 +28,16 @@ class IMOController extends GetxController {
     return _imoRepo.getIMOStaffByUidRealtime(uid);
   }
 
-  Future<List<IMOStaffModel>> getAllIMOStaff() async {
-    return await _imoRepo.getAllIMOStaffRepo();
+  Stream<List<IMOStaffModel>> getAllIMOStaff()  {
+    return _imoRepo.getAllIMOStaffRealTime();
   }
 
   getIMOContactFromUid(String uid) {
     return _imoRepo.getIMOContactByUidRealtime(uid);
   }
 
-  Future<List<IMOContactModel>> getAllIMOContact() async {
-    return await _imoRepo.getAllIMOContactRepo();
+  Stream<List<IMOContactModel>> getAllIMOContact() {
+    return _imoRepo.getAllIMOContactRealTime();
   }
 
 }

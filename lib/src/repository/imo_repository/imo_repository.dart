@@ -22,10 +22,20 @@ class IMORepository extends GetxController {
     return imoStaffData;
   }
 
-  Future<List<IMOStaffModel>> getAllIMOStaffRepo() async {
-    final snapshot = await _db.collection("IMOStaff").get();
-    final imoStaffData =
-    snapshot.docs.map((e) => IMOStaffModel.fromSnapshot(e)).toList();
+  // Future<List<IMOStaffModel>> getAllIMOStaffRepo() async {
+  //   final snapshot = await _db.collection("IMOStaff").get();
+  //   final imoStaffData =
+  //   snapshot.docs.map((e) => IMOStaffModel.fromSnapshot(e)).toList();
+  //   return imoStaffData;
+  // }
+
+  Stream<List<IMOStaffModel>> getAllIMOStaffRealTime() {
+    final snapshot = _db.collection("IMOStaff").snapshots();
+    final imoStaffData = snapshot.map((querySnapshot) {
+      return querySnapshot.docs
+          .map((doc) => IMOStaffModel.fromSnapshot(doc))
+          .toList();
+    });
     return imoStaffData;
   }
 
@@ -41,10 +51,19 @@ class IMORepository extends GetxController {
     return imoContactData;
   }
 
-  Future<List<IMOContactModel>> getAllIMOContactRepo() async {
-    final snapshot = await _db.collection("IMOContacts").get();
-    final imoContactData =
-    snapshot.docs.map((e) => IMOContactModel.fromSnapshot(e)).toList();
+  // Future<List<IMOContactModel>> getAllIMOContactRepo() async {
+  //   final snapshot = await _db.collection("IMOContacts").get();
+  //   final imoContactData =
+  //   snapshot.docs.map((e) => IMOContactModel.fromSnapshot(e)).toList();
+  //   return imoContactData;
+  // }
+  Stream<List<IMOContactModel>> getAllIMOContactRealTime() {
+    final snapshot = _db.collection("IMOContacts").snapshots();
+    final imoContactData = snapshot.map((querySnapshot) {
+      return querySnapshot.docs
+          .map((doc) => IMOContactModel.fromSnapshot(doc))
+          .toList();
+    });
     return imoContactData;
   }
 

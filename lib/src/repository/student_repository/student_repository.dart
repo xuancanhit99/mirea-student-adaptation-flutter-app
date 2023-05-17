@@ -56,6 +56,13 @@ class StudentRepository extends GetxController {
     return studentData;
   }
 
+  Stream<List<StudentModel>> getAllStudentRealTimeRepo() {
+    final snapshot = _db.collection("Students").snapshots();
+    final studentData = snapshot.map((querySnapshot) =>
+        querySnapshot.docs.map((doc) => StudentModel.fromSnapshot(doc)).toList());
+    return studentData;
+  }
+
   Future<List<StudentModel>> getAllStudentRepo() async {
     final snapshot = await _db.collection("Students").get();
     final studentData =
