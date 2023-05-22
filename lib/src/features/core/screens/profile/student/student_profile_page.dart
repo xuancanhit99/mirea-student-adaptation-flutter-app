@@ -311,7 +311,7 @@ class StudentProfilePage extends StatelessWidget {
                         width: 200,
                         child: ElevatedButton(
                             onPressed: () =>
-                                Get.to(() => const StudentUpdateProfilePage()),
+                                Get.to(() => const AdminStudentUpdateProfilePage()),
                             style: ElevatedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),

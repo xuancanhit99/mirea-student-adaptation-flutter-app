@@ -268,6 +268,143 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 10),
+                      // Address
+                      Obx(
+                        () => Visibility(
+                          visible: studentProfileController.isShow.value,
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: studentProfileController.city,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cCity),
+                                    prefixIcon: Icon(LineAwesomeIcons.city)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.street,
+                                keyboardType: TextInputType.streetAddress,
+                                decoration: const InputDecoration(
+                                    label: Text(cStreet),
+                                    prefixIcon: Icon(LineAwesomeIcons.road)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller: studentProfileController.house,
+                                      keyboardType: TextInputType.text,
+                                      decoration: const InputDecoration(
+                                          label: Text(cHouse),
+                                          prefixIcon:
+                                              Icon(LineAwesomeIcons.home)),
+                                      // validator: (value) {
+                                      //   if (value!.isEmpty) {
+                                      //     return "Please enter student's city";
+                                      //   }
+                                      //   return null;
+                                      // },
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller:
+                                          studentProfileController.building,
+                                      keyboardType: TextInputType.text,
+                                      decoration: const InputDecoration(
+                                          label: Text(cBuilding),
+                                          prefixIcon:
+                                              Icon(LineAwesomeIcons.th_large)),
+                                      // validator: (value) {
+                                      //   if (value!.isEmpty) {
+                                      //     return "Please enter student's city";
+                                      //   }
+                                      //   return null;
+                                      // },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.dormitory,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cDormitory),
+                                    prefixIcon: Icon(LineAwesomeIcons.building)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.pob,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cPlaceOfBirth),
+                                    prefixIcon: Icon(
+                                        LineAwesomeIcons.globe_with_asia_shown)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.nationality,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cNationality),
+                                    prefixIcon: Icon(LineAwesomeIcons.flag)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Obx(
+                        () => SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              studentProfileController.toggleSwitchIsShow(studentProfileController.isShow.value);
+                            },
+                            style: OutlinedButton.styleFrom(
+                                side: BorderSide.none,
+                                shape: const StadiumBorder()),
+                            child: Text(
+                              studentProfileController.isShow.value ? cHideAddress : cShowAddress,
+                              style: const TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                      ),
                       IntrinsicHeight(
                         // Dung cai nay de hien thi Divider
                         child: Row(
@@ -400,6 +537,25 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                 img: studentProfileController.img.value,
                                 dob: studentProfileController.dob.text.trim(),
                                 gender: studentProfileController.gender.value,
+                                address: Address(
+                                    city: studentProfileController.city.text
+                                        .trim(),
+                                    street: studentProfileController.street.text
+                                        .trim(),
+                                    house: studentProfileController.house.text
+                                        .trim(),
+                                    building: studentProfileController
+                                        .building.text
+                                        .trim(),
+                                    dormitory: studentProfileController
+                                        .dormitory.text
+                                        .trim(),
+                                    placeOfBirth: studentProfileController
+                                        .pob.text
+                                        .trim(),
+                                    nationality: studentProfileController
+                                        .nationality.text
+                                        .trim()),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:
@@ -433,7 +589,9 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     style: const TextStyle(fontSize: 12),
                                     children: [
                                       TextSpan(
-                                          text: studentProfileController.getDate(studentProfileController.updateAt.value),
+                                          text: studentProfileController
+                                              .getDate(studentProfileController
+                                                  .updateAt.value),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12)),
@@ -453,19 +611,27 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                             ],
                           ),
                           ElevatedButton(
-                              onPressed: () => showDialog(context: context, builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text("Delete all student data!"),
-                                  content: const Text("Are you sure?"),
-                                  actions: [
-                                    TextButton(onPressed: () => Get.back(), child: const Text("No")),
-                                    TextButton(onPressed: () {
-                                      studentProfileController.deleteStudent();
-                                      Get.back();
-                                    }, child: const Text("Yes")),
-                                  ],
-                                );
-                              }),
+                              onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                          "Delete all student data!"),
+                                      content: const Text("Are you sure?"),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () => Get.back(),
+                                            child: const Text("No")),
+                                        TextButton(
+                                            onPressed: () {
+                                              studentProfileController
+                                                  .deleteStudent();
+                                              Get.back();
+                                            },
+                                            child: const Text("Yes")),
+                                      ],
+                                    );
+                                  }),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       Colors.redAccent.withOpacity(0.1),

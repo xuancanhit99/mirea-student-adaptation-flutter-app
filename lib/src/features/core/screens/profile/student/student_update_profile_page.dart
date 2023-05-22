@@ -270,8 +270,145 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 10),
+                      // Address
+                      Obx(
+                            () => Visibility(
+                          visible: studentProfileController.isShow.value,
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: studentProfileController.city,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cCity),
+                                    prefixIcon: Icon(LineAwesomeIcons.city)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.street,
+                                keyboardType: TextInputType.streetAddress,
+                                decoration: const InputDecoration(
+                                    label: Text(cStreet),
+                                    prefixIcon: Icon(LineAwesomeIcons.road)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller: studentProfileController.house,
+                                      keyboardType: TextInputType.text,
+                                      decoration: const InputDecoration(
+                                          label: Text(cHouse),
+                                          prefixIcon:
+                                          Icon(LineAwesomeIcons.home)),
+                                      // validator: (value) {
+                                      //   if (value!.isEmpty) {
+                                      //     return "Please enter student's city";
+                                      //   }
+                                      //   return null;
+                                      // },
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller:
+                                      studentProfileController.building,
+                                      keyboardType: TextInputType.text,
+                                      decoration: const InputDecoration(
+                                          label: Text(cBuilding),
+                                          prefixIcon:
+                                          Icon(LineAwesomeIcons.th_large)),
+                                      // validator: (value) {
+                                      //   if (value!.isEmpty) {
+                                      //     return "Please enter student's city";
+                                      //   }
+                                      //   return null;
+                                      // },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.dormitory,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cDormitory),
+                                    prefixIcon: Icon(LineAwesomeIcons.building)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.pob,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cPlaceOfBirth),
+                                    prefixIcon: Icon(
+                                        LineAwesomeIcons.globe_with_asia_shown)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController.nationality,
+                                keyboardType: TextInputType.text,
+                                decoration: const InputDecoration(
+                                    label: Text(cNationality),
+                                    prefixIcon: Icon(LineAwesomeIcons.flag)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Obx(
+                            () => SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              studentProfileController.toggleSwitchIsShow(studentProfileController.isShow.value);
+                            },
+                            style: OutlinedButton.styleFrom(
+                                side: BorderSide.none,
+                                shape: const StadiumBorder()),
+                            child: Text(
+                              studentProfileController.isShow.value ? cHideAddress : cShowAddress,
+                              style: const TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                      ),
                       IntrinsicHeight(
-                        // Dung cai nay de hien thi Divider
+                        // Dung cai nay de hien thi Divider doc
                         child: Row(
                           children: [
                             const Expanded(
@@ -403,6 +540,25 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 img: studentProfileController.img.value,
                                 dob: studentProfileController.dob.text.trim(),
                                 gender: studentProfileController.gender.value,
+                                address: Address(
+                                    city: studentProfileController.city.text
+                                        .trim(),
+                                    street: studentProfileController.street.text
+                                        .trim(),
+                                    house: studentProfileController.house.text
+                                        .trim(),
+                                    building: studentProfileController
+                                        .building.text
+                                        .trim(),
+                                    dormitory: studentProfileController
+                                        .dormitory.text
+                                        .trim(),
+                                    placeOfBirth: studentProfileController
+                                        .pob.text
+                                        .trim(),
+                                    nationality: studentProfileController
+                                        .nationality.text
+                                        .trim()),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:

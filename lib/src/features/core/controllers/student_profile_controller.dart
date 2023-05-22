@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +18,13 @@ class StudentProfileController extends GetxController {
   final password = TextEditingController();
   final group = TextEditingController();
   final phoneNo = TextEditingController();
+  final city = TextEditingController();
+  final street = TextEditingController();
+  final house = TextEditingController();
+  final building = TextEditingController();
+  final dormitory = TextEditingController();
+  final pob = TextEditingController();
+  final nationality = TextEditingController();
   var img = "".obs;
   final dob = TextEditingController();
 
@@ -34,6 +40,15 @@ class StudentProfileController extends GetxController {
       isActive.value = true;
     } else {
       isActive.value = false;
+    }
+  }
+
+  var isShow = false.obs;
+  void toggleSwitchIsShow(bool value) {
+    if (isShow.value == false) {
+      isShow.value = true;
+    } else {
+      isShow.value = false;
     }
   }
 
@@ -75,6 +90,13 @@ class StudentProfileController extends GetxController {
       img.value = student.img!;
       dob.text = student.dob!;
       // age.text = calculateAge(student.dob!).toString();
+      city.text = student.address.city;
+      street.text = student.address.street;
+      house.text = student.address.house;
+      building.text = student.address.building;
+      dormitory.text = student.address.dormitory;
+      pob.text = student.address.placeOfBirth;
+      nationality.text = student.address.nationality;
       gender.value = student.gender!;
       isActive.value = student.isActive!;
       if (student.isAdmin == true) {

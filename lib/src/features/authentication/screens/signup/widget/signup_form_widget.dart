@@ -161,6 +161,15 @@ class SignUpFormWidget extends StatelessWidget {
                             img: "",
                             dob: "",
                             gender: "",
+                            address: const Address(
+                                city: '',
+                                street: '',
+                                house: '',
+                                building: '',
+                                dormitory: '',
+                                placeOfBirth: '',
+                                nationality: ''
+                            ),
                             createdAt: controller.now,
                             updatedAt: controller.now,
                             isActive: false,

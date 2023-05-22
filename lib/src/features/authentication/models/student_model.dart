@@ -1,5 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+class Address {
+  final String city;
+  final String street;
+  final String house;
+  final String building;
+  final String dormitory;
+  final String placeOfBirth;
+  final String nationality;
+
+  const Address({
+    required this.city,
+    required this.street,
+    required this.house,
+    required this.building,
+    required this.dormitory,
+    required this.placeOfBirth,
+    required this.nationality
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "City": city,
+      "Street": street,
+      "House": house,
+      "Building": building,
+      "Dormitory": dormitory,
+      "PlaceOfBirth": placeOfBirth,
+      "Nationality": nationality
+    };
+  }
+
+}
+
 class StudentModel {
   final String? id;
   final String? no;
@@ -11,6 +45,7 @@ class StudentModel {
   final String? img;
   final String? dob;
   final String? gender;
+  final Address address;
   final bool? isActive;
   final bool isAdmin;
   final DateTime? createdAt;
@@ -27,6 +62,7 @@ class StudentModel {
     this.img,
     this.dob,
     this.gender,
+    required this.address,
     this.isActive,
     required this.isAdmin,
     this.createdAt,
@@ -44,6 +80,7 @@ class StudentModel {
       "Image": img,
       "DOB": dob,
       "Gender": gender,
+      "Address": address.toJson(),
       "IsActive": isActive,
       "IsAdmin": isAdmin,
       "CreatedAt": createdAt,
@@ -65,6 +102,15 @@ class StudentModel {
         img: data["Image"],
         dob: data["DOB"],
         gender: data["Gender"],
+        address: Address(
+          city: data["Address"]["City"],
+          street: data["Address"]["Street"],
+          house: data["Address"]["House"],
+          building: data["Address"]["Building"],
+          dormitory: data["Address"]["Dormitory"],
+          placeOfBirth: data["Address"]["PlaceOfBirth"],
+          nationality: data["Address"]["Nationality"]
+        ),
         isActive: data["IsActive"],
         isAdmin: data["IsAdmin"],
         createdAt: data["CreatedAt"]?.toDate(),
@@ -82,6 +128,15 @@ class StudentModel {
       img: "",
       dob: "",
       gender: "",
+      address: const Address(
+          city: "",
+          street: "",
+          house: "",
+          building: "",
+          dormitory: "",
+          placeOfBirth: "",
+          nationality: ""
+      ),
       isActive: false,
       isAdmin: true,
       createdAt: null,

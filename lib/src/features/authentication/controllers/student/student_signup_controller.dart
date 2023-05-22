@@ -49,6 +49,15 @@ class StudentSignUpController extends GetxController {
         phoneNo: '',
         img: '',
         dob: '',
+        address: const Address(
+            city: '',
+            street: '',
+            house: '',
+            building: '',
+            dormitory: '',
+            placeOfBirth: '',
+            nationality: ''
+        ),
         gender: null,
         isActive: false,
         isAdmin: false,
