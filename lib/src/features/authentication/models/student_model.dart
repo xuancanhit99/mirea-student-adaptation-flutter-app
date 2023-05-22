@@ -34,6 +34,53 @@ class Address {
 
 }
 
+
+class StudyDetails {
+  final String yearOfAdmission;
+  final String formingDivision;
+  final String issuingDivision;
+  final String typeOfEducationalProgram;
+  final String directionOfTraining;
+  final String speciality;
+  final String typeOfCostRecovery;
+  final String qualificationGiven;
+  final String standardDevelopmentPeriod;
+  final String formOfLearning;
+  final String targetReception;
+
+
+
+  const StudyDetails({
+    required this.yearOfAdmission,
+    required this.formingDivision,
+    required this.issuingDivision,
+    required this.typeOfEducationalProgram,
+    required this.directionOfTraining,
+    required this.speciality,
+    required this.typeOfCostRecovery,
+    required this.qualificationGiven,
+    required this.standardDevelopmentPeriod,
+    required this.formOfLearning,
+    required this.targetReception
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "YearOfAdmission": yearOfAdmission,
+      "FormingDivision": formingDivision,
+      "IssuingDivision": issuingDivision,
+      "TypeOfEducationalProgram": typeOfEducationalProgram,
+      "DirectionOfTraining": directionOfTraining,
+      "Speciality": speciality,
+      "TypeOfCostRecovery": typeOfCostRecovery,
+      "QualificationGiven": qualificationGiven,
+      "StandardDevelopmentPeriod": standardDevelopmentPeriod,
+      "FormOfLearning": formOfLearning,
+      "TargetReception": targetReception
+    };
+  }
+}
+
 class StudentModel {
   final String? id;
   final String? no;
@@ -46,6 +93,7 @@ class StudentModel {
   final String? dob;
   final String? gender;
   final Address address;
+  final StudyDetails studyDetails;
   final bool? isActive;
   final bool isAdmin;
   final DateTime? createdAt;
@@ -63,6 +111,7 @@ class StudentModel {
     this.dob,
     this.gender,
     required this.address,
+    required this.studyDetails,
     this.isActive,
     required this.isAdmin,
     this.createdAt,
@@ -81,6 +130,7 @@ class StudentModel {
       "DOB": dob,
       "Gender": gender,
       "Address": address.toJson(),
+      "StudyDetails": studyDetails.toJson(),
       "IsActive": isActive,
       "IsAdmin": isAdmin,
       "CreatedAt": createdAt,
@@ -111,6 +161,19 @@ class StudentModel {
           placeOfBirth: data["Address"]["PlaceOfBirth"],
           nationality: data["Address"]["Nationality"]
         ),
+        studyDetails: StudyDetails(
+          yearOfAdmission: data["StudyDetails"]["YearOfAdmission"],
+          formingDivision: data["StudyDetails"]["FormingDivision"],
+          issuingDivision: data["StudyDetails"]["IssuingDivision"],
+          typeOfEducationalProgram: data["StudyDetails"]["TypeOfEducationalProgram"],
+          directionOfTraining: data["StudyDetails"]["DirectionOfTraining"],
+          speciality: data["StudyDetails"]["Speciality"],
+          typeOfCostRecovery: data["StudyDetails"]["TypeOfCostRecovery"],
+          qualificationGiven: data["StudyDetails"]["QualificationGiven"],
+          standardDevelopmentPeriod: data["StudyDetails"]["StandardDevelopmentPeriod"],
+          formOfLearning: data["StudyDetails"]["FormOfLearning"],
+          targetReception: data["StudyDetails"]["TargetReception"]
+        ),
         isActive: data["IsActive"],
         isAdmin: data["IsAdmin"],
         createdAt: data["CreatedAt"]?.toDate(),
@@ -136,6 +199,19 @@ class StudentModel {
           dormitory: "",
           placeOfBirth: "",
           nationality: ""
+      ),
+      studyDetails: const StudyDetails(
+          yearOfAdmission: "",
+          formingDivision: "",
+          issuingDivision: "",
+          typeOfEducationalProgram: "",
+          directionOfTraining: "",
+          speciality: "",
+          typeOfCostRecovery: "",
+          qualificationGiven: "",
+          standardDevelopmentPeriod: "",
+          formOfLearning: "",
+          targetReception: ""
       ),
       isActive: false,
       isAdmin: true,

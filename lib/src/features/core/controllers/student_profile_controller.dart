@@ -25,6 +25,19 @@ class StudentProfileController extends GetxController {
   final dormitory = TextEditingController();
   final pob = TextEditingController();
   final nationality = TextEditingController();
+
+  var yearOfAdmission = TextEditingController();
+  final formingDivision = TextEditingController();
+  final issuingDivision = TextEditingController();
+  final typeOfEducationalProgram = TextEditingController();
+  final directionOfTraining = TextEditingController();
+  final speciality = TextEditingController();
+  final typeOfCostRecovery = TextEditingController();
+  final qualificationGiven = TextEditingController();
+  final standardDevelopmentPeriod = TextEditingController();
+  final formOfLearning = TextEditingController();
+  final targetReception = TextEditingController();
+
   var img = "".obs;
   final dob = TextEditingController();
 
@@ -43,12 +56,21 @@ class StudentProfileController extends GetxController {
     }
   }
 
-  var isShow = false.obs;
-  void toggleSwitchIsShow(bool value) {
-    if (isShow.value == false) {
-      isShow.value = true;
+  var isShowAddress = false.obs;
+  void toggleSwitchIsShowAddress(bool value) {
+    if (isShowAddress.value == false) {
+      isShowAddress.value = true;
     } else {
-      isShow.value = false;
+      isShowAddress.value = false;
+    }
+  }
+
+  var isShowStudyDetails = false.obs;
+  void toggleSwitchIsShowStudyDetails(bool value) {
+    if (isShowStudyDetails.value == false) {
+      isShowStudyDetails.value = true;
+    } else {
+      isShowStudyDetails.value = false;
     }
   }
 
@@ -97,6 +119,19 @@ class StudentProfileController extends GetxController {
       dormitory.text = student.address.dormitory;
       pob.text = student.address.placeOfBirth;
       nationality.text = student.address.nationality;
+
+      yearOfAdmission.text = student.studyDetails.yearOfAdmission;
+      formingDivision.text = student.studyDetails.formingDivision;
+      issuingDivision.text = student.studyDetails.issuingDivision;
+      typeOfEducationalProgram.text = student.studyDetails.typeOfEducationalProgram;
+      directionOfTraining.text = student.studyDetails.directionOfTraining;
+      speciality.text = student.studyDetails.speciality;
+      typeOfCostRecovery.text = student.studyDetails.typeOfCostRecovery;
+      qualificationGiven.text = student.studyDetails.qualificationGiven;
+      standardDevelopmentPeriod.text = student.studyDetails.standardDevelopmentPeriod;
+      formOfLearning.text = student.studyDetails.formOfLearning;
+      targetReception.text = student.studyDetails.targetReception;
+
       gender.value = student.gender!;
       isActive.value = student.isActive!;
       if (student.isAdmin == true) {
@@ -190,6 +225,17 @@ class StudentProfileController extends GetxController {
     int currentCourse = currentYear - (schoolYear + 2000);
 
     return currentCourse;
+  }
+
+  void setYearFromGroup(String group) {
+    // Split the group string into its components
+    List<String> components = group.split('-');
+
+    // Extract the last two digits of the starting school year
+    String schoolYearString = components.last;
+    int schoolYear = int.parse(schoolYearString);
+
+    yearOfAdmission.text = (schoolYear + 2000).toString();
   }
 
   String getCurrentTime() {

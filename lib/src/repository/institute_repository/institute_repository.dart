@@ -6,7 +6,7 @@ class InstituteRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-  Future<List<String>> getInstituteGroups() async {
+  Future<List<String>> getListInstituteGroups() async {
     final collectionRef = _db.collection('Institutes');
     final querySnapshot = await collectionRef.get();
 
@@ -34,5 +34,20 @@ class InstituteRepository extends GetxController {
     }
     groups.sort();
     return groups;
+  }
+
+  Future<List<String>> getListInstitutesNameRepo() async {
+    final collectionRef = _db.collection('Institutes');
+    final querySnapshot = await collectionRef.get();
+
+    final List<String> institutes = [];
+
+    for (var doc in querySnapshot.docs) {
+      final data = doc.data();
+      final instituteName = data['Name'];
+      institutes.add(instituteName);
+    }
+    institutes.sort();
+    return institutes;
   }
 }

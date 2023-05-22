@@ -26,7 +26,9 @@ const String cGroup = "Group";
 const String cGender = "Gender";
 const String cDateOfBirth = "Date of birth";
 const String cShowAddress = "Show Address";
+const String cShowStudyDetails = "Show Study Details";
 const String cHideAddress = "Hide Address";
+const String cHideStudyDetails = "Hide Study Details";
 const String cCity = "City";
 const String cStreet = "Street";
 const String cHouse = "House";
@@ -34,6 +36,20 @@ const String cBuilding = "Building";
 const String cDormitory = "Dormitory";
 const String cPlaceOfBirth = "Place of birth";
 const String cNationality = "Nationality";
+
+const String cYearOfAdmission = "Year of admission";
+const String cFormingDivision = "Forming division";
+const String cIssuingDivision = "Issuing division";
+const String cTypeOfEducationalProgram = "Type of educational program";
+const String cDirectionOfTraining = "Direction of training";
+const String cSpeciality = "Speciality";
+const String cTypeOfCostRecovery = "Type of cost recovery";
+const String cQualificationGiven = "Qualification given";
+const String cStandardDevelopmentPeriod = "Standard development period";
+const String cFormOfLearning = "Form of learning";
+const String cTargetReception = "Target reception";
+
+
 const String cAge = "Age";
 const String cMale = "Male";
 const String cFemale = "Female";
@@ -119,6 +135,7 @@ const String cDashboardBannerSubTitle = "10 Lessons";
 const String cViewAll = "View All";
 const String cGroupCurator = "Group Curator";
 const String cInstituteOfInternationalEducation = "Institute of International Education";
+const String cInternationalStudentDepartment = "International Student Department";
 
 
 
@@ -127,8 +144,6 @@ const String cProfile = "Profile";
 const String cEditProfile = "Edit Profile";
 const String cStudentUpdateProfile = "Student Update Profile";
 const String cLogout = "Logout";
-const String cProfileHeading = "XUAN CANH";
-const String cProfileSubHeading = "xuancanhit99@gmail.com";
 
 //
 const String cMenu1 = "Settings";

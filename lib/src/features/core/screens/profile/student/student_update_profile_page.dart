@@ -273,7 +273,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                       // Address
                       Obx(
                             () => Visibility(
-                          visible: studentProfileController.isShow.value,
+                          visible: studentProfileController.isShowAddress.value,
                           child: Column(
                             children: [
                               TextFormField(
@@ -395,13 +395,13 @@ class StudentUpdateProfilePage extends StatelessWidget {
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {
-                              studentProfileController.toggleSwitchIsShow(studentProfileController.isShow.value);
+                              studentProfileController.toggleSwitchIsShowAddress(studentProfileController.isShowAddress.value);
                             },
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
                             child: Text(
-                              studentProfileController.isShow.value ? cHideAddress : cShowAddress,
+                              studentProfileController.isShowAddress.value ? cHideAddress : cShowAddress,
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ),
@@ -559,6 +559,30 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                     nationality: studentProfileController
                                         .nationality.text
                                         .trim()),
+                                studyDetails: StudyDetails(
+                                    yearOfAdmission: studentProfileController
+                                        .yearOfAdmission.text,
+                                    formingDivision: studentProfileController
+                                        .formingDivision.text,
+                                    issuingDivision: studentProfileController
+                                        .issuingDivision.text,
+                                    typeOfEducationalProgram: studentProfileController
+                                        .typeOfEducationalProgram.text,
+                                    directionOfTraining: studentProfileController
+                                        .directionOfTraining.text,
+                                    speciality: studentProfileController
+                                        .speciality.text,
+                                    typeOfCostRecovery: studentProfileController
+                                        .typeOfCostRecovery.text,
+                                    qualificationGiven: studentProfileController
+                                        .qualificationGiven.text,
+                                    standardDevelopmentPeriod: studentProfileController
+                                        .standardDevelopmentPeriod.text,
+                                    formOfLearning: studentProfileController
+                                        .formOfLearning.text,
+                                    targetReception: studentProfileController
+                                        .targetReception.text
+                                ),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:

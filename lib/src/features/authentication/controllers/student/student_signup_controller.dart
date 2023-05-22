@@ -58,6 +58,19 @@ class StudentSignUpController extends GetxController {
             placeOfBirth: '',
             nationality: ''
         ),
+        studyDetails: const StudyDetails(
+            yearOfAdmission: '',
+            formingDivision: '',
+            issuingDivision: '',
+            typeOfEducationalProgram: '',
+            directionOfTraining: '',
+            speciality: '',
+            typeOfCostRecovery: '',
+            qualificationGiven: '',
+            standardDevelopmentPeriod: '',
+            formOfLearning: '',
+            targetReception: ''
+        ),
         gender: null,
         isActive: false,
         isAdmin: false,

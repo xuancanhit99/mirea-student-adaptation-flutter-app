@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/text_strings.dart';
+import 'package:msa/src/constants/variables.dart';
 import 'package:msa/src/features/core/models/imo_staff_model.dart';
 import 'package:msa/src/features/core/screens/imo/widgets/contacts.dart';
 import 'package:msa/src/features/core/screens/imo/widgets/general_information.dart';
@@ -18,6 +19,14 @@ class IMO extends StatelessWidget {
     return DefaultTabController(
       length: 3, // length of tabs
       child: Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+          label: const Text(cInternationalStudentDepartment),
+          icon: const Icon(LineAwesomeIcons.door_open),
+          onPressed: () {
+            final url = Uri.parse(cLinkInternationalStudentDepartment);
+            imoController.launchInWebViewOrVC(url);
+          },
+        ),
           body: NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {

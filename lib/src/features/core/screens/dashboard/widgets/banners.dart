@@ -10,6 +10,7 @@ import '../../../../../constants/colors.dart';
 import '../../../../../constants/text_strings.dart';
 import '../../../../authentication/models/student_model.dart';
 import '../../../controllers/student_profile_controller.dart';
+import '../../details/student_study_details_page.dart';
 import '../../profile/student/student_profile_page.dart';
 
 class StudentDashboardBanners extends StatelessWidget {
@@ -229,39 +230,45 @@ class StudentDashboardBanners extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Flexible(
-                                    child: Icon(LineAwesomeIcons.cog,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .outline)),
-                                const Flexible(
-                                  child: Icon(LineAwesomeIcons.university,
-                                      size: 70),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              cStudyDetails,
-                              style: txtTheme.headlineSmall
-                                  ?.copyWith(fontSize: 20),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            // Text(
-                            //   cDashboardBannerSubTitle,
-                            //   style: txtTheme.bodySmall,
-                            //   overflow: TextOverflow.ellipsis,
-                            // ),
-                          ],
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(10),
+                        onTap: () {
+                          Get.to(() => const StudentStudyDetailsPage());
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(
+                                      child: Icon(LineAwesomeIcons.cog,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .outline)),
+                                  const Flexible(
+                                    child: Icon(LineAwesomeIcons.university,
+                                        size: 70),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                cStudyDetails,
+                                style: txtTheme.headlineSmall
+                                    ?.copyWith(fontSize: 20),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              // Text(
+                              //   cDashboardBannerSubTitle,
+                              //   style: txtTheme.bodySmall,
+                              //   overflow: TextOverflow.ellipsis,
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -339,48 +346,55 @@ class StudentDashboardBanners extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(LineAwesomeIcons.comments,
-                                color: Theme.of(context).colorScheme.outline),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            Text(
-                              cFrequentlyAskedQuestions,
-                              style: txtTheme.headlineSmall
-                                  ?.copyWith(fontSize: 20),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            // Text.rich(TextSpan(
-                            //     text: cUpdatedAt,
-                            //     style: txtTheme.bodySmall,
-                            //     children: [
-                            //       TextSpan(
-                            //           text: studentProfileController.getDate(
-                            //               studentProfileController.updateAt.value),
-                            //           style: const TextStyle(
-                            //               fontWeight: FontWeight.bold, fontSize: 12)),
-                            //     ])),
-                          ],
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () {
+                    final url = Uri.parse('https://stavropol.mirea.ru/frequently-asked-questions');
+                    studentProfileController.launchInWebViewOrVC(url);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(LineAwesomeIcons.comments,
+                                  color: Theme.of(context).colorScheme.outline),
+                              const SizedBox(
+                                height: 25,
+                              ),
+                              Text(
+                                cFrequentlyAskedQuestions,
+                                style: txtTheme.headlineSmall
+                                    ?.copyWith(fontSize: 20),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              // Text.rich(TextSpan(
+                              //     text: cUpdatedAt,
+                              //     style: txtTheme.bodySmall,
+                              //     children: [
+                              //       TextSpan(
+                              //           text: studentProfileController.getDate(
+                              //               studentProfileController.updateAt.value),
+                              //           style: const TextStyle(
+                              //               fontWeight: FontWeight.bold, fontSize: 12)),
+                              //     ])),
+                            ],
+                          ),
                         ),
-                      ),
-                      const Flexible(
-                        child:
-                        // Lottie.asset(
-                        //     frameRate: FrameRate.max,
-                        //     cSupportCentre2Json),
-                        Image(image: AssetImage(cSupportCentre2))
-                      )
-                    ],
+                        const Flexible(
+                          child:
+                          // Lottie.asset(
+                          //     frameRate: FrameRate.max,
+                          //     cSupportCentre2Json),
+                          Image(image: AssetImage(cSupportCentre2))
+                        )
+                      ],
+                    ),
                   ),
                 )),
             const SizedBox(height: 10),

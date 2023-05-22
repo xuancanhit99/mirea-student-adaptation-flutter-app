@@ -170,6 +170,19 @@ class SignUpFormWidget extends StatelessWidget {
                                 placeOfBirth: '',
                                 nationality: ''
                             ),
+                            studyDetails: const StudyDetails(
+                                yearOfAdmission: '',
+                                formingDivision: '',
+                                issuingDivision: '',
+                                typeOfEducationalProgram: '',
+                                directionOfTraining: '',
+                                speciality: '',
+                                typeOfCostRecovery: '',
+                                qualificationGiven: '',
+                                standardDevelopmentPeriod: '',
+                                formOfLearning: '',
+                                targetReception: ''
+                            ),
                             createdAt: controller.now,
                             updatedAt: controller.now,
                             isActive: false,
