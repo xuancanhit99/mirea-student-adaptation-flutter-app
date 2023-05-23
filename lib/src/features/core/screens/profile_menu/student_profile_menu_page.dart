@@ -11,10 +11,12 @@ import 'package:msa/src/utils/string_casing_extension.dart';
 
 
 import '../../../../repository/authentication_repository/authentication_repository.dart';
+import '../../../../utils/theme/theme.dart';
 import '../../../authentication/models/student_model.dart';
 
 import '../../controllers/student_profile_controller.dart';
 import '../profile/admin/admin_student_update_profile_page.dart';
+import '../setting/student/student_setting_page.dart';
 
 
 class StudentProfileMenuPage extends StatelessWidget {
@@ -23,7 +25,7 @@ class StudentProfileMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final studentProfileController = Get.put(StudentProfileController());
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    // var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -36,9 +38,13 @@ class StudentProfileMenuPage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
+          Obx(
+            () => IconButton(
+                onPressed: () {
+                  studentProfileController.toggleDarkMode(studentProfileController.isDarkMode.value);
+                },
+                icon: Icon(studentProfileController.isDarkMode.value ? LineAwesomeIcons.sun : LineAwesomeIcons.moon)),
+          )
         ],
       ),
       body: StreamBuilder<StudentModel>(
@@ -164,7 +170,9 @@ class StudentProfileMenuPage extends StatelessWidget {
                     ProfileMenuWidget(
                       title: cSetting,
                       icon: Icons.settings,
-                      onPress: () {},
+                      onPress: () {
+                        Get.to(() => const StudentSettingPage());
+                      },
                     ),
                     ProfileMenuWidget(
                       title: cChangePassword,

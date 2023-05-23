@@ -1,4 +1,4 @@
-# msa
+# MIREA Student Adaptation - MSA
 
 Mobile Information System for Adaptation of Foreign University Students
 

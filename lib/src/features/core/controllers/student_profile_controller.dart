@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../repository/student_repository/student_repository.dart';
+import '../../../utils/theme/theme.dart';
 import '../../authentication/models/student_model.dart';
 
 class StudentProfileController extends GetxController {
@@ -77,10 +78,50 @@ class StudentProfileController extends GetxController {
   final _authRepo = Get.put(AuthenticationRepository());
   final _studentRepo = Get.put(StudentRepository());
 
+  final _themeModeKey = 'theme_mode';
+
   @override
   void onInit() {
     super.onInit();
     getStudentData();
+    initializeTheme();
+  }
+
+  var isDarkMode = false.obs;
+
+
+  void toggleDarkMode(bool value) {
+    isDarkMode.toggle();
+    changeTheme();
+  }
+
+  Future<void> changeTheme() async {
+    if (isDarkMode.value == true) {
+      Get.changeTheme(CAppTheme.darkTheme);
+      await saveThemeMode(ThemeMode.dark);
+    } else {
+      Get.changeTheme(CAppTheme.lightTheme);
+      await saveThemeMode(ThemeMode.light);
+    }
+  }
+
+  void initializeTheme() async {
+    final savedThemeMode = await getSavedThemeMode();
+    if (savedThemeMode != ThemeMode.system) {
+      isDarkMode.value = savedThemeMode == ThemeMode.dark;
+      changeTheme();
+    }
+  }
+
+  Future<void> saveThemeMode(ThemeMode themeMode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_themeModeKey, themeMode.index);
+  }
+
+  Future<ThemeMode> getSavedThemeMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    final themeModeIndex = prefs.getInt(_themeModeKey);
+    return themeModeIndex != null ? ThemeMode.values[themeModeIndex] : ThemeMode.system;
   }
 
   int calculateAge(String dateOfBirth) {

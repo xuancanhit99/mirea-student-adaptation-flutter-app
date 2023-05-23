@@ -16,6 +16,7 @@ Future<void> main() async {
       .then((value) => Get.put(AuthenticationRepository()));
   await Get.putAsync(() => SharedPreferences.getInstance());
 
+
   runApp(const MyApp()
       // DevicePreview(
       //   enabled: !kReleaseMode,
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'MSA',
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       home: const Scaffold(
         // backgroundColor: Theme.of(context).splashColor,
         body: Center(

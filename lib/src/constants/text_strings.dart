@@ -185,4 +185,10 @@ const String cMessagingWithCurator = "Messaging with Curator";
 
 
 const String cSetting = "Setting";
+const String cAppearance = "Appearance";
+const String cLanguage = "Language";
+const String cDarkMode = "Dark Mode";
+const String cLightMode = "Light Mode";
+const String cEnglish = "English";
+const String cRussian = "Russian";
 
