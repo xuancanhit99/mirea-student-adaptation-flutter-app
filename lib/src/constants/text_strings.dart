@@ -2,7 +2,7 @@
 const String cAppName = "MSA";
 const String cAppNameDetailed = "MIREA Student Adaptation";
 const String cAppNameDiploma = "Mobile Information System\nfor Adaptation of\nForeign University Students";
-const String cCopyright = "© Vu Xuan Canh IKBO–07–19";
+const String cCopyright = "© Vu Xuan Canh - Project MSA";
 
 const String cHome = "Home";
 
@@ -81,6 +81,9 @@ const String cWelcomeSubTitle = "Let's put your creativity on the development hi
 
 const String cEmail = "Email";
 const String cPassword = "Password";
+const String cOldPassword = "Old Password";
+const String cNewPassword = "New Password";
+const String cReEnterNewPassword = "Re-enter new Password";
 
 const String cRememberMe = "Remember me";
 const String cForgotPassword = "Forgot Password?";
@@ -131,6 +134,7 @@ const String cStudySchedule = "Study Schedule";
 const String cTodayIs = "Today is ";
 const String cUniversityMap = "University Map";
 const String cFrequentlyAskedQuestions = "Frequently Asked Questions (FAQs)";
+const String cFAQs = "FAQs";
 const String cDashboardBannerSubTitle = "10 Lessons";
 const String cViewAll = "View All";
 const String cGroupCurator = "Group Curator";
@@ -141,8 +145,10 @@ const String cInternationalStudentDepartment = "International Student Department
 
 // -- Profile Screen
 const String cProfile = "Profile";
+const String cProfileMenu = "Profile Menu";
 const String cEditProfile = "Edit Profile";
 const String cStudentUpdateProfile = "Student Update Profile";
+const String cChangePassword = "Change Password";
 const String cLogout = "Logout";
 
 //
@@ -177,4 +183,6 @@ const String cCuratorInfo = "Curator Info";
 const String cChatWithCurator = "Chat With Curator";
 const String cMessagingWithCurator = "Messaging with Curator";
 
+
+const String cSetting = "Setting";
 

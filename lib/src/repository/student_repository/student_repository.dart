@@ -97,6 +97,14 @@ class StudentRepository extends GetxController {
     }
   }
 
+  Future<void> updateNewPasswordStudentRepo(String newPassword, String uid) async {
+    try {
+      await _db.collection("Students").doc(uid).update({"Password": newPassword});
+    } catch (e) {
+      print('Error occurred: $e');
+    }
+  }
+
   Future deletePreviousFile(String uid) async {
     // Delete the previous file (if it exists)
     try {

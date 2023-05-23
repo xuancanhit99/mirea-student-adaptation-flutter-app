@@ -13,6 +13,7 @@ import 'package:msa/src/features/core/screens/dashboard/widgets/search.dart';
 import 'package:msa/src/features/core/screens/dashboard/widgets/top_courses.dart';
 
 import '../../controllers/student_profile_controller.dart';
+import '../navigation_drawer/student/student_navigation_drawer.dart';
 
 class StudentDashboard extends StatelessWidget {
   const StudentDashboard({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class StudentDashboard extends StatelessWidget {
         .of(context)
         .textTheme;
     return Scaffold(
+      drawer: const StudentNavigationDrawer(),
       appBar: const DashboardAppBar(),
       body: StreamBuilder<StudentModel>(
         stream: studentController.getStudentFromUid(),

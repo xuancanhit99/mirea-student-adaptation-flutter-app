@@ -227,6 +227,47 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+
+
+
+  Future<void> changePasswordRepo(String oldPassword, String newPassword) async {
+    try {
+      final user = _auth.currentUser;
+      final credential = EmailAuthProvider.credential(email: user?.email ?? '', password: oldPassword);
+      await user?.reauthenticateWithCredential(credential);
+      await user?.updatePassword(newPassword);
+      // Show success notification
+      Get.snackbar("Success", "Password changed successfully!",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.green);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'wrong-password') {
+        // Show error notification for wrong old password
+        Get.snackbar("Error", "Incorrect old password. Please try again.",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.white,
+            colorText: Colors.red);
+      } else {
+        Get.snackbar("Error", e.message!,
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.white,
+            colorText: Colors.red);
+      }
+      rethrow;
+    } catch (_) {
+      final ex = Exception('An error occurred while changing the password. Please try again later.');
+      Get.snackbar("Error", ex.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.white,
+          colorText: Colors.red);
+      throw ex;
+    }
+  }
+
+
+
+
   Future<void> deleteUserAuthRepo() async {
     final user = _auth.currentUser;
     try {
