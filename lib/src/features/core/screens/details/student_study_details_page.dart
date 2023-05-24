@@ -71,7 +71,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                     ),
                     Card(
                       elevation: 0,
-                      color: Colors.white,
+                      color: Theme.of(context).splashColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -124,7 +124,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                     ),
                     Card(
                       elevation: 0,
-                      color: Colors.white,
+                      color: Theme.of(context).splashColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -178,7 +178,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                     ),
                     Card(
                       elevation: 0,
-                      color: Colors.white,
+                      color: Theme.of(context).splashColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -230,7 +230,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                     ),
                     Card(
                       elevation: 0,
-                      color: Colors.white,
+                      color: Theme.of(context).splashColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -284,7 +284,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                     ),
                     Card(
                       elevation: 0,
-                      color: Colors.white,
+                      color: Theme.of(context).splashColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),

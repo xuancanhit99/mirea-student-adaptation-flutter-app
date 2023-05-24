@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
+import 'package:msa/src/features/core/screens/profile/student/student_update_profile_page.dart';
 import 'package:msa/src/utils/string_casing_extension.dart';
 
 import '../../../../../localization/language_service.dart';
@@ -27,11 +28,6 @@ class StudentProfilePage extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
-        ],
       ),
       body: StreamBuilder<StudentModel>(
           stream: studentProfileController.getStudentFromUid(),
@@ -406,7 +402,7 @@ class StudentProfilePage extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                             onPressed: () => Get.to(
-                                () => const AdminStudentUpdateProfilePage()),
+                                () => const StudentUpdateProfilePage()),
                             style: ElevatedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),

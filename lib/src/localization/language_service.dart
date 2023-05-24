@@ -165,6 +165,9 @@ class LanguageService {
       'cDeleteAllStudentData': 'Delete all student data!',
       'cYes': 'Yes',
       'cNo': 'No',
+      'cUpdate': 'Update',
+      'cTakeAPhoto': 'Take a photo',
+      'cSelectAPhoto': 'Select a photo',
     },
     'ru': {
       'cAppName': 'MSA',
@@ -332,6 +335,9 @@ class LanguageService {
       'cDeleteAllStudentData': 'Удалить все данные о студентах!',
       'cYes': 'Да',
       'cNo': 'Нет',
+      'cUpdate': 'Обновить',
+      'cTakeAPhoto': 'Сделать фото',
+      'cSelectAPhoto': 'Выбрать фото',
     }
   };
 
@@ -954,5 +960,14 @@ class LanguageService {
   }
   static String get cNo {
     return _localizedValues[defaultLanguage]!['cNo']!;
+  }
+  static String get cUpdate {
+    return _localizedValues[defaultLanguage]!['cUpdate']!;
+  }
+  static String get cTakeAPhoto {
+    return _localizedValues[defaultLanguage]!['cTakeAPhoto']!;
+  }
+  static String get cSelectAPhoto {
+    return _localizedValues[defaultLanguage]!['cSelectAPhoto']!;
   }
 }

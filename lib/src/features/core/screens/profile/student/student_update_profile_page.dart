@@ -8,6 +8,7 @@ import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/controllers/student_profile_controller.dart';
 
+import '../../../../../constants/variables.dart';
 import '../../../../../localization/language_service.dart';
 import '../../../controllers/institute_controller.dart';
 
@@ -65,10 +66,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 details.globalPosition.dy + 50,
                               ),
                               items: [
-                                const PopupMenuItem(
+                                PopupMenuItem(
                                   value: 'take_photo',
                                   child: Text.rich(TextSpan(children: [
-                                    WidgetSpan(
+                                    const WidgetSpan(
                                         child: Padding(
                                       padding: EdgeInsets.only(right: 5),
                                       child: Icon(
@@ -76,13 +77,13 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                         size: 20,
                                       ),
                                     )),
-                                    TextSpan(text: 'Take a photo')
+                                    TextSpan(text: LanguageService.cTakeAPhoto)
                                   ])),
                                 ),
-                                const PopupMenuItem(
+                                PopupMenuItem(
                                   value: 'select_photo',
                                   child: Text.rich(TextSpan(children: [
-                                    WidgetSpan(
+                                    const WidgetSpan(
                                         child: Padding(
                                       padding: EdgeInsets.only(right: 5),
                                       child: Icon(
@@ -90,7 +91,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                         size: 20,
                                       ),
                                     )),
-                                    TextSpan(text: 'Select a photo')
+                                    TextSpan(text: LanguageService.cSelectAPhoto)
                                   ])),
                                 )
                               ]);
@@ -273,7 +274,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                       const SizedBox(height: 10),
                       // Address
                       Obx(
-                        () => Visibility(
+                            () => Visibility(
                           visible: studentProfileController.isShowAddress.value,
                           child: Column(
                             children: [
@@ -283,7 +284,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                     label: Text(LanguageService.cCity),
                                     prefixIcon:
-                                        const Icon(LineAwesomeIcons.city)),
+                                    const Icon(LineAwesomeIcons.city)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -298,7 +299,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                     label: Text(LanguageService.cStreet),
                                     prefixIcon:
-                                        const Icon(LineAwesomeIcons.road)),
+                                    const Icon(LineAwesomeIcons.road)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -312,7 +313,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   Expanded(
                                     child: TextFormField(
                                       controller:
-                                          studentProfileController.house,
+                                      studentProfileController.house,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
                                           label: Text(LanguageService.cHouse),
@@ -330,11 +331,11 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   Expanded(
                                     child: TextFormField(
                                       controller:
-                                          studentProfileController.building,
+                                      studentProfileController.building,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
                                           label:
-                                              Text(LanguageService.cBuilding),
+                                          Text(LanguageService.cBuilding),
                                           prefixIcon: const Icon(
                                               LineAwesomeIcons.th_large)),
                                       // validator: (value) {
@@ -354,7 +355,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                     label: Text(LanguageService.cDormitory),
                                     prefixIcon:
-                                        const Icon(LineAwesomeIcons.building)),
+                                    const Icon(LineAwesomeIcons.building)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -380,12 +381,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               const SizedBox(height: 10),
                               TextFormField(
                                 controller:
-                                    studentProfileController.nationality,
+                                studentProfileController.nationality,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                     label: Text(LanguageService.cNationality),
                                     prefixIcon:
-                                        const Icon(LineAwesomeIcons.flag)),
+                                    const Icon(LineAwesomeIcons.flag)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -399,14 +400,14 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         ),
                       ),
                       Obx(
-                        () => SizedBox(
+                            () => SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {
                               studentProfileController
                                   .toggleSwitchIsShowAddress(
-                                      studentProfileController
-                                          .isShowAddress.value);
+                                  studentProfileController
+                                      .isShowAddress.value);
                             },
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
@@ -529,7 +530,435 @@ class StudentUpdateProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 10),
+                      Obx(
+                            () => Visibility(
+                          visible:
+                          studentProfileController.isShowStudyDetails.value,
+                          child: Column(
+                            children: [
+                              // Year of admission
+                              TextFormField(
+                                controller:
+                                studentProfileController.yearOfAdmission,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    label:
+                                    Text(LanguageService.cYearOfAdmission),
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        studentProfileController
+                                            .setYearFromGroup(
+                                            studentProfileController
+                                                .group.text);
+                                        //Get.snackbar("Year of admission", studentProfileController.yearOfAdmission.text);
+                                      },
+                                      icon: const Icon(Icons.sync),
+                                    ),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.chalkboard)),
 
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              // Forming division
+                              TextFormField(
+                                controller:
+                                studentProfileController.formingDivision,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount: instituteController
+                                              .institutes.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(instituteController
+                                                    .institutes[index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .formingDivision.text =
+                                                  instituteController
+                                                      .institutes[index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label:
+                                    Text(LanguageService.cFormingDivision),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.microscope)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              // Issuing division
+                              TextFormField(
+                                controller:
+                                studentProfileController.issuingDivision,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                    label:
+                                    Text(LanguageService.cIssuingDivision),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.graduation_cap)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              // Type of educational program
+                              TextFormField(
+                                controller: studentProfileController
+                                    .typeOfEducationalProgram,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount:
+                                          cListTypeOfEducationalProgram
+                                              .length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(
+                                                    cListTypeOfEducationalProgram[
+                                                    index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .typeOfEducationalProgram
+                                                      .text =
+                                                  cListTypeOfEducationalProgram[
+                                                  index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService
+                                        .cTypeOfEducationalProgram),
+                                    prefixIcon:
+                                    const Icon(LineAwesomeIcons.atom)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              // Direction of training
+                              TextFormField(
+                                controller: studentProfileController
+                                    .directionOfTraining,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cDirectionOfTraining),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.chalkboard_teacher)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              // Speciality
+                              TextFormField(
+                                controller: studentProfileController.speciality,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cSpeciality),
+                                    prefixIcon:
+                                    const Icon(LineAwesomeIcons.suitcase)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller:
+                                studentProfileController.typeOfCostRecovery,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount:
+                                          cListTypeOfCostRecovery.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(
+                                                    cListTypeOfCostRecovery[index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .typeOfCostRecovery.text =
+                                                  cListTypeOfCostRecovery[
+                                                  index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cTypeOfCostRecovery),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.money_check)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller:
+                                studentProfileController.qualificationGiven,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount:
+                                          cListTypeOfEducationalProgram
+                                              .length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(
+                                                    cListTypeOfEducationalProgram[
+                                                    index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .qualificationGiven.text =
+                                                  cListTypeOfEducationalProgram[
+                                                  index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cQualificationGiven),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.user_graduate)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: studentProfileController
+                                    .standardDevelopmentPeriod,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount: cList1YearTo5Years.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title:
+                                                Text(cList1YearTo5Years[index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .standardDevelopmentPeriod
+                                                      .text =
+                                                  cList1YearTo5Years[index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService
+                                        .cStandardDevelopmentPeriod),
+                                    prefixIcon:
+                                    const Icon(LineAwesomeIcons.pen_nib)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller:
+                                studentProfileController.formOfLearning,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount: cListFormOfLearning.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(
+                                                    cListFormOfLearning[index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .formOfLearning.text =
+                                                  cListFormOfLearning[index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label:
+                                    Text(LanguageService.cFormOfLearning),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.book_reader)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller:
+                                studentProfileController.targetReception,
+                                showCursor: false,
+                                keyboardType: TextInputType.none,
+                                readOnly: true,
+                                onTap: () {
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: ListView.builder(
+                                          itemCount: cListYesNo.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                                title: Text(cListYesNo[index]),
+                                                onTap: () {
+                                                  studentProfileController
+                                                      .targetReception
+                                                      .text = cListYesNo[index];
+                                                  Get.back();
+                                                },
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                    label:
+                                    Text(LanguageService.cTargetReception),
+                                    prefixIcon:
+                                    const Icon(LineAwesomeIcons.shapes)),
+                                // validator: (value) {
+                                //   if (value!.isEmpty) {
+                                //     return "Please enter student's city";
+                                //   }
+                                //   return null;
+                                // },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Obx(
+                            () => SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              studentProfileController
+                                  .toggleSwitchIsShowStudyDetails(
+                                  studentProfileController
+                                      .isShowStudyDetails.value);
+                            },
+                            style: OutlinedButton.styleFrom(
+                                side: BorderSide.none,
+                                shape: const StadiumBorder()),
+                            child: Text(
+                              studentProfileController.isShowStudyDetails.value
+                                  ? LanguageService.cHideStudyDetails
+                                  : LanguageService.cShowStudyDetails,
+                              style: const TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       // Update button
                       SizedBox(
@@ -576,28 +1005,28 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                         .trim()),
                                 studyDetails: StudyDetails(
                                     yearOfAdmission: studentProfileController
-                                        .yearOfAdmission.text,
+                                        .yearOfAdmission.text.trim(),
                                     formingDivision: studentProfileController
-                                        .formingDivision.text,
+                                        .formingDivision.text.trim(),
                                     issuingDivision: studentProfileController
-                                        .issuingDivision.text,
+                                        .issuingDivision.text.trim(),
                                     typeOfEducationalProgram: studentProfileController
-                                        .typeOfEducationalProgram.text,
+                                        .typeOfEducationalProgram.text.trim(),
                                     directionOfTraining: studentProfileController
-                                        .directionOfTraining.text,
+                                        .directionOfTraining.text.trim(),
                                     speciality: studentProfileController
-                                        .speciality.text,
+                                        .speciality.text.trim(),
                                     typeOfCostRecovery: studentProfileController
-                                        .typeOfCostRecovery.text,
+                                        .typeOfCostRecovery.text.trim(),
                                     qualificationGiven: studentProfileController
-                                        .qualificationGiven.text,
+                                        .qualificationGiven.text.trim(),
                                     standardDevelopmentPeriod:
                                         studentProfileController
-                                            .standardDevelopmentPeriod.text,
+                                            .standardDevelopmentPeriod.text.trim(),
                                     formOfLearning: studentProfileController
-                                        .formOfLearning.text,
+                                        .formOfLearning.text.trim(),
                                     targetReception: studentProfileController
-                                        .targetReception.text),
+                                        .targetReception.text.trim()),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:
@@ -612,9 +1041,9 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               backgroundColor: cPrimaryColor,
                               side: BorderSide.none,
                               shape: const StadiumBorder()),
-                          child: const Text(
-                            "Update",
-                            style: TextStyle(color: cDarkColor),
+                          child: Text(
+                            LanguageService.cUpdate,
+                            style: const TextStyle(color: cDarkColor),
                           ),
                         ),
                       ),
@@ -652,36 +1081,39 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   ])),
                             ],
                           ),
-                          ElevatedButton(
-                              onPressed: () => showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          LanguageService.cDeleteAllStudentData),
-                                      content: Text(LanguageService.cAreYouSure),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () => Get.back(),
-                                            child: const Text("No")),
-                                        TextButton(
-                                            onPressed: () {
-                                              studentProfileController
-                                                  .deleteStudent();
-                                              Get.back();
-                                            },
-                                            child: const Text("Yes")),
-                                      ],
-                                    );
-                                  }),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.redAccent.withOpacity(0.1),
-                                  elevation: 0,
-                                  foregroundColor: Colors.red,
-                                  shape: const StadiumBorder(),
-                                  side: BorderSide.none),
-                              child: Text(LanguageService.cDelete))
+                          SizedBox(
+                            width: 80,
+                            child: ElevatedButton(
+                                onPressed: () => showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(
+                                            LanguageService.cDeleteAllStudentData),
+                                        content: Text(LanguageService.cAreYouSure),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () => Get.back(),
+                                              child: Text(LanguageService.cNo)),
+                                          TextButton(
+                                              onPressed: () {
+                                                studentProfileController
+                                                    .deleteStudent();
+                                                Get.back();
+                                              },
+                                              child: Text(LanguageService.cYes))
+                                        ],
+                                      );
+                                    }),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors.redAccent.withOpacity(0.1),
+                                    elevation: 0,
+                                    foregroundColor: Colors.red,
+                                    shape: const StadiumBorder(),
+                                    side: BorderSide.none),
+                                child: Text(LanguageService.cDelete)),
+                          )
                         ],
                       )
                     ],

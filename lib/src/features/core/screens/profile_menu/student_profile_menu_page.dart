@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/features/core/screens/change_password/student_change_passowrd.dart';
-import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
 import 'package:msa/src/features/core/screens/profile/student/student_update_profile_page.dart';
 import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
-import 'package:msa/src/utils/string_casing_extension.dart';
 
 import '../../../../localization/language_service.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
@@ -98,7 +96,8 @@ class StudentProfileMenuPage extends StatelessWidget {
                             color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
-                            text: studentProfileController.getMultiLangGender(studentData.gender!),
+                            text: studentProfileController
+                                .getMultiLangGender(studentData.gender!),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
@@ -133,16 +132,10 @@ class StudentProfileMenuPage extends StatelessWidget {
                             ],
                           )
                         ])),
-
                     const SizedBox(
-                      height: 20,
+                      height: 200,
                     ),
-
                     const Divider(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-
                     // Menu
                     ProfileMenuWidget(
                       title: LanguageService.cSettings,

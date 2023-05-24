@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 
 import '../../../../../localization/language_service.dart';
 import '../../../controllers/student_profile_controller.dart';
@@ -87,7 +88,7 @@ class StudentSettingPage extends StatelessWidget {
                 onChanged: (value) {
                   studentSettingController.selectedLanguage.value = value!;
                   studentSettingController.changeLanguage();
-                  Get.back();
+                  Get.offAll(() => const StudentDashboard());
                 },
               ),
             ),
@@ -100,7 +101,7 @@ class StudentSettingPage extends StatelessWidget {
                 onChanged: (value) {
                   studentSettingController.selectedLanguage.value = value!;
                   studentSettingController.changeLanguage();
-                  Get.back();
+                  Get.offAll(() => const StudentDashboard());
                 },
               ),
             ),

@@ -66,10 +66,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                 details.globalPosition.dy + 50,
                               ),
                               items: [
-                                const PopupMenuItem(
+                                PopupMenuItem(
                                   value: 'take_photo',
                                   child: Text.rich(TextSpan(children: [
-                                    WidgetSpan(
+                                    const WidgetSpan(
                                         child: Padding(
                                       padding: EdgeInsets.only(right: 5),
                                       child: Icon(
@@ -77,13 +77,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         size: 20,
                                       ),
                                     )),
-                                    TextSpan(text: 'Take a photo')
+                                    TextSpan(text: LanguageService.cTakeAPhoto)
                                   ])),
                                 ),
-                                const PopupMenuItem(
+                                PopupMenuItem(
                                   value: 'select_photo',
                                   child: Text.rich(TextSpan(children: [
-                                    WidgetSpan(
+                                    const WidgetSpan(
                                         child: Padding(
                                       padding: EdgeInsets.only(right: 5),
                                       child: Icon(
@@ -91,7 +91,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         size: 20,
                                       ),
                                     )),
-                                    TextSpan(text: 'Select a photo')
+                                    TextSpan(text: LanguageService.cSelectAPhoto)
                                   ])),
                                 )
                               ]);
@@ -1000,28 +1000,28 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         .trim()),
                                 studyDetails: StudyDetails(
                                     yearOfAdmission: studentProfileController
-                                        .yearOfAdmission.text,
+                                        .yearOfAdmission.text.trim(),
                                     formingDivision: studentProfileController
-                                        .formingDivision.text,
+                                        .formingDivision.text.trim(),
                                     issuingDivision: studentProfileController
-                                        .issuingDivision.text,
+                                        .issuingDivision.text.trim(),
                                     typeOfEducationalProgram: studentProfileController
-                                        .typeOfEducationalProgram.text,
+                                        .typeOfEducationalProgram.text.trim(),
                                     directionOfTraining: studentProfileController
-                                        .directionOfTraining.text,
+                                        .directionOfTraining.text.trim(),
                                     speciality: studentProfileController
-                                        .speciality.text,
+                                        .speciality.text.trim(),
                                     typeOfCostRecovery: studentProfileController
-                                        .typeOfCostRecovery.text,
+                                        .typeOfCostRecovery.text.trim(),
                                     qualificationGiven: studentProfileController
-                                        .qualificationGiven.text,
+                                        .qualificationGiven.text.trim(),
                                     standardDevelopmentPeriod:
                                         studentProfileController
-                                            .standardDevelopmentPeriod.text,
+                                            .standardDevelopmentPeriod.text.trim(),
                                     formOfLearning: studentProfileController
-                                        .formOfLearning.text,
+                                        .formOfLearning.text.trim(),
                                     targetReception: studentProfileController
-                                        .targetReception.text),
+                                        .targetReception.text.trim()),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:
@@ -1076,36 +1076,39 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   ])),
                             ],
                           ),
-                          ElevatedButton(
-                              onPressed: () => showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          LanguageService.cDeleteAllStudentData),
-                                      content: Text(LanguageService.cAreYouSure),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () => Get.back(),
-                                            child: const Text("No")),
-                                        TextButton(
-                                            onPressed: () {
-                                              studentProfileController
-                                                  .deleteStudent();
-                                              Get.back();
-                                            },
-                                            child: const Text("Yes")),
-                                      ],
-                                    );
-                                  }),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.redAccent.withOpacity(0.1),
-                                  elevation: 0,
-                                  foregroundColor: Colors.red,
-                                  shape: const StadiumBorder(),
-                                  side: BorderSide.none),
-                              child: Text(LanguageService.cDelete))
+                          SizedBox(
+                            width: 80,
+                            child: ElevatedButton(
+                                onPressed: () => showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(
+                                            LanguageService.cDeleteAllStudentData),
+                                        content: Text(LanguageService.cAreYouSure),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () => Get.back(),
+                                              child: Text(LanguageService.cNo)),
+                                          TextButton(
+                                              onPressed: () {
+                                                studentProfileController
+                                                    .deleteStudent();
+                                                Get.back();
+                                              },
+                                              child: Text(LanguageService.cYes)),
+                                        ],
+                                      );
+                                    }),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors.redAccent.withOpacity(0.1),
+                                    elevation: 0,
+                                    foregroundColor: Colors.red,
+                                    shape: const StadiumBorder(),
+                                    side: BorderSide.none),
+                                child: Text(LanguageService.cDelete)),
+                          )
                         ],
                       )
                     ],
