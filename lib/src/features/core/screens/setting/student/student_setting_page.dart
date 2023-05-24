@@ -87,6 +87,7 @@ class StudentSettingPage extends StatelessWidget {
                 onChanged: (value) {
                   studentSettingController.selectedLanguage.value = value!;
                   studentSettingController.changeLanguage();
+                  Get.back();
                 },
               ),
             ),
@@ -99,6 +100,7 @@ class StudentSettingPage extends StatelessWidget {
                 onChanged: (value) {
                   studentSettingController.selectedLanguage.value = value!;
                   studentSettingController.changeLanguage();
+                  Get.back();
                 },
               ),
             ),

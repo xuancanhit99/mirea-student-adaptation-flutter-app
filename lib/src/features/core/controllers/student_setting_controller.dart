@@ -11,42 +11,36 @@ class StudentSettingController extends GetxController {
 
   var selectedLanguage = ''.obs;
 
-  // final _languageKey = 'language';
+  final _selectedLanguageKey = 'selected_language';
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   // initializeLanguage();
-  // }
-  //
-  // void initializeLanguage() async {
-  //   final language = await getSavedLanguage();
-  //   selectedLanguage.value = language;
-  //   changeLanguage();
-  // }
-  //
-  // Future<void> saveLanguage(String lang) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString(_languageKey, lang);
-  // }
-  //
-  // Future<String> getSavedLanguage() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final language = prefs.getString(_languageKey);
-  //   return language ?? 'en';
-  // }
-
-
-
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    // Set language on start
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedLanguage = prefs.getString(_selectedLanguageKey);
+    if (storedLanguage != null) {
+      selectedLanguage.value = storedLanguage;
+      if (storedLanguage == 'en') {
+        Get.updateLocale(const Locale('en', 'US'));
+      } else if (storedLanguage == 'ru') {
+        Get.updateLocale(const Locale('ru', 'RU'));
+      }
+      LanguageService.language = selectedLanguage.value;
+    }
+  }
 
   Future<void> changeLanguage() async {
        if (selectedLanguage.value == 'en') {
          Get.updateLocale(const Locale('en', 'US'));
-         // await saveLanguage('en');
-       } else {
+       } else if (selectedLanguage.value == 'ru') {
          Get.updateLocale(const Locale('ru', 'RU'));
-         // await saveLanguage('ru');
        }
+       // else {
+       //   selectedLanguage.value = 'en';
+       // }
+       SharedPreferences prefs = await SharedPreferences.getInstance();
+       await prefs.setString(_selectedLanguageKey, selectedLanguage.value);
        LanguageService.language = selectedLanguage.value;
   }
 

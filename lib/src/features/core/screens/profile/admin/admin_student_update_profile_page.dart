@@ -1081,8 +1081,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: const Text(
-                                          "Delete all student data!"),
+                                      title: Text(
+                                          LanguageService.cDeleteAllStudentData),
                                       content: Text(LanguageService.cAreYouSure),
                                       actions: [
                                         TextButton(
