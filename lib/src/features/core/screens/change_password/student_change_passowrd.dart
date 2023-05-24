@@ -1,15 +1,11 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/controllers/student/student_change_password_controller.dart';
-import 'package:msa/src/features/authentication/models/student_model.dart';
-import 'package:msa/src/features/core/controllers/student_profile_controller.dart';
+
+import '../../../../localization/language_service.dart';
 
 class StudentChangePasswordPage extends StatelessWidget {
   const StudentChangePasswordPage({Key? key}) : super(key: key);
@@ -26,7 +22,7 @@ class StudentChangePasswordPage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cChangePassword,
+          LanguageService.cChangePassword,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -47,7 +43,7 @@ class StudentChangePasswordPage extends StatelessWidget {
                                 .showOldPassword.value,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                                label: const Text(cOldPassword),
+                                label: Text(LanguageService.cOldPassword),
                                 suffixIcon: IconButton(
                                   onPressed: studentChangePasswordController
                                       .toggleShowOldPassword,
@@ -74,7 +70,7 @@ class StudentChangePasswordPage extends StatelessWidget {
                                 .showNewPassword.value,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                                label: const Text(cNewPassword),
+                                label: Text(LanguageService.cNewPassword),
                                 suffixIcon: IconButton(
                                   onPressed: studentChangePasswordController
                                       .toggleShowNewPassword,
@@ -105,7 +101,8 @@ class StudentChangePasswordPage extends StatelessWidget {
                                 .showReEnterNewPassword.value,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                                label: const Text(cReEnterNewPassword),
+                                label:
+                                    Text(LanguageService.cReEnterNewPassword),
                                 suffixIcon: IconButton(
                                   onPressed: studentChangePasswordController
                                       .toggleShowReEnterNewPassword,

@@ -5,10 +5,10 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/controllers/student_profile_controller.dart';
 
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/institute_controller.dart';
 
 class StudentUpdateProfilePage extends StatelessWidget {
@@ -27,7 +27,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cStudentUpdateProfile,
+          LanguageService.cStudentUpdateProfile,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -47,7 +47,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
                       child: Obx(() => studentProfileController.img.value == ""
                           ? Image.asset(cUserProfileImage, fit: BoxFit.cover)
                           : Image.network(studentProfileController.img.value,
-                          fit: BoxFit.cover)),
+                              fit: BoxFit.cover)),
                     ),
                   ),
                   // Change profile image
@@ -70,12 +70,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   child: Text.rich(TextSpan(children: [
                                     WidgetSpan(
                                         child: Padding(
-                                          padding: EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            LineAwesomeIcons.camera,
-                                            size: 20,
-                                          ),
-                                        )),
+                                      padding: EdgeInsets.only(right: 5),
+                                      child: Icon(
+                                        LineAwesomeIcons.camera,
+                                        size: 20,
+                                      ),
+                                    )),
                                     TextSpan(text: 'Take a photo')
                                   ])),
                                 ),
@@ -84,12 +84,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   child: Text.rich(TextSpan(children: [
                                     WidgetSpan(
                                         child: Padding(
-                                          padding: EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            LineAwesomeIcons.image,
-                                            size: 20,
-                                          ),
-                                        )),
+                                      padding: EdgeInsets.only(right: 5),
+                                      child: Icon(
+                                        LineAwesomeIcons.image,
+                                        size: 20,
+                                      ),
+                                    )),
                                     TextSpan(text: 'Select a photo')
                                   ])),
                                 )
@@ -98,12 +98,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                           if (selectedOption == 'take_photo') {
                             // Handle "Take a photo" option
                             final String? imgUrl =
-                            await studentProfileController.takePhoto();
+                                await studentProfileController.takePhoto();
                             studentProfileController.img.value = imgUrl!;
                           } else if (selectedOption == 'select_photo') {
                             // Handle "Select a photo" option
                             final String? imgUrl =
-                            await studentProfileController.selectPhoto();
+                                await studentProfileController.selectPhoto();
                             studentProfileController.img.value = imgUrl!;
                           }
                         },
@@ -135,9 +135,9 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         showCursor: false,
                         keyboardType: TextInputType.none,
                         readOnly: true,
-                        decoration: const InputDecoration(
-                            label: Text(cIDStudent),
-                            prefixIcon: Icon(Icons.numbers_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cIDStudent),
+                            prefixIcon: const Icon(Icons.numbers_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's ID";
@@ -151,9 +151,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         controller: studentProfileController.fullName,
                         keyboardType: TextInputType.name,
                         // initialValue: studentData.fullName,
-                        decoration: const InputDecoration(
-                            label: Text(cFullName),
-                            prefixIcon: Icon(Icons.person_outline_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cFullName),
+                            prefixIcon:
+                                const Icon(Icons.person_outline_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's full name";
@@ -178,10 +179,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   itemCount: instituteController.groups.length,
                                   itemBuilder: (context, index) => ListTile(
                                     title:
-                                    Text(instituteController.groups[index]),
+                                        Text(instituteController.groups[index]),
                                     onTap: () {
                                       studentProfileController.group.text =
-                                      instituteController.groups[index];
+                                          instituteController.groups[index];
                                       Get.back();
                                     },
                                   ),
@@ -190,9 +191,9 @@ class StudentUpdateProfilePage extends StatelessWidget {
                             ),
                           );
                         },
-                        decoration: const InputDecoration(
-                            label: Text(cGroup),
-                            prefixIcon: Icon(Icons.class_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cGroup),
+                            prefixIcon: const Icon(Icons.class_outlined)),
                       ),
                       const SizedBox(height: 10),
                       // Email
@@ -201,9 +202,9 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         showCursor: false,
                         keyboardType: TextInputType.none,
                         readOnly: true,
-                        decoration: const InputDecoration(
-                            label: Text(cEmail),
-                            prefixIcon: Icon(Icons.email_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cEmail),
+                            prefixIcon: const Icon(Icons.email_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter your email';
@@ -259,9 +260,9 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         onTap: () {
                           studentProfileController.selectDate(context);
                         },
-                        decoration: const InputDecoration(
-                            label: Text(cDateOfBirth),
-                            prefixIcon: Icon(Icons.cake_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cDateOfBirth),
+                            prefixIcon: const Icon(Icons.cake_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's date of birth";
@@ -272,16 +273,17 @@ class StudentUpdateProfilePage extends StatelessWidget {
                       const SizedBox(height: 10),
                       // Address
                       Obx(
-                            () => Visibility(
+                        () => Visibility(
                           visible: studentProfileController.isShowAddress.value,
                           child: Column(
                             children: [
                               TextFormField(
                                 controller: studentProfileController.city,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cCity),
-                                    prefixIcon: Icon(LineAwesomeIcons.city)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cCity),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.city)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -293,9 +295,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.street,
                                 keyboardType: TextInputType.streetAddress,
-                                decoration: const InputDecoration(
-                                    label: Text(cStreet),
-                                    prefixIcon: Icon(LineAwesomeIcons.road)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cStreet),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.road)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -308,12 +311,13 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: TextFormField(
-                                      controller: studentProfileController.house,
+                                      controller:
+                                          studentProfileController.house,
                                       keyboardType: TextInputType.text,
-                                      decoration: const InputDecoration(
-                                          label: Text(cHouse),
-                                          prefixIcon:
-                                          Icon(LineAwesomeIcons.home)),
+                                      decoration: InputDecoration(
+                                          label: Text(LanguageService.cHouse),
+                                          prefixIcon: const Icon(
+                                              LineAwesomeIcons.home)),
                                       // validator: (value) {
                                       //   if (value!.isEmpty) {
                                       //     return "Please enter student's city";
@@ -326,12 +330,13 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                   Expanded(
                                     child: TextFormField(
                                       controller:
-                                      studentProfileController.building,
+                                          studentProfileController.building,
                                       keyboardType: TextInputType.text,
-                                      decoration: const InputDecoration(
-                                          label: Text(cBuilding),
-                                          prefixIcon:
-                                          Icon(LineAwesomeIcons.th_large)),
+                                      decoration: InputDecoration(
+                                          label:
+                                              Text(LanguageService.cBuilding),
+                                          prefixIcon: const Icon(
+                                              LineAwesomeIcons.th_large)),
                                       // validator: (value) {
                                       //   if (value!.isEmpty) {
                                       //     return "Please enter student's city";
@@ -346,9 +351,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.dormitory,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cDormitory),
-                                    prefixIcon: Icon(LineAwesomeIcons.building)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cDormitory),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.building)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -360,10 +366,10 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.pob,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cPlaceOfBirth),
-                                    prefixIcon: Icon(
-                                        LineAwesomeIcons.globe_with_asia_shown)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cPlaceOfBirth),
+                                    prefixIcon: const Icon(LineAwesomeIcons
+                                        .globe_with_asia_shown)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -373,11 +379,13 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.nationality,
+                                controller:
+                                    studentProfileController.nationality,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cNationality),
-                                    prefixIcon: Icon(LineAwesomeIcons.flag)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cNationality),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.flag)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -391,17 +399,22 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         ),
                       ),
                       Obx(
-                            () => SizedBox(
+                        () => SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {
-                              studentProfileController.toggleSwitchIsShowAddress(studentProfileController.isShowAddress.value);
+                              studentProfileController
+                                  .toggleSwitchIsShowAddress(
+                                      studentProfileController
+                                          .isShowAddress.value);
                             },
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
                             child: Text(
-                              studentProfileController.isShowAddress.value ? cHideAddress : cShowAddress,
+                              studentProfileController.isShowAddress.value
+                                  ? LanguageService.cHideAddress
+                                  : LanguageService.cShowAddress,
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ),
@@ -411,12 +424,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         // Dung cai nay de hien thi Divider doc
                         child: Row(
                           children: [
-                            const Expanded(
+                            Expanded(
                                 flex: 1,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    cGender,
+                                    LanguageService.cGender,
                                   ),
                                 )),
                             const Padding(
@@ -426,45 +439,45 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: Column(
                                 children: [
                                   Obx(
-                                        () => RadioListTile(
-                                      title: const Text(cMale),
+                                    () => RadioListTile(
+                                      title: Text(LanguageService.cMale),
                                       value: "male",
                                       groupValue: studentProfileController
                                           .gender
                                           .toString(),
                                       onChanged: (value) {
                                         studentProfileController.gender.value =
-                                        value!;
+                                            value!;
                                       },
                                     ),
                                   ),
                                   Obx(
-                                        () => RadioListTile(
-                                      title: const Text(cFemale),
+                                    () => RadioListTile(
+                                      title: Text(LanguageService.cFemale),
                                       value: "female",
                                       groupValue: studentProfileController
                                           .gender
                                           .toString(),
                                       onChanged: (value) {
                                         studentProfileController.gender.value =
-                                        value!;
+                                            value!;
                                       },
                                     ),
                                   ),
                                   Obx(
-                                        () => RadioListTile(
-                                      title: const Text(cOther),
+                                    () => RadioListTile(
+                                      title: Text(LanguageService.cOther),
                                       value: "other",
                                       groupValue: studentProfileController
                                           .gender
                                           .toString(),
                                       onChanged: (value) {
                                         studentProfileController.gender.value =
-                                        value!;
+                                            value!;
                                       },
                                     ),
                                   )
@@ -478,11 +491,11 @@ class StudentUpdateProfilePage extends StatelessWidget {
                       IntrinsicHeight(
                         child: Row(
                           children: [
-                            const Expanded(
+                            Expanded(
                                 flex: 1,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(cStatus),
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(LanguageService.cStatus),
                                 )),
                             const Padding(
                               padding: EdgeInsets.symmetric(vertical: 19),
@@ -491,21 +504,23 @@ class StudentUpdateProfilePage extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                                flex: 3,
+                                flex: 2,
                                 child: Obx(
-                                      () => Switch(
+                                  () => Switch(
                                     thumbIcon:
-                                    MaterialStateProperty.resolveWith(
-                                          (Set<MaterialState> states) {
+                                        MaterialStateProperty.resolveWith(
+                                      (Set<MaterialState> states) {
                                         if (states
                                             .contains(MaterialState.selected)) {
-                                          return const Icon(Icons.check, color: Colors.green);
+                                          return const Icon(Icons.check,
+                                              color: Colors.green);
                                         }
-                                        return const Icon(Icons.close, color: Colors.red);
+                                        return const Icon(Icons.close,
+                                            color: Colors.red);
                                       },
                                     ),
                                     value:
-                                    studentProfileController.isActive.value,
+                                        studentProfileController.isActive.value,
                                     onChanged: null,
                                     // studentProfileController
                                     //     .toggleSwitchIsActive,
@@ -530,11 +545,11 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                 fullName: studentProfileController.fullName.text
                                     .trim(),
                                 email:
-                                studentProfileController.email.text.trim(),
+                                    studentProfileController.email.text.trim(),
                                 password: studentProfileController.password.text
                                     .trim(),
                                 group:
-                                studentProfileController.group.text.trim(),
+                                    studentProfileController.group.text.trim(),
                                 phoneNo: studentProfileController.phoneNo.text
                                     .trim(),
                                 img: studentProfileController.img.value,
@@ -576,17 +591,17 @@ class StudentUpdateProfilePage extends StatelessWidget {
                                         .typeOfCostRecovery.text,
                                     qualificationGiven: studentProfileController
                                         .qualificationGiven.text,
-                                    standardDevelopmentPeriod: studentProfileController
-                                        .standardDevelopmentPeriod.text,
+                                    standardDevelopmentPeriod:
+                                        studentProfileController
+                                            .standardDevelopmentPeriod.text,
                                     formOfLearning: studentProfileController
                                         .formOfLearning.text,
                                     targetReception: studentProfileController
-                                        .targetReception.text
-                                ),
+                                        .targetReception.text),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:
-                                studentProfileController.isActive.value,
+                                    studentProfileController.isActive.value,
                                 isAdmin: false,
                               );
                               await studentProfileController
@@ -611,20 +626,21 @@ class StudentUpdateProfilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Obx(
-                                    () => Text.rich(TextSpan(
-                                    text: cUpdatedAt,
+                                () => Text.rich(TextSpan(
+                                    text: LanguageService.cUpdatedAt,
                                     style: const TextStyle(fontSize: 12),
                                     children: [
                                       TextSpan(
-                                          text: studentProfileController.getDate(studentProfileController.updateAt.value),
+                                          text: studentProfileController
+                                              .getDate(studentProfileController
+                                                  .updateAt.value),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12)),
                                     ])),
-
                               ),
                               Text.rich(TextSpan(
-                                  text: cJoinedAt,
+                                  text: LanguageService.cJoinedAt,
                                   style: const TextStyle(fontSize: 12),
                                   children: [
                                     TextSpan(
@@ -637,27 +653,35 @@ class StudentUpdateProfilePage extends StatelessWidget {
                             ],
                           ),
                           ElevatedButton(
-                              onPressed: () => showDialog(context: context, builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text("Delete all student data!"),
-                                  content: const Text("Are you sure?"),
-                                  actions: [
-                                    TextButton(onPressed: () => Get.back(), child: const Text("No")),
-                                    TextButton(onPressed: () {
-                                      studentProfileController.deleteStudent();
-                                      Get.back();
-                                    }, child: const Text("Yes")),
-                                  ],
-                                );
-                              }),
+                              onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          LanguageService.cDeleteAllStudentData),
+                                      content: Text(LanguageService.cAreYouSure),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () => Get.back(),
+                                            child: const Text("No")),
+                                        TextButton(
+                                            onPressed: () {
+                                              studentProfileController
+                                                  .deleteStudent();
+                                              Get.back();
+                                            },
+                                            child: const Text("Yes")),
+                                      ],
+                                    );
+                                  }),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                  Colors.redAccent.withOpacity(0.1),
+                                      Colors.redAccent.withOpacity(0.1),
                                   elevation: 0,
                                   foregroundColor: Colors.red,
                                   shape: const StadiumBorder(),
                                   side: BorderSide.none),
-                              child: const Text(cDelete))
+                              child: Text(LanguageService.cDelete))
                         ],
                       )
                     ],

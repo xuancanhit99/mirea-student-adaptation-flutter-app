@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/imo_controller.dart';
 import '../../../models/imo_staff_model.dart';
-
 
 class IMOGeneralInfo extends StatelessWidget {
   const IMOGeneralInfo({
@@ -20,13 +19,10 @@ class IMOGeneralInfo extends StatelessWidget {
         stream: imoController.getIMOStaffFromUid("1"),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-                child: Text('Error fetching student details.'));
+            return const Center(child: Text('Error fetching student details.'));
           }
-          if (snapshot.connectionState ==
-              ConnectionState.waiting) {
-            return const Center(
-                child: CircularProgressIndicator());
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
           final imoStaffData = snapshot.data!;
           return SingleChildScrollView(
@@ -49,16 +45,13 @@ class IMOGeneralInfo extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.all(5),
                             child: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.end,
-                                    mainAxisSize:
-                                    MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Icon(
                                         LineAwesomeIcons.clock,
@@ -67,22 +60,25 @@ class IMOGeneralInfo extends StatelessWidget {
                                             .outline,
                                       ),
                                       Text(
-                                        " $cReceptionHours",
+                                        " ${LanguageService.cReceptionHours}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge
                                             ?.copyWith(
-                                            fontWeight:
-                                            FontWeight
-                                                .bold),
+                                                fontWeight: FontWeight.bold),
                                       )
                                     ],
                                   ),
-                                  const Text("Mon$c918"),
-                                  const Text("Tue$c918"),
-                                  const Text("Wed$c918"),
-                                  const Text("Thu$c918"),
-                                  const Text("Fri$c917"),
+                                  Text(
+                                      "${LanguageService.cMon}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cTue}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cWed}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cThu}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cFri}${LanguageService.c917}"),
                                 ]),
                           ),
                         )
@@ -91,61 +87,46 @@ class IMOGeneralInfo extends StatelessWidget {
                     const SizedBox(height: 20),
                     Text(
                       imoStaffData.fullName,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     Text(
                       imoStaffData.position,
-                      style:
-                      Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Text.rich(TextSpan(
-                        text: "$cAddress: ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .outline),
+                        text: "${LanguageService.cAddress}: ",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
                             text: imoStaffData.address,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
-                                ?.copyWith(
-                                fontWeight: FontWeight.bold),
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           )
                         ])),
                     Text.rich(TextSpan(
-                        text: "$cOffice: ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .outline),
+                        text: "${LanguageService.cOffice}: ",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
                               text: imoStaffData.office,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
-                                  ?.copyWith(
-                                  fontWeight: FontWeight.bold),
+                                  ?.copyWith(fontWeight: FontWeight.bold),
                               children: [
                                 TextSpan(
-                                    text: " $cPhone: ",
+                                    text: " ${LanguageService.cPhone}: ",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyMedium
                                         ?.copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .outline),
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .outline),
                                     children: [
                                       TextSpan(
                                           text: imoStaffData.phone,
@@ -153,86 +134,70 @@ class IMOGeneralInfo extends StatelessWidget {
                                               .textTheme
                                               .bodyMedium
                                               ?.copyWith(
-                                              fontWeight:
-                                              FontWeight.bold),
+                                                  fontWeight: FontWeight.bold),
                                           children: [
                                             TextSpan(
-                                                text: " $cExt ",
+                                                text: " ${LanguageService.cExt} ",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium
                                                     ?.copyWith(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .outline),
+                                                        color: Theme.of(context)
+                                                            .colorScheme
+                                                            .outline),
                                                 children: [
                                                   TextSpan(
-                                                    text: imoStaffData
-                                                        .ext,
+                                                    text: imoStaffData.ext,
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyMedium
                                                         ?.copyWith(
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .bold),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                   )
-                                                ]
-                                            )
-                                          ]
-                                      )
-                                    ]
-                                )
-                              ]
-                          )
+                                                ])
+                                          ])
+                                    ])
+                              ])
                         ])),
                     Text.rich(TextSpan(
-                        text: "$cEmail: ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .outline),
+                        text: "${LanguageService.cEmail}: ",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
                             text: imoStaffData.email,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
-                                ?.copyWith(
-                                fontWeight: FontWeight.bold),
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           )
                         ])),
                     const SizedBox(height: 20),
                     Text.rich(TextSpan(
-                        text: "$cInfoTitle1 ",
+                        text: "${LanguageService.cInfoTitle1} ",
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith( fontWeight: FontWeight.bold),
+                            ?.copyWith(fontWeight: FontWeight.bold),
                         children: [
                           TextSpan(
-                            text: cInfoSubTitle1,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium,
+                            text: LanguageService.cInfoSubTitle1,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           )
                         ])),
                     const SizedBox(height: 10),
                     Text.rich(TextSpan(
-                        text: "$cInfoTitle2 \n",
+                        text: "${LanguageService.cInfoTitle2} \n",
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith( fontWeight: FontWeight.bold),
+                            ?.copyWith(fontWeight: FontWeight.bold),
                         children: [
                           TextSpan(
-                            text: cInfoSubTitle2,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium,
+                            text: LanguageService.cInfoSubTitle2,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           )
                         ])),
                   ]),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/constants/variables.dart';
-import 'package:msa/src/features/core/models/imo_staff_model.dart';
 import 'package:msa/src/features/core/screens/imo/widgets/contacts.dart';
 import 'package:msa/src/features/core/screens/imo/widgets/general_information.dart';
 import 'package:msa/src/features/core/screens/imo/widgets/staff.dart';
 
+import '../../../../localization/language_service.dart';
 import '../../controllers/imo_controller.dart';
 
 class IMO extends StatelessWidget {
@@ -19,14 +18,14 @@ class IMO extends StatelessWidget {
     return DefaultTabController(
       length: 3, // length of tabs
       child: Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          label: const Text(cInternationalStudentDepartment),
-          icon: const Icon(LineAwesomeIcons.door_open),
-          onPressed: () {
-            final url = Uri.parse(cLinkInternationalStudentDepartment);
-            imoController.launchInWebViewOrVC(url);
-          },
-        ),
+          floatingActionButton: FloatingActionButton.extended(
+            label: Text(LanguageService.cInternationalStudentDepartment),
+            icon: const Icon(LineAwesomeIcons.door_open),
+            onPressed: () {
+              final url = Uri.parse(cLinkInternationalStudentDepartment);
+              imoController.launchInWebViewOrVC(url);
+            },
+          ),
           body: NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
@@ -36,18 +35,18 @@ class IMO extends StatelessWidget {
                       onPressed: () => Get.back(),
                       icon: const Icon(LineAwesomeIcons.angle_left),
                     ),
-                    title: Text(cIMO,
+                    title: Text(LanguageService.cIMO,
                         style: Theme.of(context).textTheme.headlineSmall),
                     centerTitle: true,
                     pinned: true,
                     floating: true,
-                    bottom: const TabBar(
+                    bottom: TabBar(
                       // indicatorSize: TabBarIndicatorSize.tab,
                       // isScrollable: true,
                       tabs: [
-                        Tab(child: Text(cGeneralInformation)),
-                        Tab(child: Text(cContact)),
-                        Tab(child: Text(cStaff)),
+                        Tab(child: Text(LanguageService.cGeneralInformation)),
+                        Tab(child: Text(LanguageService.cContact)),
+                        Tab(child: Text(LanguageService.cStaff)),
                       ],
                     ),
                   ),
@@ -63,5 +62,3 @@ class IMO extends StatelessWidget {
     );
   }
 }
-
-

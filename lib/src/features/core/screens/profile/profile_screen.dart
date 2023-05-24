@@ -141,8 +141,8 @@
 //                   endIcon: false,
 //                   onPress: () => showDialog(context: context, builder: (BuildContext context) {
 //                     return AlertDialog(
-//                       title: const Text("Logging out"),
-//                       content: const Text("Are you sure?"),
+//                       title: const Text(LanguageService.cLoggingOut),
+//                       content: const Text(LanguageService.cAreYouSure),
 //                       actions: [
 //                         TextButton(onPressed: () => Get.back(), child: const Text("No")),
 //                         TextButton(onPressed: () {

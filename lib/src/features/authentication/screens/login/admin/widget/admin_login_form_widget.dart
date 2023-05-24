@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/options/forgot_password_model_bottom_sheet.dart';
 
-import '../../../../../../constants/text_strings.dart';
+import '../../../../../../localization/language_service.dart';
 import '../../../../controllers/admin/admin_login_controller.dart';
-import '../../../../controllers/student/student_login_controller.dart';
-
 
 class AdminLoginFormWidget extends StatelessWidget {
   const AdminLoginFormWidget({
@@ -28,9 +26,9 @@ class AdminLoginFormWidget extends StatelessWidget {
               TextFormField(
                 controller: loginController.emailController,
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined),
-                  labelText: cEmail,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  labelText: LanguageService.cEmail,
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -50,7 +48,7 @@ class AdminLoginFormWidget extends StatelessWidget {
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock_outlined),
-                      labelText: cPassword,
+                      labelText: LanguageService.cPassword,
                       suffixIcon: IconButton(
                         onPressed: loginController.toggleShowPassword,
                         icon: Icon(
@@ -58,8 +56,7 @@ class AdminLoginFormWidget extends StatelessWidget {
                               ? Icons.visibility
                               : Icons.visibility_off,
                         ),
-                      )
-                  ),
+                      )),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your password';
@@ -90,7 +87,7 @@ class AdminLoginFormWidget extends StatelessWidget {
                           },
                         ),
                       ),
-                      const Text(cRememberMe),
+                      Text(LanguageService.cRememberMe),
                     ],
                   ),
                   // Add forgot password
@@ -98,9 +95,9 @@ class AdminLoginFormWidget extends StatelessWidget {
                       onPressed: () {
                         ForgotPasswordScreen.buildShowModalBottomSheet(context);
                       },
-                      child: const Text(
-                        cForgotPassword,
-                        style: TextStyle(color: Colors.blue),
+                      child: Text(
+                        LanguageService.cForgotPassword,
+                        style: const TextStyle(color: Colors.blue),
                       )),
                 ],
               ),
@@ -119,7 +116,7 @@ class AdminLoginFormWidget extends StatelessWidget {
                       side: BorderSide.none,
                       shape: const StadiumBorder(),
                     ),
-                    child: Text(cLogin.toUpperCase()),
+                    child: Text(LanguageService.cLogin.toUpperCase()),
                   ))
             ],
           ),

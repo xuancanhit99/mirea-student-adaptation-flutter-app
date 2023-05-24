@@ -3,7 +3,6 @@ import 'package:msa/src/features/core/models/dashboard/categories_model.dart';
 
 import '../../../../../constants/colors.dart';
 
-
 class DashboardCategories extends StatelessWidget {
   const DashboardCategories({
     super.key,
@@ -14,7 +13,6 @@ class DashboardCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final list = DashboardCategoriesModel.list;
 
     return SizedBox(
@@ -39,8 +37,7 @@ class DashboardCategories extends StatelessWidget {
                   child: Center(
                     child: Text(
                       list[index].title,
-                      style: txtTheme.headlineSmall
-                          ?.apply(color: Colors.white),
+                      style: txtTheme.headlineSmall?.apply(color: Colors.white),
                     ),
                   ),
                 ),
@@ -54,8 +51,7 @@ class DashboardCategories extends StatelessWidget {
                     children: [
                       Text(
                         list[index].heading,
-                        style: txtTheme.headlineSmall
-                            ?.copyWith(fontSize: 14),
+                        style: txtTheme.headlineSmall?.copyWith(fontSize: 14),
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(

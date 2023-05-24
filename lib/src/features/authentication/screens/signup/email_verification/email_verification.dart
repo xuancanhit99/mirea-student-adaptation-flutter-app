@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/sizes.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 
 import '../../../../../common_widgets/form/from_header_lottie_widget.dart';
+import '../../../../../localization/language_service.dart';
 import '../../login/student/student_login_screen.dart';
 
 class EmailVerificationScreen extends StatelessWidget {
@@ -39,10 +39,11 @@ class EmailVerificationScreen extends StatelessWidget {
                     const SizedBox(
                       height: cDefaultSize * 4,
                     ),
-                    const FormHeaderLottieWidget(
+                    FormHeaderLottieWidget(
                       lottie: cEmailVerificationJson,
-                      title: cVerifyEmail,
-                      subtitle: '$cAnEmailHasBeenSentToYou\n$cCheckTheEmailToVerifyYourAccount',
+                      title: LanguageService.cVerifyEmail,
+                      subtitle:
+                          '${LanguageService.cAnEmailHasBeenSentToYou}\n${LanguageService.cCheckTheEmailToVerifyYourAccount}',
                       crossAxisAlignment: CrossAxisAlignment.center,
                       heightBetween: 10,
                       textAlign: TextAlign.center,
@@ -60,14 +61,19 @@ class EmailVerificationScreen extends StatelessWidget {
                               side: BorderSide.none,
                               shape: const StadiumBorder(),
                             ),
-                            child: Text(cBackToLogin.toUpperCase()))),
+                            child: Text(
+                                LanguageService.cBackToLogin.toUpperCase()))),
                     const SizedBox(height: 20),
                     TextButton.icon(
-                        onPressed: () => Get.off(() => const StudentDashboard()),
-                        icon: const Icon(LineAwesomeIcons.arrow_right, color: Colors.blue,),
-                        label: const Text(
-                          cSkipForNow,
-                          style: TextStyle(color: Colors.blue),
+                        onPressed: () =>
+                            Get.off(() => const StudentDashboard()),
+                        icon: const Icon(
+                          LineAwesomeIcons.arrow_right,
+                          color: Colors.blue,
+                        ),
+                        label: Text(
+                          LanguageService.cSkipForNow,
+                          style: const TextStyle(color: Colors.blue),
                         )),
                   ],
                 ),

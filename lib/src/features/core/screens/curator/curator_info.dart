@@ -5,7 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/features/core/models/curator_model.dart';
 
-import '../../../../constants/text_strings.dart';
+import '../../../../localization/language_service.dart';
 import '../../controllers/curator_controller.dart';
 
 class CuratorInfo extends StatelessWidget {
@@ -21,7 +21,7 @@ class CuratorInfo extends StatelessWidget {
             icon: const Icon(LineAwesomeIcons.angle_left),
           ),
           title: Text(
-            cCuratorInfo,
+            LanguageService.cCuratorInfo,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           centerTitle: true,
@@ -261,7 +261,7 @@ class CuratorInfo extends StatelessWidget {
                                   side: BorderSide.none,
                                   shape: const StadiumBorder()),
                               child:
-                                  Text(cMessagingWithCurator.toUpperCase()))),
+                                  Text(LanguageService.cMessagingWithCurator.toUpperCase()))),
                     ],
                   )),
             );

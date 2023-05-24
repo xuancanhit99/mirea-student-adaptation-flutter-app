@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 
 import '../../../../../constants/assets_strings.dart';
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/student/student_signup_controller.dart';
 
 class SignUpFooterWidget extends StatelessWidget {
@@ -18,7 +18,7 @@ class SignUpFooterWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text("OR"),
+        Text(LanguageService.cOR),
         const SizedBox(
           height: 20,
         ),
@@ -33,7 +33,7 @@ class SignUpFooterWidget extends StatelessWidget {
               width: 20,
             ),
             style: OutlinedButton.styleFrom(shape: const StadiumBorder()),
-            label: Text(cSignUpWithGoogle.toUpperCase()),
+            label: Text(LanguageService.cSignUpWithGoogle.toUpperCase()),
           ),
         ),
         const SizedBox(
@@ -43,9 +43,11 @@ class SignUpFooterWidget extends StatelessWidget {
             onPressed: () => Get.off(() => const StudentLoginScreen()),
             child: Text.rich(TextSpan(
                 style: Theme.of(context).textTheme.bodyLarge,
-                children: const [
-                  TextSpan(text: cAlreadyHaveAnAccount),
-                  TextSpan(text: cLogin, style: TextStyle(color: Colors.blue))
+                children: [
+                  TextSpan(text: LanguageService.cAlreadyHaveAnAccount),
+                  TextSpan(
+                      text: LanguageService.cLogin,
+                      style: const TextStyle(color: Colors.blue))
                 ]))),
       ],
     );

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../constants/colors.dart';
 
-
 class DashboardTopCourses extends StatelessWidget {
   const DashboardTopCourses({
     super.key,
@@ -34,8 +33,7 @@ class DashboardTopCourses extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
                           child: Text(
@@ -47,9 +45,9 @@ class DashboardTopCourses extends StatelessWidget {
                         ),
                         const Flexible(
                             child: Image(
-                              image: AssetImage(cTopCourseImage1),
-                              height: 110,
-                            ))
+                          image: AssetImage(cTopCourseImage1),
+                          height: 110,
+                        ))
                       ],
                     ),
                     Row(
@@ -63,8 +61,7 @@ class DashboardTopCourses extends StatelessWidget {
                           width: 10,
                         ),
                         Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "3 Sections",
@@ -99,8 +96,7 @@ class DashboardTopCourses extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
                           child: Text(
@@ -112,9 +108,9 @@ class DashboardTopCourses extends StatelessWidget {
                         ),
                         const Flexible(
                             child: Image(
-                              image: AssetImage(cTopCourseImage1),
-                              height: 110,
-                            ))
+                          image: AssetImage(cTopCourseImage1),
+                          height: 110,
+                        ))
                       ],
                     ),
                     Row(
@@ -128,8 +124,7 @@ class DashboardTopCourses extends StatelessWidget {
                           width: 10,
                         ),
                         Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "3 Sections",
@@ -164,8 +159,7 @@ class DashboardTopCourses extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
                           child: Text(
@@ -177,9 +171,9 @@ class DashboardTopCourses extends StatelessWidget {
                         ),
                         const Flexible(
                             child: Image(
-                              image: AssetImage(cTopCourseImage1),
-                              height: 110,
-                            ))
+                          image: AssetImage(cTopCourseImage1),
+                          height: 110,
+                        ))
                       ],
                     ),
                     Row(
@@ -193,8 +187,7 @@ class DashboardTopCourses extends StatelessWidget {
                           width: 10,
                         ),
                         Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "3 Sections",

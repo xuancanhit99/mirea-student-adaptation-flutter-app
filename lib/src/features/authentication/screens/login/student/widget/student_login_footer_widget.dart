@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/screens/signup/signup_screen.dart';
 
 import '../../../../../../constants/assets_strings.dart';
-import '../../../../../../constants/text_strings.dart';
+import '../../../../../../localization/language_service.dart';
 import '../../../../controllers/student/student_login_controller.dart';
 import '../../admin/admin_login_screen.dart';
 
@@ -18,7 +18,7 @@ class StudentLoginFooterWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text("OR"),
+        Text(LanguageService.cOR),
         const SizedBox(
           height: 20,
         ),
@@ -33,7 +33,7 @@ class StudentLoginFooterWidget extends StatelessWidget {
               onPressed: () {
                 loginController.signInWithGoogle();
               },
-              label: Text(cSignInWithGoogle.toUpperCase())),
+              label: Text(LanguageService.cSignInWithGoogle.toUpperCase())),
         ),
         const SizedBox(
           height: 10,
@@ -41,19 +41,23 @@ class StudentLoginFooterWidget extends StatelessWidget {
         TextButton(
           onPressed: () => Get.off(() => const SignUpScreen()),
           child: Text.rich(TextSpan(
-              text: cDoNotHaveAccount,
+              text: LanguageService.cDoNotHaveAccount,
               style: Theme.of(context).textTheme.bodyLarge,
-              children: const [
-                TextSpan(text: cRes, style: TextStyle(color: Colors.blue))
+              children: [
+                TextSpan(
+                    text: LanguageService.cRes,
+                    style: const TextStyle(color: Colors.blue))
               ])),
         ),
         TextButton(
           onPressed: () => Get.off(() => const AdminLoginScreen()),
           child: Text.rich(TextSpan(
-              text: cAreYouAnAdmin,
+              text: LanguageService.cAreYouAnAdmin,
               style: Theme.of(context).textTheme.bodyLarge,
-              children: const [
-                TextSpan(text: cLogin, style: TextStyle(color: Colors.blue))
+              children: [
+                TextSpan(
+                    text: LanguageService.cLogin,
+                    style: const TextStyle(color: Colors.blue))
               ])),
         ),
       ],

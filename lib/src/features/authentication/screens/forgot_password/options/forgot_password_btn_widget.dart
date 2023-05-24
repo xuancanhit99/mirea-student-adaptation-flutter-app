@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class ForgotPasswordBtnWidget extends StatelessWidget {
   const ForgotPasswordBtnWidget({
     super.key,

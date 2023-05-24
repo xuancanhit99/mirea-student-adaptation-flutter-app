@@ -5,11 +5,11 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/constants/variables.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/controllers/student_profile_controller.dart';
 
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/institute_controller.dart';
 
 class AdminStudentUpdateProfilePage extends StatelessWidget {
@@ -28,7 +28,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cStudentUpdateProfile,
+          LanguageService.cStudentUpdateProfile,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -134,9 +134,9 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                       TextFormField(
                         controller: studentProfileController.no,
                         keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                            label: Text(cIDStudent),
-                            prefixIcon: Icon(Icons.numbers_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cIDStudent),
+                            prefixIcon: const Icon(Icons.numbers_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's ID";
@@ -150,9 +150,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         controller: studentProfileController.fullName,
                         keyboardType: TextInputType.name,
                         // initialValue: studentData.fullName,
-                        decoration: const InputDecoration(
-                            label: Text(cFullName),
-                            prefixIcon: Icon(Icons.person_outline_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cFullName),
+                            prefixIcon:
+                                const Icon(Icons.person_outline_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's full name";
@@ -189,9 +190,9 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                             ),
                           );
                         },
-                        decoration: const InputDecoration(
-                            label: Text(cGroup),
-                            prefixIcon: Icon(Icons.class_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cGroup),
+                            prefixIcon: const Icon(Icons.class_outlined)),
                       ),
                       const SizedBox(height: 10),
                       // Email
@@ -200,9 +201,9 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         showCursor: false,
                         keyboardType: TextInputType.none,
                         readOnly: true,
-                        decoration: const InputDecoration(
-                            label: Text(cEmail),
-                            prefixIcon: Icon(Icons.email_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cEmail),
+                            prefixIcon: const Icon(Icons.email_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter your email';
@@ -258,9 +259,9 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         onTap: () {
                           studentProfileController.selectDate(context);
                         },
-                        decoration: const InputDecoration(
-                            label: Text(cDateOfBirth),
-                            prefixIcon: Icon(Icons.cake_outlined)),
+                        decoration: InputDecoration(
+                            label: Text(LanguageService.cDateOfBirth),
+                            prefixIcon: const Icon(Icons.cake_outlined)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter student's date of birth";
@@ -278,9 +279,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.city,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cCity),
-                                    prefixIcon: Icon(LineAwesomeIcons.city)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cCity),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.city)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -292,9 +294,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.street,
                                 keyboardType: TextInputType.streetAddress,
-                                decoration: const InputDecoration(
-                                    label: Text(cStreet),
-                                    prefixIcon: Icon(LineAwesomeIcons.road)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cStreet),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.road)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -307,12 +310,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: TextFormField(
-                                      controller: studentProfileController.house,
+                                      controller:
+                                          studentProfileController.house,
                                       keyboardType: TextInputType.text,
-                                      decoration: const InputDecoration(
-                                          label: Text(cHouse),
-                                          prefixIcon:
-                                              Icon(LineAwesomeIcons.home)),
+                                      decoration: InputDecoration(
+                                          label: Text(LanguageService.cHouse),
+                                          prefixIcon: const Icon(
+                                              LineAwesomeIcons.home)),
                                       // validator: (value) {
                                       //   if (value!.isEmpty) {
                                       //     return "Please enter student's city";
@@ -327,10 +331,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                       controller:
                                           studentProfileController.building,
                                       keyboardType: TextInputType.text,
-                                      decoration: const InputDecoration(
-                                          label: Text(cBuilding),
-                                          prefixIcon:
-                                              Icon(LineAwesomeIcons.th_large)),
+                                      decoration: InputDecoration(
+                                          label:
+                                              Text(LanguageService.cBuilding),
+                                          prefixIcon: const Icon(
+                                              LineAwesomeIcons.th_large)),
                                       // validator: (value) {
                                       //   if (value!.isEmpty) {
                                       //     return "Please enter student's city";
@@ -345,9 +350,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.dormitory,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cDormitory),
-                                    prefixIcon: Icon(LineAwesomeIcons.building)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cDormitory),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.building)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -359,10 +365,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.pob,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cPlaceOfBirth),
-                                    prefixIcon: Icon(
-                                        LineAwesomeIcons.globe_with_asia_shown)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cPlaceOfBirth),
+                                    prefixIcon: const Icon(LineAwesomeIcons
+                                        .globe_with_asia_shown)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -372,11 +378,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.nationality,
+                                controller:
+                                    studentProfileController.nationality,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cNationality),
-                                    prefixIcon: Icon(LineAwesomeIcons.flag)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cNationality),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.flag)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -394,13 +402,18 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {
-                              studentProfileController.toggleSwitchIsShowAddress(studentProfileController.isShowAddress.value);
+                              studentProfileController
+                                  .toggleSwitchIsShowAddress(
+                                      studentProfileController
+                                          .isShowAddress.value);
                             },
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
                             child: Text(
-                              studentProfileController.isShowAddress.value ? cHideAddress : cShowAddress,
+                              studentProfileController.isShowAddress.value
+                                  ? LanguageService.cHideAddress
+                                  : LanguageService.cShowAddress,
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ),
@@ -410,12 +423,12 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         // Dung cai nay de hien thi Divider
                         child: Row(
                           children: [
-                            const Expanded(
+                            Expanded(
                                 flex: 1,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    cGender,
+                                    LanguageService.cGender,
                                   ),
                                 )),
                             const Padding(
@@ -425,12 +438,12 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: Column(
                                 children: [
                                   Obx(
                                     () => RadioListTile(
-                                      title: const Text(cMale),
+                                      title: Text(LanguageService.cMale),
                                       value: "male",
                                       groupValue: studentProfileController
                                           .gender
@@ -443,7 +456,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   ),
                                   Obx(
                                     () => RadioListTile(
-                                      title: const Text(cFemale),
+                                      title: Text(LanguageService.cFemale),
                                       value: "female",
                                       groupValue: studentProfileController
                                           .gender
@@ -456,7 +469,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   ),
                                   Obx(
                                     () => RadioListTile(
-                                      title: const Text(cOther),
+                                      title: Text(LanguageService.cOther),
                                       value: "other",
                                       groupValue: studentProfileController
                                           .gender
@@ -477,11 +490,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                       IntrinsicHeight(
                         child: Row(
                           children: [
-                            const Expanded(
+                            Expanded(
                                 flex: 1,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(cStatus),
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(LanguageService.cStatus),
                                 )),
                             const Padding(
                               padding: EdgeInsets.symmetric(vertical: 19),
@@ -490,7 +503,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                                flex: 3,
+                                flex: 2,
                                 child: Obx(
                                   () => Switch(
                                     thumbIcon:
@@ -514,24 +527,31 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Obx(
-                            () => Visibility(
-                          visible: studentProfileController.isShowStudyDetails.value,
+                        () => Visibility(
+                          visible:
+                              studentProfileController.isShowStudyDetails.value,
                           child: Column(
                             children: [
                               // Year of admission
                               TextFormField(
-                                controller: studentProfileController.yearOfAdmission,
+                                controller:
+                                    studentProfileController.yearOfAdmission,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                    label: const Text(cYearOfAdmission),
+                                    label:
+                                        Text(LanguageService.cYearOfAdmission),
                                     suffixIcon: IconButton(
                                       onPressed: () {
-                                        studentProfileController.setYearFromGroup(studentProfileController.group.text);
+                                        studentProfileController
+                                            .setYearFromGroup(
+                                                studentProfileController
+                                                    .group.text);
                                         //Get.snackbar("Year of admission", studentProfileController.yearOfAdmission.text);
-                                      } ,
+                                      },
                                       icon: const Icon(Icons.sync),
                                     ),
-                                    prefixIcon: const Icon(LineAwesomeIcons.chalkboard)),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.chalkboard)),
 
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
@@ -543,7 +563,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               const SizedBox(height: 10),
                               // Forming division
                               TextFormField(
-                                controller: studentProfileController.formingDivision,
+                                controller:
+                                    studentProfileController.formingDivision,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -554,13 +575,17 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                       builder: (context) => Container(
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
-                                          itemCount: instituteController.institutes.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(instituteController.institutes[index]),
+                                          itemCount: instituteController
+                                              .institutes.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(instituteController
+                                                .institutes[index]),
                                             onTap: () {
-                                              studentProfileController.formingDivision.text =
-                                              instituteController.institutes[index];
+                                              studentProfileController
+                                                      .formingDivision.text =
+                                                  instituteController
+                                                      .institutes[index];
                                               Get.back();
                                             },
                                           ),
@@ -569,9 +594,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cFormingDivision),
-                                    prefixIcon: Icon(LineAwesomeIcons.microscope)),
+                                decoration: InputDecoration(
+                                    label:
+                                        Text(LanguageService.cFormingDivision),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.microscope)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -582,11 +609,14 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               const SizedBox(height: 10),
                               // Issuing division
                               TextFormField(
-                                controller: studentProfileController.issuingDivision,
+                                controller:
+                                    studentProfileController.issuingDivision,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cIssuingDivision),
-                                    prefixIcon: Icon(LineAwesomeIcons.graduation_cap)),
+                                decoration: InputDecoration(
+                                    label:
+                                        Text(LanguageService.cIssuingDivision),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.graduation_cap)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -597,7 +627,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               const SizedBox(height: 10),
                               // Type of educational program
                               TextFormField(
-                                controller: studentProfileController.typeOfEducationalProgram,
+                                controller: studentProfileController
+                                    .typeOfEducationalProgram,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -608,13 +639,20 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                       builder: (context) => Container(
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
-                                          itemCount: cListTypeOfEducationalProgram.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(cListTypeOfEducationalProgram[index]),
+                                          itemCount:
+                                              cListTypeOfEducationalProgram
+                                                  .length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(
+                                                cListTypeOfEducationalProgram[
+                                                    index]),
                                             onTap: () {
-                                              studentProfileController.typeOfEducationalProgram.text =
-                                              cListTypeOfEducationalProgram[index];
+                                              studentProfileController
+                                                      .typeOfEducationalProgram
+                                                      .text =
+                                                  cListTypeOfEducationalProgram[
+                                                      index];
                                               Get.back();
                                             },
                                           ),
@@ -623,9 +661,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cTypeOfEducationalProgram),
-                                    prefixIcon: Icon(LineAwesomeIcons.atom)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService
+                                        .cTypeOfEducationalProgram),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.atom)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -636,11 +676,14 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               const SizedBox(height: 10),
                               // Direction of training
                               TextFormField(
-                                controller: studentProfileController.directionOfTraining,
+                                controller: studentProfileController
+                                    .directionOfTraining,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cDirectionOfTraining),
-                                    prefixIcon: Icon(LineAwesomeIcons.chalkboard_teacher)),
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cDirectionOfTraining),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.chalkboard_teacher)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -653,9 +696,10 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               TextFormField(
                                 controller: studentProfileController.speciality,
                                 keyboardType: TextInputType.text,
-                                decoration: const InputDecoration(
-                                    label: Text(cSpeciality),
-                                    prefixIcon: Icon(LineAwesomeIcons.suitcase)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService.cSpeciality),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.suitcase)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -665,7 +709,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.typeOfCostRecovery,
+                                controller:
+                                    studentProfileController.typeOfCostRecovery,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -676,13 +721,17 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                       builder: (context) => Container(
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
-                                          itemCount: cListTypeOfCostRecovery.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(cListTypeOfCostRecovery[index]),
+                                          itemCount:
+                                              cListTypeOfCostRecovery.length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(
+                                                cListTypeOfCostRecovery[index]),
                                             onTap: () {
-                                              studentProfileController.typeOfCostRecovery.text =
-                                              cListTypeOfCostRecovery[index];
+                                              studentProfileController
+                                                      .typeOfCostRecovery.text =
+                                                  cListTypeOfCostRecovery[
+                                                      index];
                                               Get.back();
                                             },
                                           ),
@@ -691,9 +740,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cTypeOfCostRecovery),
-                                    prefixIcon: Icon(LineAwesomeIcons.money_check)),
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cTypeOfCostRecovery),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.money_check)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -703,7 +754,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.qualificationGiven,
+                                controller:
+                                    studentProfileController.qualificationGiven,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -714,13 +766,19 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                       builder: (context) => Container(
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
-                                          itemCount: cListTypeOfEducationalProgram.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(cListTypeOfEducationalProgram[index]),
+                                          itemCount:
+                                              cListTypeOfEducationalProgram
+                                                  .length,
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(
+                                                cListTypeOfEducationalProgram[
+                                                    index]),
                                             onTap: () {
-                                              studentProfileController.qualificationGiven.text =
-                                              cListTypeOfEducationalProgram[index];
+                                              studentProfileController
+                                                      .qualificationGiven.text =
+                                                  cListTypeOfEducationalProgram[
+                                                      index];
                                               Get.back();
                                             },
                                           ),
@@ -729,9 +787,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cQualificationGiven),
-                                    prefixIcon: Icon(LineAwesomeIcons.user_graduate)),
+                                decoration: InputDecoration(
+                                    label: Text(
+                                        LanguageService.cQualificationGiven),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.user_graduate)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -741,7 +801,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.standardDevelopmentPeriod,
+                                controller: studentProfileController
+                                    .standardDevelopmentPeriod,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -753,12 +814,15 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
                                           itemCount: cList1YearTo5Years.length,
-                                          itemBuilder: (context, index) => ListTile(
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
                                             title:
-                                            Text(cList1YearTo5Years[index]),
+                                                Text(cList1YearTo5Years[index]),
                                             onTap: () {
-                                              studentProfileController.standardDevelopmentPeriod.text =
-                                              cList1YearTo5Years[index];
+                                              studentProfileController
+                                                      .standardDevelopmentPeriod
+                                                      .text =
+                                                  cList1YearTo5Years[index];
                                               Get.back();
                                             },
                                           ),
@@ -767,9 +831,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cStandardDevelopmentPeriod),
-                                    prefixIcon: Icon(LineAwesomeIcons.pen_nib)),
+                                decoration: InputDecoration(
+                                    label: Text(LanguageService
+                                        .cStandardDevelopmentPeriod),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.pen_nib)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -779,7 +845,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.formOfLearning,
+                                controller:
+                                    studentProfileController.formOfLearning,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -791,12 +858,14 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
                                           itemCount: cListFormOfLearning.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(cListFormOfLearning[index]),
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(
+                                                cListFormOfLearning[index]),
                                             onTap: () {
-                                              studentProfileController.formOfLearning.text =
-                                              cListFormOfLearning[index];
+                                              studentProfileController
+                                                      .formOfLearning.text =
+                                                  cListFormOfLearning[index];
                                               Get.back();
                                             },
                                           ),
@@ -805,9 +874,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cFormOfLearning),
-                                    prefixIcon: Icon(LineAwesomeIcons.book_reader)),
+                                decoration: InputDecoration(
+                                    label:
+                                        Text(LanguageService.cFormOfLearning),
+                                    prefixIcon: const Icon(
+                                        LineAwesomeIcons.book_reader)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -817,7 +888,8 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
-                                controller: studentProfileController.targetReception,
+                                controller:
+                                    studentProfileController.targetReception,
                                 showCursor: false,
                                 keyboardType: TextInputType.none,
                                 readOnly: true,
@@ -829,12 +901,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         padding: const EdgeInsets.all(20),
                                         child: ListView.builder(
                                           itemCount: cListYesNo.length,
-                                          itemBuilder: (context, index) => ListTile(
-                                            title:
-                                            Text(cListYesNo[index]),
+                                          itemBuilder: (context, index) =>
+                                              ListTile(
+                                            title: Text(cListYesNo[index]),
                                             onTap: () {
-                                              studentProfileController.targetReception.text =
-                                              cListYesNo[index];
+                                              studentProfileController
+                                                  .targetReception
+                                                  .text = cListYesNo[index];
                                               Get.back();
                                             },
                                           ),
@@ -843,9 +916,11 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                decoration: const InputDecoration(
-                                    label: Text(cTargetReception),
-                                    prefixIcon: Icon(LineAwesomeIcons.shapes)),
+                                decoration: InputDecoration(
+                                    label:
+                                        Text(LanguageService.cTargetReception),
+                                    prefixIcon:
+                                        const Icon(LineAwesomeIcons.shapes)),
                                 // validator: (value) {
                                 //   if (value!.isEmpty) {
                                 //     return "Please enter student's city";
@@ -858,17 +933,22 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                         ),
                       ),
                       Obx(
-                            () => SizedBox(
+                        () => SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {
-                              studentProfileController.toggleSwitchIsShowStudyDetails(studentProfileController.isShowStudyDetails.value);
+                              studentProfileController
+                                  .toggleSwitchIsShowStudyDetails(
+                                      studentProfileController
+                                          .isShowStudyDetails.value);
                             },
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
                             child: Text(
-                              studentProfileController.isShowStudyDetails.value ? cHideStudyDetails : cShowStudyDetails,
+                              studentProfileController.isShowStudyDetails.value
+                                  ? LanguageService.cHideStudyDetails
+                                  : LanguageService.cShowStudyDetails,
                               style: const TextStyle(color: Colors.blue),
                             ),
                           ),
@@ -935,13 +1015,13 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                         .typeOfCostRecovery.text,
                                     qualificationGiven: studentProfileController
                                         .qualificationGiven.text,
-                                    standardDevelopmentPeriod: studentProfileController
-                                        .standardDevelopmentPeriod.text,
+                                    standardDevelopmentPeriod:
+                                        studentProfileController
+                                            .standardDevelopmentPeriod.text,
                                     formOfLearning: studentProfileController
                                         .formOfLearning.text,
                                     targetReception: studentProfileController
-                                        .targetReception.text
-                                ),
+                                        .targetReception.text),
                                 createdAt: studentProfileController.createAt,
                                 updatedAt: DateTime.now(),
                                 isActive:
@@ -971,7 +1051,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                             children: [
                               Obx(
                                 () => Text.rich(TextSpan(
-                                    text: cUpdatedAt,
+                                    text: LanguageService.cUpdatedAt,
                                     style: const TextStyle(fontSize: 12),
                                     children: [
                                       TextSpan(
@@ -984,7 +1064,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     ])),
                               ),
                               Text.rich(TextSpan(
-                                  text: cJoinedAt,
+                                  text: LanguageService.cJoinedAt,
                                   style: const TextStyle(fontSize: 12),
                                   children: [
                                     TextSpan(
@@ -1003,7 +1083,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                     return AlertDialog(
                                       title: const Text(
                                           "Delete all student data!"),
-                                      content: const Text("Are you sure?"),
+                                      content: Text(LanguageService.cAreYouSure),
                                       actions: [
                                         TextButton(
                                             onPressed: () => Get.back(),
@@ -1025,7 +1105,7 @@ class AdminStudentUpdateProfilePage extends StatelessWidget {
                                   foregroundColor: Colors.red,
                                   shape: const StadiumBorder(),
                                   side: BorderSide.none),
-                              child: const Text(cDelete))
+                              child: Text(LanguageService.cDelete))
                         ],
                       )
                     ],

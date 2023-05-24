@@ -6,9 +6,9 @@ import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_contr
 import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 
+import '../../../../localization/language_service.dart';
 import '../signup/signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -20,8 +20,8 @@ class WelcomeScreen extends StatelessWidget {
     controller.startAnimation();
 
     var mediaQuery = MediaQuery.of(context);
-    var height = mediaQuery.size.height;
-    var width = mediaQuery.size.width;
+    // var height = mediaQuery.size.height;
+    // var width = mediaQuery.size.width;
     var brightness = mediaQuery.platformBrightness;
     final isDarkMode = brightness == Brightness.dark;
 
@@ -82,7 +82,7 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   // const SizedBox(height: 40,),
                   Text(
-                    cAppNameDetailed.toUpperCase(),
+                    LanguageService.cAppNameDetailed.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
@@ -96,7 +96,8 @@ class WelcomeScreen extends StatelessWidget {
                           child: OutlinedButton(
                               onPressed: () =>
                                   Get.offAll(() => const StudentLoginScreen()),
-                              child: Text(cLogin.toUpperCase()))),
+                              child:
+                                  Text(LanguageService.cLogin.toUpperCase()))),
                       const SizedBox(
                         width: 20.0,
                       ),
@@ -104,11 +105,11 @@ class WelcomeScreen extends StatelessWidget {
                           child: ElevatedButton(
                               onPressed: () =>
                                   Get.offAll(() => const SignUpScreen()),
-                              child: Text(cRes.toUpperCase()))),
+                              child: Text(LanguageService.cRes.toUpperCase()))),
                     ],
                   ),
                   Text(
-                    cCopyright,
+                    LanguageService.cCopyright,
                     style: Theme.of(context).textTheme.titleSmall,
                     textAlign: TextAlign.center,
                   ),

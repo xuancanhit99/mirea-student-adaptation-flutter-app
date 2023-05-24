@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/sizes.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/authentication/controllers/student/student_forgot_password_controller.dart';
-import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 
 import '../../../../../common_widgets/form/from_header_lottie_widget.dart';
+import '../../../../../localization/language_service.dart';
 import '../../login/student/student_login_screen.dart';
 
 class ForgotPasswordEmailSent extends StatelessWidget {
@@ -16,7 +15,6 @@ class ForgotPasswordEmailSent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     OtpTimerButtonController controller = OtpTimerButtonController();
     requestOtp() {
       controller.loading();
@@ -25,7 +23,8 @@ class ForgotPasswordEmailSent extends StatelessWidget {
       });
     }
 
-    final studentForgotPasswordController = Get.put(StudentForgotPasswordController());
+    final studentForgotPasswordController =
+        Get.put(StudentForgotPasswordController());
     return WillPopScope(
       onWillPop: () async {
         Get.offAll(() => const StudentLoginScreen());
@@ -51,11 +50,11 @@ class ForgotPasswordEmailSent extends StatelessWidget {
                     const SizedBox(
                       height: cDefaultSize * 4,
                     ),
-                    const FormHeaderLottieWidget(
+                    FormHeaderLottieWidget(
                       lottie: cEmailVerificationJson,
-                      title: cResetPassword,
+                      title: LanguageService.cResetPassword,
                       subtitle:
-                          '$cAnEmailHasBeenSentToYou\n$cCheckTheEmailToChangePasswordYourAccount',
+                          '${LanguageService.cAnEmailHasBeenSentToYou}\n${LanguageService.cCheckTheEmailToChangePasswordYourAccount}',
                       crossAxisAlignment: CrossAxisAlignment.center,
                       heightBetween: 10,
                       textAlign: TextAlign.center,
@@ -73,25 +72,24 @@ class ForgotPasswordEmailSent extends StatelessWidget {
                               side: BorderSide.none,
                               shape: const StadiumBorder(),
                             ),
-                            child: Text(cBackToLogin.toUpperCase()))),
+                            child: Text(
+                                LanguageService.cBackToLogin.toUpperCase()))),
                     const SizedBox(height: 20),
-
                     OtpTimerButton(
                       controller: controller,
                       onPressed: () {
                         requestOtp();
                         // Get.snackbar("Info", studentForgotPasswordController.emailForgotPasswordController.text.trim());
-                        studentForgotPasswordController
-                            .forgotPassword(
+                        studentForgotPasswordController.forgotPassword(
                           studentForgotPasswordController
                               .emailForgotPasswordController.text
                               .trim(),
                         );
                       },
-                      text: const Text(
-                              cResendEmail,
-                              style: TextStyle(color: Colors.blue),
-                            ),
+                      text: Text(
+                        LanguageService.cResendEmail,
+                        style: const TextStyle(color: Colors.blue),
+                      ),
                       duration: 60,
                       buttonType: ButtonType.text_button,
                     )

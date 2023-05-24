@@ -1,17 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:msa/src/constants/assets_strings.dart';
-import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
+
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/core/screens/dashboard/widgets/appbar.dart';
 import 'package:msa/src/features/core/screens/dashboard/widgets/banners.dart';
-import 'package:msa/src/features/core/screens/dashboard/widgets/categories.dart';
-import 'package:msa/src/features/core/screens/dashboard/widgets/search.dart';
-import 'package:msa/src/features/core/screens/dashboard/widgets/top_courses.dart';
 
+import '../../../../localization/language_service.dart';
 import '../../controllers/student_profile_controller.dart';
 import '../navigation_drawer/student/student_navigation_drawer.dart';
 
@@ -21,9 +15,7 @@ class StudentDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final studentController = Get.put(StudentProfileController());
-    final txtTheme = Theme
-        .of(context)
-        .textTheme;
+    final txtTheme = Theme.of(context).textTheme;
     return Scaffold(
       drawer: const StudentNavigationDrawer(),
       appBar: const DashboardAppBar(),
@@ -44,8 +36,10 @@ class StudentDashboard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Heading
-                  Text(cDashboardHi + studentData.fullName, style: txtTheme.headlineSmall),
-                  Text(cDashboardGroup + studentData.group, style: txtTheme.bodyMedium),
+                  Text("${LanguageService.cDashboardHi}, ${studentData.fullName}",
+                      style: txtTheme.headlineSmall),
+                  Text("${LanguageService.cDashboardGroup}: ${studentData.group}",
+                      style: txtTheme.bodyMedium),
                   const SizedBox(height: 10),
 
                   // // Search Box
@@ -60,9 +54,7 @@ class StudentDashboard extends StatelessWidget {
 
                   // Banners
                   StudentDashboardBanners(txtTheme: txtTheme),
-                  const SizedBox(
-                      height: 10
-                  ),
+                  const SizedBox(height: 10),
 
                   // Top Course
                   // Text(
@@ -80,4 +72,3 @@ class StudentDashboard extends StatelessWidget {
     );
   }
 }
-

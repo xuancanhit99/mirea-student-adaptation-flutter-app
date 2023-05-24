@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/assets_strings.dart';
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 
 
 class DashboardSearchBox extends StatelessWidget {
@@ -24,7 +23,7 @@ class DashboardSearchBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            cDashboardSearch,
+            LanguageService.cDashboardSearch,
             style: txtTheme.headlineSmall
                 ?.apply(color: Colors.grey.withOpacity(0.5)),
           ),

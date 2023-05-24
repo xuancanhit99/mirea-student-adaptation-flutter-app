@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/controllers/student/student_signup_controller.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 
-import '../../../../../common_widgets/list_alert_dialog/list_alert_dialog_widget.dart';
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../../core/controllers/institute_controller.dart';
 
 class SignUpFormWidget extends StatelessWidget {
@@ -30,9 +29,9 @@ class SignUpFormWidget extends StatelessWidget {
               TextFormField(
                 controller: controller.fullNameController,
                 keyboardType: TextInputType.name,
-                decoration: const InputDecoration(
-                    label: Text(cFullName),
-                    prefixIcon: Icon(Icons.person_outline_outlined)),
+                decoration: InputDecoration(
+                    label: Text(LanguageService.cFullName),
+                    prefixIcon: const Icon(Icons.person_outline_outlined)),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your full name';
@@ -68,9 +67,9 @@ class SignUpFormWidget extends StatelessWidget {
                     ),
                   );
                 },
-                decoration: const InputDecoration(
-                    label: Text(cGroup),
-                    prefixIcon: Icon(Icons.class_outlined)),
+                decoration: InputDecoration(
+                    label: Text(LanguageService.cGroup),
+                    prefixIcon: const Icon(Icons.class_outlined)),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please choose your group';
@@ -83,9 +82,9 @@ class SignUpFormWidget extends StatelessWidget {
               TextFormField(
                 controller: controller.emailController,
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    label: Text(cEmail),
-                    prefixIcon: Icon(Icons.email_outlined)),
+                decoration: InputDecoration(
+                    label: Text(LanguageService.cEmail),
+                    prefixIcon: const Icon(Icons.email_outlined)),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
@@ -102,7 +101,7 @@ class SignUpFormWidget extends StatelessWidget {
                     obscureText: !controller.showPassword.value,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
-                        label: const Text(cPassword),
+                        label: Text(LanguageService.cPassword),
                         suffixIcon: IconButton(
                           onPressed: controller.toggleShowPassword,
                           icon: Icon(
@@ -168,8 +167,7 @@ class SignUpFormWidget extends StatelessWidget {
                                 building: '',
                                 dormitory: '',
                                 placeOfBirth: '',
-                                nationality: ''
-                            ),
+                                nationality: ''),
                             studyDetails: const StudyDetails(
                                 yearOfAdmission: '',
                                 formingDivision: '',
@@ -181,21 +179,21 @@ class SignUpFormWidget extends StatelessWidget {
                                 qualificationGiven: '',
                                 standardDevelopmentPeriod: '',
                                 formOfLearning: '',
-                                targetReception: ''
-                            ),
+                                targetReception: ''),
                             createdAt: controller.now,
                             updatedAt: controller.now,
                             isActive: false,
                             isAdmin: false,
                           );
-                          StudentSignUpController.instance.signUpController(student);
+                          StudentSignUpController.instance
+                              .signUpController(student);
                         }
                       },
                       style: ElevatedButton.styleFrom(
                         side: BorderSide.none,
                         shape: const StadiumBorder(),
                       ),
-                      child: Text(cSignUp.toUpperCase())))
+                      child: Text(LanguageService.cSignUp.toUpperCase())))
             ],
           )),
     );

@@ -68,9 +68,11 @@ dependencies:
   otp_timer_button: ^1.1.0
   image_picker: ^0.8.7+4
   path: ^1.8.2
-  intl: ^0.17.0
+  intl: any
   url_launcher: ^6.1.11
   font_awesome_flutter: ^10.4.0
+  flutter_localizations:
+    sdk: flutter
 
 
 
@@ -111,6 +113,8 @@ flutter_native_splash:
 # The following section is specific to Flutter packages.
 flutter:
 
+  generate: true
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -121,7 +125,7 @@ flutter:
     - assets/images/
     - assets/logo/
     - assets/json/
-    - assets/lang/
+#    - assets/lang/
 #    - assets/fonts/
 
 

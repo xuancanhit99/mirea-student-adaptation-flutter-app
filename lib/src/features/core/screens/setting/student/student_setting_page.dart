@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/student_profile_controller.dart';
 import '../../../controllers/student_setting_controller.dart';
 
@@ -21,7 +21,7 @@ class StudentSettingPage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cSetting,
+          LanguageService.cSettings,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -31,9 +31,9 @@ class StudentSettingPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              cAppearance,
-              style: TextStyle(
+            Text(
+              LanguageService.cAppearance,
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -45,7 +45,7 @@ class StudentSettingPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        cDarkMode,
+                        LanguageService.cDarkMode,
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     )),
@@ -71,36 +71,34 @@ class StudentSettingPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16.0),
-            const Text(
-              cLanguage,
-              style: TextStyle(
+            Text(
+              LanguageService.cLanguage,
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Obx(
-                  () => RadioListTile(
-                title: const Text(cEnglish),
-                value: "english",
-                groupValue: studentSettingController
-                    .selectedLanguage
-                    .toString(),
+              () => RadioListTile(
+                title: Text(LanguageService.cEnglish),
+                value: "en",
+                groupValue:
+                    studentSettingController.selectedLanguage.toString(),
                 onChanged: (value) {
-                  studentSettingController
-                      .selectedLanguage.value = value.toString();
+                  studentSettingController.selectedLanguage.value = value!;
+                  studentSettingController.changeLanguage();
                 },
               ),
             ),
             Obx(
-                  () => RadioListTile(
-                title: const Text(cRussian),
-                value: "russian",
-                groupValue: studentSettingController
-                    .selectedLanguage
-                    .toString(),
+              () => RadioListTile(
+                title: Text(LanguageService.cRussian),
+                value: "ru",
+                groupValue:
+                    studentSettingController.selectedLanguage.toString(),
                 onChanged: (value) {
-                  studentSettingController
-                      .selectedLanguage.value = value.toString();
+                  studentSettingController.selectedLanguage.value = value!;
+                  studentSettingController.changeLanguage();
                 },
               ),
             ),

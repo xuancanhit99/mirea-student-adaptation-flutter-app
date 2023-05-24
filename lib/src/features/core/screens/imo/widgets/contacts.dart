@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../../../constants/text_strings.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/imo_controller.dart';
 import '../../../models/imo_contact_model.dart';
-
 
 class IMOContact extends StatelessWidget {
   const IMOContact({
@@ -20,13 +19,10 @@ class IMOContact extends StatelessWidget {
         stream: imoController.getAllIMOContact(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-                child: Text('Error fetching student details.'));
+            return const Center(child: Text('Error fetching student details.'));
           }
-          if (snapshot.connectionState ==
-              ConnectionState.waiting) {
-            return const Center(
-                child: CircularProgressIndicator());
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
           final imoListContactData = snapshot.data!;
           return Container(
@@ -52,25 +48,22 @@ class IMOContact extends StatelessWidget {
                           // tileColor: tileColor,
                           // leading:
                           //     const Icon(LineAwesomeIcons.door_open),
-                          title: Text(contact.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          title: Text(contact.name,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
                           subtitle: Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 10),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.map_marked,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${contact.address}",
@@ -78,18 +71,14 @@ class IMOContact extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.door_open,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${contact.office}",
@@ -97,18 +86,14 @@ class IMOContact extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.mobile_phone,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${contact.phone}",
@@ -116,18 +101,14 @@ class IMOContact extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.tty,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${contact.ext}",
@@ -138,12 +119,10 @@ class IMOContact extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.end,
-                                    mainAxisSize:
-                                    MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Icon(
                                         LineAwesomeIcons.clock,
@@ -151,16 +130,21 @@ class IMOContact extends StatelessWidget {
                                             .colorScheme
                                             .outline,
                                       ),
-                                      const Text(
-                                        " $cReceptionHours",
+                                      Text(
+                                        " ${LanguageService.cReceptionHours}",
                                       )
                                     ],
                                   ),
-                                  const Text("Mon$c918"),
-                                  const Text("Tue$c918"),
-                                  const Text("Wed$c918"),
-                                  const Text("Thu$c918"),
-                                  const Text("Fri$c917"),
+                                  Text(
+                                      "${LanguageService.cMon}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cTue}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cWed}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cThu}${LanguageService.c918}"),
+                                  Text(
+                                      "${LanguageService.cFri}${LanguageService.c917}"),
                                 ],
                               ),
                             ],

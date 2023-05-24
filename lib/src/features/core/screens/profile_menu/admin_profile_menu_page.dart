@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
-import 'package:msa/src/constants/text_strings.dart';
 import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
 import 'package:msa/src/features/core/screens/profile/student/student_update_profile_page.dart';
 import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
 import 'package:msa/src/utils/string_casing_extension.dart';
 
-
+import '../../../../localization/language_service.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
 import '../../../authentication/models/student_model.dart';
 
 import '../../controllers/student_profile_controller.dart';
-import '../profile/admin/admin_student_update_profile_page.dart';
-
 
 class AdminProfileMenuPage extends StatelessWidget {
   const AdminProfileMenuPage({Key? key}) : super(key: key);
@@ -30,7 +27,7 @@ class AdminProfileMenuPage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cProfileMenu,
+          LanguageService.cProfileMenu,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -62,21 +59,17 @@ class AdminProfileMenuPage extends StatelessWidget {
                       height: 100,
                       child: ClipOval(
                           child: SizedBox.fromSize(
-                            child: studentData.img != ""
-                                ? Image.network(studentData.img!,
-                                fit: BoxFit.cover)
-                                : Image.asset(cUserProfileImage,
-                                fit: BoxFit.cover),
-                          )),
+                        child: studentData.img != ""
+                            ? Image.network(studentData.img!, fit: BoxFit.cover)
+                            : Image.asset(cUserProfileImage, fit: BoxFit.cover),
+                      )),
                     ),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(studentData.fullName,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall),
+                            style: Theme.of(context).textTheme.headlineSmall),
                         const SizedBox(width: 5),
                         GestureDetector(
                           onTap: () {
@@ -91,60 +84,42 @@ class AdminProfileMenuPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text.rich(TextSpan(
-                        text: "$cGender: ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .outline),
+                        text: "${LanguageService.cGender}: ",
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
-                            text: studentData.gender!
-                                .toCapitalized(),
+                            text: studentData.gender!.toCapitalized(),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
-                                ?.copyWith(
-                                fontWeight:
-                                FontWeight.bold),
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           )
                         ])),
                     const SizedBox(height: 5),
                     Text.rich(TextSpan(
-                        text: "$cAge: ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .outline),
+                        text: "${LanguageService.cAge}: ",
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
                             text: studentProfileController
-                                .calculateAge(
-                                studentData.dob!)
+                                .calculateAge(studentData.dob!)
                                 .toString(),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
-                                ?.copyWith(
-                                fontWeight:
-                                FontWeight.bold),
+                                ?.copyWith(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
-                                text:
-                                " (${studentData.dob!})",
+                                text: " (${studentData.dob!})",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
                                     ?.copyWith(
-                                    color:
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .outline),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .outline),
                               )
                             ],
                           )
@@ -194,8 +169,8 @@ class AdminProfileMenuPage extends StatelessWidget {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text("Logging out"),
-                                content: const Text("Are you sure?"),
+                                title: Text(LanguageService.cLoggingOut),
+                                content: Text(LanguageService.cAreYouSure),
                                 actions: [
                                   TextButton(
                                       onPressed: () => Get.back(),

@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../../constants/colors.dart';
 
 class DrawerItem extends StatelessWidget {
-  const DrawerItem({Key? key, required this.name, required this.icon, required this.onPressed}) : super(key: key);
+  const DrawerItem(
+      {Key? key,
+      required this.name,
+      required this.icon,
+      required this.onPressed})
+      : super(key: key);
 
   final String name;
   final IconData icon;
   final Function() onPressed;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +29,14 @@ class DrawerItem extends StatelessWidget {
             child: Row(
               children: [
                 // const SizedBox(width: 20),
-                Icon(icon,
-
-                    color: iconColor),
+                Icon(icon, color: iconColor),
                 const SizedBox(width: 20),
                 Text(
                   name,
                   style: TextStyle(
                       fontSize: 16,
-                      color: Theme.of(context).colorScheme.onSecondaryContainer),
+                      color:
+                          Theme.of(context).colorScheme.onSecondaryContainer),
                 ),
               ],
             ),

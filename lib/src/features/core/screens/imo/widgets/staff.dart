@@ -21,16 +21,13 @@ class IMOStaff extends StatelessWidget {
             return Center(
                 child: Text('Error fetching staff details ${snapshot.error}'));
           }
-          if (snapshot.connectionState ==
-              ConnectionState.waiting) {
-            return const Center(
-                child: CircularProgressIndicator());
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
           final imoListStaffData = snapshot.data!;
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child:
-            ListView.builder(
+            child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: imoListStaffData.length,
                 itemBuilder: (context, index) {
@@ -54,53 +51,44 @@ class IMOStaff extends StatelessWidget {
                             // width: 50,
                             // height: 50,
                           ),
-                          title: Text(staff.fullName, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          title: Text(staff.fullName,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
 
                           subtitle: Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               Text(
                                 staff.position,
                               ),
                               const SizedBox(height: 10),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.map_marked,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Flexible(
                                     child: Text(
                                       " ${staff.address}",
                                       overflow: TextOverflow.ellipsis,
-
                                     ),
                                   )
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.door_open,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${staff.office}",
@@ -108,18 +96,14 @@ class IMOStaff extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.mobile_phone,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${staff.phone}",
@@ -127,18 +111,14 @@ class IMOStaff extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.tty,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${staff.ext}",
@@ -146,18 +126,14 @@ class IMOStaff extends StatelessWidget {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                mainAxisSize:
-                                MainAxisSize.max,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     LineAwesomeIcons.envelope,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   Text(
                                     " ${staff.email}",

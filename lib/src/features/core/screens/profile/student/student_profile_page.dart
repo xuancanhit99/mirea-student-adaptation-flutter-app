@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
-import 'package:msa/src/constants/text_strings.dart';
-import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
-import 'package:msa/src/features/core/screens/profile/student/student_update_profile_page.dart';
-import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
 import 'package:msa/src/utils/string_casing_extension.dart';
 
-import '../../../../../repository/authentication_repository/authentication_repository.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../../authentication/models/student_model.dart';
 import '../../../controllers/student_profile_controller.dart';
 import '../admin/admin_student_update_profile_page.dart';
@@ -27,7 +23,7 @@ class StudentProfilePage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          cProfile,
+          LanguageService.cProfile,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -87,7 +83,7 @@ class StudentProfilePage extends StatelessWidget {
                                               .headlineSmall),
                                       const SizedBox(height: 5),
                                       Text.rich(TextSpan(
-                                          text: "$cGender: ",
+                                          text: "${LanguageService.cGender}: ",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge
@@ -97,8 +93,7 @@ class StudentProfilePage extends StatelessWidget {
                                                       .outline),
                                           children: [
                                             TextSpan(
-                                              text: studentData.gender!
-                                                  .toCapitalized(),
+                                              text: studentProfileController.getMultiLangGender(studentData.gender!),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge
@@ -109,7 +104,7 @@ class StudentProfilePage extends StatelessWidget {
                                           ])),
                                       const SizedBox(height: 5),
                                       Text.rich(TextSpan(
-                                          text: "$cAge: ",
+                                          text: "${LanguageService.cAge}: ",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge
@@ -201,7 +196,7 @@ class StudentProfilePage extends StatelessWidget {
                                 Column(
                                   children: [
                                     Text(
-                                      cGroup,
+                                      LanguageService.cGroup,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium
@@ -223,7 +218,7 @@ class StudentProfilePage extends StatelessWidget {
                                 ),
                                 Column(
                                   children: [
-                                    Text(cIDStudent,
+                                    Text(LanguageService.cIDStudent,
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyMedium
@@ -245,7 +240,7 @@ class StudentProfilePage extends StatelessWidget {
                                 Column(
                                   children: [
                                     Text(
-                                      cCourse,
+                                      LanguageService.cCourse,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium
@@ -270,7 +265,7 @@ class StudentProfilePage extends StatelessWidget {
                                 Column(
                                   children: [
                                     Text(
-                                      cStatus,
+                                      LanguageService.cStatus,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium
@@ -325,7 +320,7 @@ class StudentProfilePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text.rich(TextSpan(
-                                text: "$cAddress: ",
+                                text: "${LanguageService.cAddress}: ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
@@ -335,7 +330,8 @@ class StudentProfilePage extends StatelessWidget {
                                             .outline),
                                 children: [
                                   TextSpan(
-                                    text: "${"${studentData.address.city}, ${studentData.address.street}, ${studentData.address.house}"}k${studentData.address.building}",
+                                    text:
+                                        "${"${studentData.address.city}, ${studentData.address.street}, ${studentData.address.house}"}k${studentData.address.building}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
@@ -344,14 +340,14 @@ class StudentProfilePage extends StatelessWidget {
                                 ])),
                             const SizedBox(height: 5),
                             Text.rich(TextSpan(
-                                text: "$cDormitory: ",
+                                text: "${LanguageService.cDormitory}: ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
                                     ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .outline),
                                 children: [
                                   TextSpan(
                                     text: "№${studentData.address.dormitory}",
@@ -363,14 +359,14 @@ class StudentProfilePage extends StatelessWidget {
                                 ])),
                             const SizedBox(height: 5),
                             Text.rich(TextSpan(
-                                text: "$cPlaceOfBirth: ",
+                                text: "${LanguageService.cPlaceOfBirth}: ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
                                     ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .outline),
                                 children: [
                                   TextSpan(
                                     text: studentData.address.placeOfBirth,
@@ -382,14 +378,14 @@ class StudentProfilePage extends StatelessWidget {
                                 ])),
                             const SizedBox(height: 5),
                             Text.rich(TextSpan(
-                                text: "$cNationality: ",
+                                text: "${LanguageService.cNationality}: ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
                                     ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .outline),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .outline),
                                 children: [
                                   TextSpan(
                                     text: studentData.address.nationality,
@@ -414,7 +410,8 @@ class StudentProfilePage extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
-                            child: Text(cEditProfile.toUpperCase()))),
+                            child: Text(
+                                LanguageService.cEditProfile.toUpperCase()))),
                     const SizedBox(
                       height: 30,
                     ),

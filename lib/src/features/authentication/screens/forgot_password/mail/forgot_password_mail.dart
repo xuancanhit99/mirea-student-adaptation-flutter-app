@@ -1,16 +1,12 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/common_widgets/form/form_header_widget.dart';
 import 'package:msa/src/constants/assets_strings.dart';
-import 'package:msa/src/constants/text_strings.dart';
-import 'package:msa/src/features/authentication/controllers/student/student_login_controller.dart';
 import 'package:msa/src/features/authentication/screens/forgot_password/mail/forgot_password_email_sent.dart';
-import 'package:msa/src/features/authentication/screens/forgot_password/otp/otp_screen.dart';
-import 'package:msa/src/features/authentication/screens/signup/email_verification/email_verification.dart';
 
+import '../../../../../localization/language_service.dart';
 import '../../../controllers/student/student_forgot_password_controller.dart';
 import '../../login/student/student_login_screen.dart';
 
@@ -47,10 +43,10 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                     const SizedBox(
                       height: 30 * 4,
                     ),
-                    const FormHeaderWidget(
+                    FormHeaderWidget(
                       image: cForgotPasswordImage,
-                      title: cForgotPassword,
-                      subtitle: cForgotPasswordViaEmailSubTitle,
+                      title: LanguageService.cForgotPassword,
+                      subtitle: LanguageService.cForgotPasswordViaEmailSubTitle,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       heightBetween: 30,
                       textAlign: TextAlign.center,
@@ -66,10 +62,10 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                             controller: studentForgotPasswordController
                                 .emailForgotPasswordController,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                                label: Text(cEmail),
+                            decoration: InputDecoration(
+                                label: Text(LanguageService.cEmail),
                                 // hintText: cEmail,
-                                prefixIcon: Icon(Icons.email_outlined)),
+                                prefixIcon: const Icon(Icons.email_outlined)),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your email';
@@ -102,7 +98,7 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                                     side: BorderSide.none,
                                     shape: const StadiumBorder(),
                                   ),
-                                  child: const Text(cNext)))
+                                  child: Text(LanguageService.cNext)))
                         ],
                       ),
                     )

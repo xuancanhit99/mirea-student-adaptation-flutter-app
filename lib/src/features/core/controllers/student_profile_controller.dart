@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:msa/src/localization/language_service.dart';
 import 'package:msa/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -248,6 +249,15 @@ class StudentProfileController extends GetxController {
     final DateFormat formatter = DateFormat.yMMMMd('en_US').add_jm();
     final String formatted = formatter.format(date);
     return formatted;
+  }
+
+  String getMultiLangGender(String gender) {
+    if (gender == 'male') {
+      return LanguageService.cMale;
+    } else if (gender == 'female') {
+      return LanguageService.cFemale;
+    }
+    return "";
   }
 
   int getCourse(String group) {

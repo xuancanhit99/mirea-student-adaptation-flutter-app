@@ -6,8 +6,8 @@ import 'package:msa/src/features/core/screens/curator/curator_info.dart';
 import 'package:msa/src/features/core/screens/imo/imo.dart';
 
 import '../../../../../constants/assets_strings.dart';
-import '../../../../../constants/colors.dart';
-import '../../../../../constants/text_strings.dart';
+import '../../../../../constants/variables.dart';
+import '../../../../../localization/language_service.dart';
 import '../../../../authentication/models/student_model.dart';
 import '../../../controllers/student_profile_controller.dart';
 import '../../details/student_study_details_page.dart';
@@ -65,7 +65,8 @@ class StudentDashboardBanners extends StatelessWidget {
                                 height: 55,
                               ),
                               Text(
-                                cInstituteOfInternationalEducation,
+                                LanguageService
+                                    .cInstituteOfInternationalEducation,
                                 style: txtTheme.headlineSmall
                                     ?.copyWith(fontSize: 20),
                                 maxLines: 3,
@@ -85,13 +86,12 @@ class StudentDashboardBanners extends StatelessWidget {
                           ),
                         ),
                         const Flexible(
-                          child:
-                          // Lottie.asset(
-                          //     frameRate: FrameRate.max,
-                          //     cDataManagementJson
-                          // ),
-                          Image(image: AssetImage(cDataManagement))
-                        )
+                            child:
+                                // Lottie.asset(
+                                //     frameRate: FrameRate.max,
+                                //     cDataManagementJson
+                                // ),
+                                Image(image: AssetImage(cDataManagement)))
                       ],
                     ),
                   ),
@@ -142,14 +142,14 @@ class StudentDashboardBanners extends StatelessWidget {
                                   height: 25,
                                 ),
                                 Text(
-                                  cMyProfile,
+                                  LanguageService.cMyProfile,
                                   style: txtTheme.headlineSmall
                                       ?.copyWith(fontSize: 20),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text.rich(TextSpan(
-                                    text: cUpdatedAt,
+                                    text: LanguageService.cUpdatedAt,
                                     style: txtTheme.bodySmall,
                                     children: [
                                       TextSpan(
@@ -190,12 +190,14 @@ class StudentDashboardBanners extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Flexible(
-                                        child: Icon(LineAwesomeIcons.street_view,
+                                        child: Icon(
+                                            LineAwesomeIcons.street_view,
                                             color: Theme.of(context)
                                                 .colorScheme
                                                 .outline)),
                                     const Flexible(
-                                      child: Icon(LineAwesomeIcons.map, size: 70),
+                                      child:
+                                          Icon(LineAwesomeIcons.map, size: 70),
                                     ),
                                   ],
                                 ),
@@ -203,7 +205,7 @@ class StudentDashboardBanners extends StatelessWidget {
                                   height: 10,
                                 ),
                                 Text(
-                                  cUniversityMap,
+                                  LanguageService.cUniversityMap,
                                   style: txtTheme.headlineSmall
                                       ?.copyWith(fontSize: 20),
                                   maxLines: 1,
@@ -241,7 +243,8 @@ class StudentDashboardBanners extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Flexible(
@@ -257,7 +260,7 @@ class StudentDashboardBanners extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                cStudyDetails,
+                                LanguageService.cStudyDetails,
                                 style: txtTheme.headlineSmall
                                     ?.copyWith(fontSize: 20),
                                 overflow: TextOverflow.ellipsis,
@@ -292,7 +295,8 @@ class StudentDashboardBanners extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Flexible(
@@ -301,8 +305,8 @@ class StudentDashboardBanners extends StatelessWidget {
                                               .colorScheme
                                               .outline)),
                                   const Flexible(
-                                    child:
-                                        Icon(LineAwesomeIcons.calendar, size: 70),
+                                    child: Icon(LineAwesomeIcons.calendar,
+                                        size: 70),
                                     // Image(image: AssetImage(cUserProfileImage))
                                   ),
                                 ],
@@ -311,14 +315,14 @@ class StudentDashboardBanners extends StatelessWidget {
                                 height: 25,
                               ),
                               Text(
-                                cStudySchedule,
+                                LanguageService.cStudySchedule,
                                 style: txtTheme.headlineSmall
                                     ?.copyWith(fontSize: 20),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text.rich(TextSpan(
-                                  text: cTodayIs,
+                                  text: LanguageService.cTodayIs,
                                   style: txtTheme.bodySmall,
                                   children: [
                                     TextSpan(
@@ -349,7 +353,7 @@ class StudentDashboardBanners extends StatelessWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
-                    final url = Uri.parse('https://stavropol.mirea.ru/frequently-asked-questions');
+                    final url = Uri.parse(cLinkFAQsMIREA);
                     studentProfileController.launchInWebViewOrVC(url);
                   },
                   child: Padding(
@@ -367,10 +371,10 @@ class StudentDashboardBanners extends StatelessWidget {
                                 height: 25,
                               ),
                               Text(
-                                cFrequentlyAskedQuestions,
+                                LanguageService.cFrequentlyAskedQuestions,
                                 style: txtTheme.headlineSmall
                                     ?.copyWith(fontSize: 20),
-                                maxLines: 2,
+                                maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                               ),
                               // Text.rich(TextSpan(
@@ -387,19 +391,18 @@ class StudentDashboardBanners extends StatelessWidget {
                           ),
                         ),
                         const Flexible(
-                          child:
-                          // Lottie.asset(
-                          //     frameRate: FrameRate.max,
-                          //     cSupportCentre2Json),
-                          Image(image: AssetImage(cSupportCentre2))
-                        )
+                            child:
+                                // Lottie.asset(
+                                //     frameRate: FrameRate.max,
+                                //     cSupportCentre2Json),
+                                Image(image: AssetImage(cSupportCentre2)))
                       ],
                     ),
                   ),
                 )),
             const SizedBox(height: 10),
             Text(
-              cGroupCurator,
+              LanguageService.cGroupCurator,
               style: txtTheme.headlineSmall?.apply(fontSizeFactor: 1.1),
             ),
             // Group Curator

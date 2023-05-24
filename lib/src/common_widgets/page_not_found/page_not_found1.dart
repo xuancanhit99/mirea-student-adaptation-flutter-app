@@ -7,7 +7,8 @@ import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_contr
 import 'package:msa/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/colors.dart';
-import 'package:msa/src/constants/text_strings.dart';
+
+import '../../localization/language_service.dart';
 
 class PageNotFound1 extends StatelessWidget {
   const PageNotFound1({Key? key}) : super(key: key);
@@ -65,37 +66,39 @@ class PageNotFound1 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            c404,
+                            LanguageService.c404,
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineLarge
                                 ?.copyWith(fontSize: 100, color: cBlue404Space),
                           ),
                           Text(
-                            cPageNotFoundTitle,
+                            LanguageService.cPageNotFoundTitle,
                             style: Theme.of(context)
                                 .textTheme
-                                .headlineSmall?.copyWith(color: cBlue404Space),
+                                .headlineSmall
+                                ?.copyWith(color: cBlue404Space),
                           ),
                         ],
                       ),
                       Lottie.asset(c404NotFoundSpaceError),
                       Text(
-                        cPageNotFoundSubTitle,
+                        LanguageService.cPageNotFoundSubTitle,
                         style: Theme.of(context)
                             .textTheme
-                            .bodyLarge?.copyWith(fontSize: 17),
+                            .bodyLarge
+                            ?.copyWith(fontSize: 17),
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                             onPressed: () => Get.back(),
-                            child: Text(cGoBack.toUpperCase())),
+                            child: Text(LanguageService.cGoBack.toUpperCase())),
                       ),
                       Align(
                         alignment: Alignment.center,
                         child: Text(
-                          cCopyright,
+                          LanguageService.cCopyright,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ),
