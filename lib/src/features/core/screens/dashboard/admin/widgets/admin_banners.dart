@@ -4,6 +4,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:msa/src/features/core/screens/curator/curator_info.dart';
 import 'package:msa/src/features/core/screens/imo/imo.dart';
+import 'package:msa/src/features/core/screens/list/curator_list.dart';
 import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
 
 import '../../../../../../constants/assets_strings.dart';
@@ -210,7 +211,7 @@ class AdminDashboardBanners extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: () {
-                      // Get.to(() => const StudentStudyDetailsPage());
+                      Get.to(() => const CuratorList());
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(10),

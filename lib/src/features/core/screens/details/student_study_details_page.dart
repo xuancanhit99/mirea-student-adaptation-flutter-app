@@ -5,7 +5,8 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../../localization/language_service.dart';
 import '../../../authentication/models/student_model.dart';
 import '../../controllers/student_profile_controller.dart';
-import '../profile/admin/admin_student_update_profile_page.dart';
+import '../profile/admin/ex_admin_student_update_profile_page.dart';
+import '../profile/student/student_update_profile_page.dart';
 
 class StudentStudyDetailsPage extends StatelessWidget {
   const StudentStudyDetailsPage({Key? key}) : super(key: key);
@@ -342,7 +343,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                             onPressed: () => Get.to(
-                                () => const AdminStudentUpdateProfilePage()),
+                                () => const StudentUpdateProfilePage()),
                             style: ElevatedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),

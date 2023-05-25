@@ -9,6 +9,8 @@ import '../../../repository/admin_repository/admin_repository.dart';
 import '../../../repository/authentication_repository/authentication_repository.dart';
 import '../../../utils/theme/theme.dart';
 import '../../authentication/models/admin_model.dart';
+import '../../authentication/models/student_model.dart';
+import '../models/curator_model.dart';
 
 class AdminController extends GetxController {
   static AdminController get instance => Get.find();
@@ -20,7 +22,7 @@ class AdminController extends GetxController {
 
   var img = "".obs;
 
-  final _authAdminRepo = Get.put(AuthenticationRepository());
+  final _authRepo = Get.put(AuthenticationRepository());
   final _adminRepo = Get.put(AdminRepository());
 
 
@@ -73,7 +75,7 @@ class AdminController extends GetxController {
 
 
   getAdminData() async {
-    final uid = _authAdminRepo.firebaseUser.value?.uid;
+    final uid = _authRepo.firebaseUser.value?.uid;
     if (uid != null) {
       AdminModel admin = await _adminRepo.getAdminDetailsByUidAdminRepo(uid);
       id.text = admin.id!;
@@ -88,7 +90,7 @@ class AdminController extends GetxController {
 
 
   getAdminByUidRealtime() {
-    final uid = _authAdminRepo.firebaseUser.value?.uid;
+    final uid = _authRepo.firebaseUser.value?.uid;
     // print(uid);
     if (uid != null) {
       return _adminRepo.getAdminDetailsByUidRealtimeAdminRepo(uid);
@@ -112,6 +114,14 @@ class AdminController extends GetxController {
     final now = DateTime.now();
     final formatter = DateFormat('EEEE, MMMM d, y');
     return formatter.format(now);
+  }
+
+  Future<List<StudentModel>> getAllStudent() async {
+    return await _adminRepo.getAllStudentRepo();
+  }
+
+  Future<List<CuratorModel>> getAllCurator() async {
+    return await _adminRepo.getAllCuratorRepo();
   }
 
 

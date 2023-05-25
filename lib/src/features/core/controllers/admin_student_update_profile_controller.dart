@@ -10,8 +10,12 @@ import '../../../repository/student_repository/student_repository.dart';
 import '../../../utils/theme/theme.dart';
 import '../../authentication/models/student_model.dart';
 
-class StudentProfileController extends GetxController {
-  static StudentProfileController get instance => Get.find();
+class AdminStudentUpdateProfileController extends GetxController {
+  static AdminStudentUpdateProfileController get instance => Get.find();
+  AdminStudentUpdateProfileController(String? id) {
+    getStudentData(id);
+  }
+
 
   final id = TextEditingController();
   final no = TextEditingController();
@@ -47,7 +51,7 @@ class StudentProfileController extends GetxController {
   var gender = "".obs;
   var isActive = false.obs;
   final isAdmin = TextEditingController();
-  late final DateTime createAt;
+  DateTime? createAt;
   var updateAt = DateTime.now().obs;
 
   void toggleSwitchIsActive(bool value) {
@@ -81,49 +85,49 @@ class StudentProfileController extends GetxController {
 
   final _themeModeKey = 'theme_mode';
 
-  @override
-  void onInit() {
-    super.onInit();
-    getStudentData();
-    initializeTheme();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   getStudentData();
+  //   initializeTheme();
+  // }
 
-  var isDarkMode = false.obs;
-
-
-  void toggleDarkMode(bool value) {
-    isDarkMode.toggle();
-    changeTheme();
-  }
-
-  Future<void> changeTheme() async {
-    if (isDarkMode.value == true) {
-      Get.changeTheme(CAppTheme.darkTheme);
-      await saveThemeMode(ThemeMode.dark);
-    } else {
-      Get.changeTheme(CAppTheme.lightTheme);
-      await saveThemeMode(ThemeMode.light);
-    }
-  }
-
-  void initializeTheme() async {
-    final savedThemeMode = await getSavedThemeMode();
-    if (savedThemeMode != ThemeMode.system) {
-      isDarkMode.value = savedThemeMode == ThemeMode.dark;
-      changeTheme();
-    }
-  }
-
-  Future<void> saveThemeMode(ThemeMode themeMode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_themeModeKey, themeMode.index);
-  }
-
-  Future<ThemeMode> getSavedThemeMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    final themeModeIndex = prefs.getInt(_themeModeKey);
-    return themeModeIndex != null ? ThemeMode.values[themeModeIndex] : ThemeMode.system;
-  }
+  // var isDarkMode = false.obs;
+  //
+  //
+  // void toggleDarkMode(bool value) {
+  //   isDarkMode.toggle();
+  //   changeTheme();
+  // }
+  //
+  // Future<void> changeTheme() async {
+  //   if (isDarkMode.value == true) {
+  //     Get.changeTheme(CAppTheme.darkTheme);
+  //     await saveThemeMode(ThemeMode.dark);
+  //   } else {
+  //     Get.changeTheme(CAppTheme.lightTheme);
+  //     await saveThemeMode(ThemeMode.light);
+  //   }
+  // }
+  //
+  // void initializeTheme() async {
+  //   final savedThemeMode = await getSavedThemeMode();
+  //   if (savedThemeMode != ThemeMode.system) {
+  //     isDarkMode.value = savedThemeMode == ThemeMode.dark;
+  //     changeTheme();
+  //   }
+  // }
+  //
+  // Future<void> saveThemeMode(ThemeMode themeMode) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setInt(_themeModeKey, themeMode.index);
+  // }
+  //
+  // Future<ThemeMode> getSavedThemeMode() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final themeModeIndex = prefs.getInt(_themeModeKey);
+  //   return themeModeIndex != null ? ThemeMode.values[themeModeIndex] : ThemeMode.system;
+  // }
 
   int calculateAge(String dateOfBirth) {
     if (dateOfBirth == "") {
@@ -140,8 +144,7 @@ class StudentProfileController extends GetxController {
     return age;
   }
 
-  getStudentData() async {
-    final uid = _authRepo.firebaseUser.value?.uid;
+  getStudentData(String? uid) async {
     if (uid != null) {
       StudentModel student = await _studentRepo.getStudentDetailsByUid(uid);
       id.text = student.id!;
@@ -221,13 +224,11 @@ class StudentProfileController extends GetxController {
   }
 
   // Take Photo And Select Photo
-  Future<String?> takePhoto() async {
-    final uid = _authRepo.firebaseUser.value?.uid;
+  Future<String?> takePhoto(String? uid) async {
     return await _studentRepo.imgFromCamera(uid!);
   }
 
-  Future<String?> selectPhoto() async {
-    final uid = _authRepo.firebaseUser.value?.uid;
+  Future<String?> selectPhoto(String? uid) async {
     return await _studentRepo.imgFromGallery(uid!);
   }
 
@@ -247,7 +248,7 @@ class StudentProfileController extends GetxController {
 
   String getDate(DateTime date) {
     final DateFormat formatter = DateFormat.yMMMMd('en_US').add_jm();
-    final String formatted = formatter.format(date);
+    final String formatted = formatter.format(date!);
     return formatted;
   }
 

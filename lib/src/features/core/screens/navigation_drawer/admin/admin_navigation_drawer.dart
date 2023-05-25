@@ -13,6 +13,7 @@ import '../../../../../localization/language_service.dart';
 import '../../../../../repository/authentication_repository/authentication_repository.dart';
 import '../../../controllers/admin_controller.dart';
 import '../../../controllers/student_profile_controller.dart';
+import '../../list/curator_list.dart';
 import '../../profile/student/student_profile_page.dart';
 
 class AdminNavigationDrawer extends StatelessWidget {
@@ -65,7 +66,7 @@ class AdminNavigationDrawer extends StatelessWidget {
                   name: LanguageService.cCuratorList,
                   icon: LineAwesomeIcons.address_card,
                   onPressed: () =>
-                      Get.to(() => const StudentStudyDetailsPage())),
+                      Get.to(() => const CuratorList())),
               const SizedBox(height: 20),
               DrawerItem(
                   name: LanguageService.cUniversityMap,

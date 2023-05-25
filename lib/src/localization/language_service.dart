@@ -245,7 +245,7 @@ class LanguageService {
       'cAreYouAnAdmin': 'Вы администратор? ',
       'cAreYouAStudent': 'Вы студент? ',
       'cDoNotHaveAccount': 'Нет аккаунта? ',
-      'cFullName': 'Полное имя',
+      'cFullName': 'ФИО',
       'cForgotPasswordTitle': 'Сделайте выбор!',
       'cForgotPasswordViaEmailSubTitle':
           'Введите ваш адрес электронной почты ниже, и мы отправим вам ссылку для сброса пароля.',
@@ -306,7 +306,7 @@ class LanguageService {
       'c918': ' 9:00 — 18:00',
       'c917': ' 9:00 — 17:00',
       'cAddress': 'Адрес',
-      'cOffice': 'Офис',
+      'cOffice': 'ауд.',
       'cPhone': 'Телефон',
       'cExt': 'доб.',
       'cInfoTitle1': 'Основные функции института',

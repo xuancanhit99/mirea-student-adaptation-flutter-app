@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:msa/src/features/authentication/models/admin_model.dart';
 
+import '../../features/authentication/models/student_model.dart';
+import '../../features/core/models/curator_model.dart';
+
 
 class AdminRepository extends GetxController {
   static AdminRepository get instance => Get.find();
@@ -33,5 +36,19 @@ class AdminRepository extends GetxController {
     } catch (e) {
       print('Error occurred: $e');
     }
+  }
+
+  Future<List<StudentModel>> getAllStudentRepo() async {
+    final snapshot = await _db.collection("Students").get();
+    final studentData =
+    snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).toList();
+    return studentData;
+  }
+
+  Future<List<CuratorModel>> getAllCuratorRepo() async {
+    final snapshot = await _db.collection("Curator").get();
+    final curatorData =
+    snapshot.docs.map((e) => CuratorModel.fromSnapshot(e)).toList();
+    return curatorData;
   }
 }

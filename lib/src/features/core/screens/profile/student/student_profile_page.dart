@@ -8,7 +8,6 @@ import 'package:msa/src/utils/string_casing_extension.dart';
 import '../../../../../localization/language_service.dart';
 import '../../../../authentication/models/student_model.dart';
 import '../../../controllers/student_profile_controller.dart';
-import '../admin/admin_student_update_profile_page.dart';
 
 class StudentProfilePage extends StatelessWidget {
   const StudentProfilePage({Key? key}) : super(key: key);

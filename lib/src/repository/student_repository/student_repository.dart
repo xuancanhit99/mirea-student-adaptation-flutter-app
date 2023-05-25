@@ -63,12 +63,12 @@ class StudentRepository extends GetxController {
     return studentData;
   }
 
-  Future<List<StudentModel>> getAllStudentRepo() async {
-    final snapshot = await _db.collection("Students").get();
-    final studentData =
-        snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).toList();
-    return studentData;
-  }
+  // Future<List<StudentModel>> getAllStudentRepo() async {
+  //   final snapshot = await _db.collection("Students").get();
+  //   final studentData =
+  //       snapshot.docs.map((e) => StudentModel.fromSnapshot(e)).toList();
+  //   return studentData;
+  // }
 
   Future<void> updateStudentRepo(StudentModel student) async {
     await _db
