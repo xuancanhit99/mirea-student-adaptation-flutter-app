@@ -5,6 +5,8 @@
 
 const String cLinkInternationalStudentDepartment = "https://www.mirea.ru/about/the-structure-of-the-university/administrative-structural-unit/the-department-of-international-relations/the-department-for-work-with-foreign-students/";
 const String cLinkFAQsMIREA = "https://stavropol.mirea.ru/frequently-asked-questions";
+const String cLinkSchemeMIREA = "https://mirea.xyz/scheme";
+const String cLinkScheduleMIREA = "https://mirea.xyz";
 
 
 var cListYesNo = ['No', 'Yes'];

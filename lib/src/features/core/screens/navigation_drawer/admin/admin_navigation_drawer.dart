@@ -5,20 +5,22 @@ import 'package:msa/src/constants/variables.dart';
 import 'package:msa/src/features/core/screens/curator/curator_info.dart';
 import 'package:msa/src/features/core/screens/details/student_study_details_page.dart';
 import 'package:msa/src/features/core/screens/imo/imo.dart';
+import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
 import 'package:msa/src/features/core/screens/navigation_drawer/drawer_item.dart';
 
 import '../../../../../constants/assets_strings.dart';
 import '../../../../../localization/language_service.dart';
 import '../../../../../repository/authentication_repository/authentication_repository.dart';
+import '../../../controllers/admin_controller.dart';
 import '../../../controllers/student_profile_controller.dart';
 import '../../profile/student/student_profile_page.dart';
 
-class StudentNavigationDrawer extends StatelessWidget {
-  const StudentNavigationDrawer({Key? key}) : super(key: key);
+class AdminNavigationDrawer extends StatelessWidget {
+  const AdminNavigationDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final studentProfileController = Get.put(StudentProfileController());
+    final adminController = Get.put(AdminController());
     return Drawer(
       child: SafeArea(
         child: Container(
@@ -33,8 +35,8 @@ class StudentNavigationDrawer extends StatelessWidget {
                     height: 70,
                     child: ClipOval(
                         child: SizedBox.fromSize(
-                      child: studentProfileController.img.value != ""
-                          ? Image.network(studentProfileController.img.value,
+                      child: adminController.img.value != ""
+                          ? Image.network(adminController.img.value,
                               fit: BoxFit.cover)
                           : Image.asset(cUserProfileImage, fit: BoxFit.cover),
                     )),
@@ -44,11 +46,11 @@ class StudentNavigationDrawer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(studentProfileController.fullName.text,
+                        Text(adminController.fullName.text,
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 5),
-                        Text(studentProfileController.group.text),
+                        Text(adminController.email.text),
                       ],
                     ),
                   ),
@@ -56,12 +58,12 @@ class StudentNavigationDrawer extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               DrawerItem(
-                  name: LanguageService.cMyProfile,
-                  icon: Icons.person,
-                  onPressed: () => Get.to(() => const StudentProfilePage())),
+                  name: LanguageService.cStudentList,
+                  icon: LineAwesomeIcons.list,
+                  onPressed: () => Get.to(() => const ListOfAllStudents())),
               DrawerItem(
-                  name: LanguageService.cStudyDetails,
-                  icon: LineAwesomeIcons.university,
+                  name: LanguageService.cCuratorList,
+                  icon: LineAwesomeIcons.address_card,
                   onPressed: () =>
                       Get.to(() => const StudentStudyDetailsPage())),
               const SizedBox(height: 20),
@@ -70,14 +72,14 @@ class StudentNavigationDrawer extends StatelessWidget {
                   icon: Icons.map_outlined,
                   onPressed: () {
                     final url = Uri.parse(cLinkSchemeMIREA);
-                    studentProfileController.launchInWebViewOrVC(url);
+                    adminController.launchInWebViewOrVC(url);
                   }),
               DrawerItem(
                   name: LanguageService.cStudySchedule,
                   icon: Icons.calendar_month_outlined,
                   onPressed: () {
                     final url = Uri.parse(cLinkScheduleMIREA);
-                    studentProfileController.launchInWebViewOrVC(url);
+                    adminController.launchInWebViewOrVC(url);
                   }),
               const SizedBox(height: 20),
               DrawerItem(
@@ -93,7 +95,7 @@ class StudentNavigationDrawer extends StatelessWidget {
                   icon: LineAwesomeIcons.comments,
                   onPressed: () {
                     final url = Uri.parse(cLinkFAQsMIREA);
-                    studentProfileController.launchInWebViewOrVC(url);
+                    adminController.launchInWebViewOrVC(url);
                   }),
               const SizedBox(height: 50),
               DrawerItem(

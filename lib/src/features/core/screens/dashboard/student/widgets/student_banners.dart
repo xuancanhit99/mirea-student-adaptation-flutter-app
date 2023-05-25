@@ -5,13 +5,13 @@ import 'package:lottie/lottie.dart';
 import 'package:msa/src/features/core/screens/curator/curator_info.dart';
 import 'package:msa/src/features/core/screens/imo/imo.dart';
 
-import '../../../../../constants/assets_strings.dart';
-import '../../../../../constants/variables.dart';
-import '../../../../../localization/language_service.dart';
-import '../../../../authentication/models/student_model.dart';
-import '../../../controllers/student_profile_controller.dart';
-import '../../details/student_study_details_page.dart';
-import '../../profile/student/student_profile_page.dart';
+import '../../../../../../constants/assets_strings.dart';
+import '../../../../../../constants/variables.dart';
+import '../../../../../../localization/language_service.dart';
+import '../../../../../authentication/models/student_model.dart';
+import '../../../../controllers/student_profile_controller.dart';
+import '../../../details/student_study_details_page.dart';
+import '../../../profile/student/student_profile_page.dart';
 
 class StudentDashboardBanners extends StatelessWidget {
   const StudentDashboardBanners({
@@ -176,7 +176,7 @@ class StudentDashboardBanners extends StatelessWidget {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(10),
                           onTap: () {
-                            final url = Uri.parse('https://mirea.xyz/scheme');
+                            final url = Uri.parse(cLinkSchemeMIREA);
                             studentProfileController.launchInWebViewOrVC(url);
                           },
                           child: Padding(
@@ -286,7 +286,7 @@ class StudentDashboardBanners extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () {
-                          final url = Uri.parse('https://mirea.xyz');
+                          final url = Uri.parse(cLinkScheduleMIREA);
                           studentProfileController.launchInWebViewOrVC(url);
                         },
                         child: Padding(

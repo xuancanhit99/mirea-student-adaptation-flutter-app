@@ -4,17 +4,19 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/features/core/screens/dashboard/student/student_dashboard.dart';
 
 import '../../../../../localization/language_service.dart';
+import '../../../controllers/admin_controller.dart';
 import '../../../controllers/student_profile_controller.dart';
 import '../../../controllers/setting_controller.dart';
+import '../../dashboard/admin/admin_dashboard.dart';
 
-class StudentSettingPage extends StatelessWidget {
-  const StudentSettingPage({super.key});
+class AdminSettingPage extends StatelessWidget {
+  const AdminSettingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final studentSettingController = Get.put(SettingController());
+    final settingController = Get.put(SettingController());
     // Dung chung cai dat dark mode voi profile controller
-    final studentProfileController = Get.put(StudentProfileController());
+    final adminController = Get.put(AdminController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -62,9 +64,9 @@ class StudentSettingPage extends StatelessWidget {
                           return const Icon(LineAwesomeIcons.sun);
                         },
                       ),
-                      value: studentProfileController.isDarkMode.value,
+                      value: adminController.isDarkMode.value,
                       onChanged: (value) {
-                        studentProfileController.toggleDarkMode(value);
+                        adminController.toggleDarkMode(value);
                       },
                     ),
                   ),
@@ -84,11 +86,11 @@ class StudentSettingPage extends StatelessWidget {
                 title: Text(LanguageService.cEnglish),
                 value: "en",
                 groupValue:
-                    studentSettingController.selectedLanguage.toString(),
+                    settingController.selectedLanguage.toString(),
                 onChanged: (value) {
-                  studentSettingController.selectedLanguage.value = value!;
-                  studentSettingController.changeLanguage();
-                  Get.offAll(() => const StudentDashboard());
+                  settingController.selectedLanguage.value = value!;
+                  settingController.changeLanguage();
+                  Get.offAll(() => const AdminDashboard());
                 },
               ),
             ),
@@ -97,11 +99,11 @@ class StudentSettingPage extends StatelessWidget {
                 title: Text(LanguageService.cRussian),
                 value: "ru",
                 groupValue:
-                    studentSettingController.selectedLanguage.toString(),
+                    settingController.selectedLanguage.toString(),
                 onChanged: (value) {
-                  studentSettingController.selectedLanguage.value = value!;
-                  studentSettingController.changeLanguage();
-                  Get.offAll(() => const StudentDashboard());
+                  settingController.selectedLanguage.value = value!;
+                  settingController.changeLanguage();
+                  Get.offAll(() => const AdminDashboard());
                 },
               ),
             ),

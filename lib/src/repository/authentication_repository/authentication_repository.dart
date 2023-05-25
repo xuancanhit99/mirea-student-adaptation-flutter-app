@@ -5,11 +5,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:msa/src/features/authentication/models/student_model.dart';
 import 'package:msa/src/features/authentication/screens/login/student/student_login_screen.dart';
 import 'package:msa/src/features/authentication/screens/signup/email_verification/email_verification.dart';
-import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/student/student_dashboard.dart';
 import 'package:msa/src/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 
 import '../../features/authentication/screens/welcome/welcome_screen.dart';
+import '../../features/core/screens/dashboard/admin/admin_dashboard.dart';
 import '../../features/core/screens/profile/student/student_profile_page.dart';
+import '../admin_repository/admin_repository.dart';
 import '../student_repository/student_repository.dart';
 import 'exceptions/signup_email_password_failure.dart';
 
@@ -27,14 +29,18 @@ class AuthenticationRepository extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
-  _setInitialScreen(User? user) {
+  _setInitialScreen(User? user) async {
 
     if (user != null) {
-      if (user.emailVerified) {
-        Get.offAll(() => const StudentDashboard());
+      if(await checkIsAdmin(user)) {
+        Get.offAll(() => const AdminDashboard());
       } else {
-        sendEmailVerificationAuthRepo();
-        Get.offAll(() => const EmailVerificationScreen());
+        if (user.emailVerified) {
+          Get.offAll(() => const StudentDashboard());
+        } else {
+          sendEmailVerificationAuthRepo();
+          Get.offAll(() => const EmailVerificationScreen());
+        }
       }
     } else {
       Get.offAll(() => const StudentLoginScreen());
@@ -46,6 +52,13 @@ class AuthenticationRepository extends GetxController {
   //   return user != null;
   // }
 
+  Future<bool> checkIsAdmin(User? user) async {
+    final adminRepo = Get.put(AdminRepository());
+    final uid = user?.uid;
+    final adminData = await adminRepo.getAdminDetailsByUidAdminRepo(uid!);
+    return adminData.isAdmin;
+  }
+
   Future<void> sendEmailVerificationAuthRepo() async {
     final user = firebaseUser.value;
     if (user != null && !user.emailVerified) {
@@ -53,9 +66,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-
-
-  Future<void> phoneAuthentication(String phoneNo) async {
+  Future<void> phoneAuthenticationAuthRepo(String phoneNo) async {
     await _auth.verifyPhoneNumber(
         phoneNumber: phoneNo,
         verificationCompleted: (credential) async {
@@ -76,7 +87,7 @@ class AuthenticationRepository extends GetxController {
         });
   }
 
-  Future<bool> verifyOTP(String otp) async {
+  Future<bool> verifyOTPAuthRepo(String otp) async {
     var credentials = await _auth.signInWithCredential(
         PhoneAuthProvider.credential(
             verificationId: verificationId.value, smsCode: otp));
@@ -186,6 +197,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+
   Future<void> updateEmailAuthRepo(String newEmail) async {
     final user = _auth.currentUser;
     try {
@@ -230,7 +242,7 @@ class AuthenticationRepository extends GetxController {
 
 
 
-  Future<void> changePasswordRepo(String oldPassword, String newPassword) async {
+  Future<void> changePasswordAuthRepo(String oldPassword, String newPassword) async {
     try {
       final user = _auth.currentUser;
       final credential = EmailAuthProvider.credential(email: user?.email ?? '', password: oldPassword);

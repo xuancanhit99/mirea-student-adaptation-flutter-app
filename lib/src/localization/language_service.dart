@@ -168,6 +168,8 @@ class LanguageService {
       'cUpdate': 'Update',
       'cTakeAPhoto': 'Take a photo',
       'cSelectAPhoto': 'Select a photo',
+      'cStudentList': 'Student List',
+      'cCuratorList': 'Curator List',
     },
     'ru': {
       'cAppName': 'MSA',
@@ -338,6 +340,8 @@ class LanguageService {
       'cUpdate': 'Обновить',
       'cTakeAPhoto': 'Сделать фото',
       'cSelectAPhoto': 'Выбрать фото',
+      'cStudentList': 'Список студентов',
+      'cCuratorList': 'Список кураторов',
     }
   };
 
@@ -969,5 +973,11 @@ class LanguageService {
   }
   static String get cSelectAPhoto {
     return _localizedValues[defaultLanguage]!['cSelectAPhoto']!;
+  }
+  static String get cStudentList {
+    return _localizedValues[defaultLanguage]!['cStudentList']!;
+  }
+  static String get cCuratorList {
+    return _localizedValues[defaultLanguage]!['cCuratorList']!;
   }
 }

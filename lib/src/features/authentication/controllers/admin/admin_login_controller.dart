@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../repository/admin_repository/admin_repository.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
+import '../../../core/controllers/admin_controller.dart';
 
 class AdminLoginController extends GetxController {
   static AdminLoginController get instance => Get.find();
@@ -67,7 +68,7 @@ class AdminLoginController extends GetxController {
       final currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
         final uid = currentUser.uid;
-        final adminData = await adminRepo.getAdminDetailsByUid(uid);
+        final adminData = await adminRepo.getAdminDetailsByUidAdminRepo(uid);
         final isAdmin = adminData.isAdmin;
         print(isAdmin);
         if (!isAdmin) {

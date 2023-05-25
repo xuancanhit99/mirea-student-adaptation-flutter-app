@@ -188,15 +188,15 @@ class StudentProfileController extends GetxController {
     }
   }
 
-  // Get student email and pass to StudentRepository to fetch user record
-  getStudentDataFromEmail() async {
-    final email = _authRepo.firebaseUser.value?.email;
-    if (email != null) {
-      return _studentRepo.getStudentDetailsRepo(email);
-    } else {
-      Get.snackbar("Error", "Login to continue");
-    }
-  }
+  // // Get student email and pass to StudentRepository to fetch user record
+  // getStudentDataFromEmail() async {
+  //   final email = _authRepo.firebaseUser.value?.email;
+  //   if (email != null) {
+  //     return _studentRepo.getStudentDetailsRepo(email);
+  //   } else {
+  //     Get.snackbar("Error", "Login to continue");
+  //   }
+  // }
 
   getStudentFromUid() {
     final uid = _authRepo.firebaseUser.value?.uid;

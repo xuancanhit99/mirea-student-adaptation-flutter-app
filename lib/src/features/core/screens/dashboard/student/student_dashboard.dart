@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:msa/src/features/authentication/models/student_model.dart';
-import 'package:msa/src/features/core/controllers/student_setting_controller.dart';
-import 'package:msa/src/features/core/screens/dashboard/widgets/appbar.dart';
-import 'package:msa/src/features/core/screens/dashboard/widgets/banners.dart';
+import 'package:msa/src/features/core/controllers/setting_controller.dart';
+import 'package:msa/src/features/core/screens/dashboard/student/widgets/student_appbar.dart';
+import 'package:msa/src/features/core/screens/dashboard/student/widgets/student_banners.dart';
 
-import '../../../../localization/language_service.dart';
-import '../../controllers/student_profile_controller.dart';
-import '../navigation_drawer/student/student_navigation_drawer.dart';
+import '../../../../../localization/language_service.dart';
+import '../../../controllers/student_profile_controller.dart';
+import '../../navigation_drawer/student/student_navigation_drawer.dart';
 
 class StudentDashboard extends StatelessWidget {
   const StudentDashboard({Key? key}) : super(key: key);
@@ -16,11 +16,11 @@ class StudentDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final studentController = Get.put(StudentProfileController());
-    final studentSettingController = Get.put(StudentSettingController());
+    final studentSettingController = Get.put(SettingController());
     final txtTheme = Theme.of(context).textTheme;
     return Scaffold(
       drawer: const StudentNavigationDrawer(),
-      appBar: const DashboardAppBar(),
+      appBar: const StudentDashboardAppBar(),
       body: StreamBuilder<StudentModel>(
         stream: studentController.getStudentFromUid(),
         builder: (context, snapshot) {

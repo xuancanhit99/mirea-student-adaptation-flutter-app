@@ -5,9 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../localization/language_service.dart';
 
-class StudentSettingController extends GetxController {
+class SettingController extends GetxController {
 
-  static StudentSettingController get instance => Get.find();
+  static SettingController get instance => Get.find();
 
   var selectedLanguage = ''.obs;
 

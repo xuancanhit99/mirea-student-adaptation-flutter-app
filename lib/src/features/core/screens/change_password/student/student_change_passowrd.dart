@@ -5,7 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/colors.dart';
 import 'package:msa/src/features/authentication/controllers/student/student_change_password_controller.dart';
 
-import '../../../../localization/language_service.dart';
+import '../../../../../localization/language_service.dart';
 
 class StudentChangePasswordPage extends StatelessWidget {
   const StudentChangePasswordPage({Key? key}) : super(key: key);

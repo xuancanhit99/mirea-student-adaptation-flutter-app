@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../repository/admin_repository/admin_repository.dart';
 import '../../../../repository/authentication_repository/authentication_repository.dart';
 import '../../../../repository/student_repository/student_repository.dart';
 
-class StudentChangePasswordController extends GetxController {
-  static StudentChangePasswordController get instance => Get.find();
+class AdminChangePasswordController extends GetxController {
+  static AdminChangePasswordController get instance => Get.find();
 
   final oldPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
@@ -32,7 +33,7 @@ class StudentChangePasswordController extends GetxController {
   var validatePassword = false.obs;
 
   final _authRepo = Get.put(AuthenticationRepository());
-  final _studentRepo = Get.put(StudentRepository());
+  final _adminRepo = Get.put(AdminRepository());
 
 
 
@@ -55,7 +56,7 @@ class StudentChangePasswordController extends GetxController {
     } else {
       final uid = _authRepo.firebaseUser.value?.uid;
       changePassword(oldPassword, newPassword);
-      _studentRepo.updateNewPasswordStudentRepo(newPassword, uid!);
+      _adminRepo.updateNewPasswordStudentRepo(newPassword, uid!);
     }
   }
 

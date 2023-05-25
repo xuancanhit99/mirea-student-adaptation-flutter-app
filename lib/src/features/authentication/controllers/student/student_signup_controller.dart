@@ -80,6 +80,6 @@ class StudentSignUpController extends GetxController {
   }
 
   void phoneAuthentication(String phoneNo) {
-    AuthenticationRepository.instance.phoneAuthentication(phoneNo);
+    AuthenticationRepository.instance.phoneAuthenticationAuthRepo(phoneNo);
   }
 }

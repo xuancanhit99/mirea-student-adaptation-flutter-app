@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
 import 'package:msa/src/constants/sizes.dart';
-import 'package:msa/src/features/core/screens/dashboard/student_dashboard.dart';
+import 'package:msa/src/features/core/screens/dashboard/student/student_dashboard.dart';
 
 import '../../../../../common_widgets/form/from_header_lottie_widget.dart';
 import '../../../../../localization/language_service.dart';

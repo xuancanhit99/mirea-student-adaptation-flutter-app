@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:msa/src/constants/assets_strings.dart';
-import 'package:msa/src/features/core/screens/list/list_of_all_students.dart';
+import 'package:msa/src/features/core/screens/change_password/student/student_change_passowrd.dart';
 import 'package:msa/src/features/core/screens/profile/student/student_update_profile_page.dart';
 import 'package:msa/src/features/core/screens/profile/widget/profile_menu.dart';
-import 'package:msa/src/utils/string_casing_extension.dart';
 
-import '../../../../localization/language_service.dart';
-import '../../../../repository/authentication_repository/authentication_repository.dart';
-import '../../../authentication/models/student_model.dart';
+import '../../../../../localization/language_service.dart';
+import '../../../../../repository/authentication_repository/authentication_repository.dart';
+import '../../../../authentication/models/student_model.dart';
 
-import '../../controllers/student_profile_controller.dart';
+import '../../../controllers/student_profile_controller.dart';
+import '../../setting/student/student_setting_page.dart';
 
-class AdminProfileMenuPage extends StatelessWidget {
-  const AdminProfileMenuPage({Key? key}) : super(key: key);
+class StudentProfileMenuPage extends StatelessWidget {
+  const StudentProfileMenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final studentProfileController = Get.put(StudentProfileController());
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    // var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -32,9 +32,16 @@ class AdminProfileMenuPage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
+          Obx(
+            () => IconButton(
+                onPressed: () {
+                  studentProfileController.toggleDarkMode(
+                      studentProfileController.isDarkMode.value);
+                },
+                icon: Icon(studentProfileController.isDarkMode.value
+                    ? LineAwesomeIcons.sun
+                    : LineAwesomeIcons.moon)),
+          )
         ],
       ),
       body: StreamBuilder<StudentModel>(
@@ -89,7 +96,8 @@ class AdminProfileMenuPage extends StatelessWidget {
                             color: Theme.of(context).colorScheme.outline),
                         children: [
                           TextSpan(
-                            text: studentData.gender!.toCapitalized(),
+                            text: studentProfileController
+                                .getMultiLangGender(studentData.gender!),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
@@ -124,44 +132,42 @@ class AdminProfileMenuPage extends StatelessWidget {
                             ],
                           )
                         ])),
-
                     const SizedBox(
-                      height: 20,
+                      height: 200,
                     ),
-
                     const Divider(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-
                     // Menu
                     ProfileMenuWidget(
-                      title: "Setting",
-                      icon: LineAwesomeIcons.cog,
-                      onPress: () {},
+                      title: LanguageService.cSettings,
+                      icon: Icons.settings,
+                      onPress: () {
+                        Get.to(() => const StudentSettingPage());
+                      },
                     ),
                     ProfileMenuWidget(
-                      title: "Time Table",
-                      icon: LineAwesomeIcons.wallet,
-                      onPress: () {},
+                      title: LanguageService.cChangePassword,
+                      icon: Icons.lock_reset,
+                      onPress: () {
+                        Get.to(() => const StudentChangePasswordPage());
+                      },
                     ),
-                    ProfileMenuWidget(
-                      title: "User Management",
-                      icon: LineAwesomeIcons.user_check,
-                      onPress: () => Get.to(() => const ListOfAllStudents()),
-                    ),
+                    // ProfileMenuWidget(
+                    //   title: "User Management",
+                    //   icon: LineAwesomeIcons.user_check,
+                    //   onPress: () => Get.to(() => const ListOfAllStudents()),
+                    // ),
                     const Divider(
                       color: Colors.grey,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
+                    // ProfileMenuWidget(
+                    //     title: "Information",
+                    //     icon: LineAwesomeIcons.info,
+                    //     onPress: () {}),
                     ProfileMenuWidget(
-                        title: "Information",
-                        icon: LineAwesomeIcons.info,
-                        onPress: () {}),
-                    ProfileMenuWidget(
-                        title: "Logout",
+                        title: LanguageService.cLogout,
                         icon: LineAwesomeIcons.alternate_sign_out,
                         textColor: Colors.red,
                         endIcon: false,
@@ -174,14 +180,14 @@ class AdminProfileMenuPage extends StatelessWidget {
                                 actions: [
                                   TextButton(
                                       onPressed: () => Get.back(),
-                                      child: const Text("No")),
+                                      child: Text(LanguageService.cNo)),
                                   TextButton(
                                       onPressed: () {
                                         AuthenticationRepository.instance
                                             .logoutAuthRepo();
                                         // Get.back();
                                       },
-                                      child: const Text("Yes")),
+                                      child: Text(LanguageService.cYes)),
                                 ],
                               );
                             })),

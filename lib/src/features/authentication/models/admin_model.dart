@@ -4,8 +4,8 @@ class AdminModel {
   final String? id;
   final String fullName;
   final String email;
-  final String? phoneNo;
   final String password;
+  final String img;
   final bool isAdmin;
 
   const AdminModel({
@@ -13,7 +13,7 @@ class AdminModel {
     required this.email,
     required this.password,
     required this.fullName,
-    this.phoneNo,
+    required this.img,
     required this.isAdmin,
   });
 
@@ -22,8 +22,8 @@ class AdminModel {
       // "Uid" : id,
       "FullName": fullName,
       "Email": email,
-      "Phone": phoneNo,
       "Password": password,
+      "Image": img,
       "IsAdmin": isAdmin,
     };
   }
@@ -36,7 +36,7 @@ class AdminModel {
         email: data["Email"],
         password: data["Password"],
         fullName: data["FullName"],
-        phoneNo: data["Phone"],
+        img: data["Image"],
         isAdmin: data["IsAdmin"],
       );
     }
@@ -46,7 +46,7 @@ class AdminModel {
         email: "",
         password: "",
         fullName: "",
-        phoneNo: "",
+        img: "",
         isAdmin: false,
       );
     }
