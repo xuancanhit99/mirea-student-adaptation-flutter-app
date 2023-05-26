@@ -18,7 +18,7 @@ class ForgotPasswordBtnWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey.shade200),
@@ -31,24 +31,27 @@ class ForgotPasswordBtnWidget extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontSize: 16),
-                ),
-                Text(
-                  subTitle,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontSize: 14),
-                ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(fontSize: 16),
+                  ),
+                  Text(
+                    subTitle,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(fontSize: 14),
+                    maxLines: 3,
+                  ),
+                ],
+              ),
             )
           ],
         ),

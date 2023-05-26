@@ -9,8 +9,14 @@ const String cLinkSchemeMIREA = "https://mirea.xyz/scheme";
 const String cLinkScheduleMIREA = "https://mirea.xyz";
 
 
-var cListYesNo = ['No', 'Yes'];
-var cListTypeOfEducationalProgram = ['Bachelor', 'Master', 'Doctoral', 'Post Doctoral'];
-var cListTypeOfCostRecovery = ['Full', 'Partial', 'None'];
-var cListFormOfLearning = ['Full Time', 'Part Time', 'Distance Learning'];
-var cList1YearTo5Years = ['1 Year', '2 Years', '3 Years', '4 Years', '5 Years'];
+// var cListYesNo = ['No', 'Yes'];
+// var cListTypeOfEducationalProgram = ['Bachelor', 'Master', 'Doctoral', 'Post Doctoral'];
+// var cListTypeOfCostRecovery = ['Full', 'Partial', 'None'];
+// var cListFormOfLearning = ['Full Time', 'Part Time', 'Distance Learning'];
+// var cList1YearTo5Years = ['1 Year', '2 Years', '3 Years', '4 Years', '5 Years'];
+
+var cListYesNo = ['Нет', 'Да'];
+var cListTypeOfEducationalProgram = ['Бакалавр', 'Магистр', 'Доктор', 'Постдокторантура'];
+var cListTypeOfCostRecovery = ['Полный', 'Частичный', 'Госбюджетное место', 'Нет'];
+var cListFormOfLearning = ['Очная', 'Заочная', 'Дистанционное обучение'];
+var cList1YearTo5Years = ['1 год', '2 года', '3 года', '4 года', '5 года'];

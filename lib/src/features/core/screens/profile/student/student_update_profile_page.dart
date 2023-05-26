@@ -28,7 +28,7 @@ class StudentUpdateProfilePage extends StatelessWidget {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(
-          LanguageService.cStudentUpdateProfile,
+          LanguageService.cUpdateProfile,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,

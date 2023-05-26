@@ -347,7 +347,7 @@ class StudentStudyDetailsPage extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                                 side: BorderSide.none,
                                 shape: const StadiumBorder()),
-                            child: Text(LanguageService.cEditProfile))),
+                            child: Text(LanguageService.cEditProfile.toUpperCase()))),
                   ],
                 ),
               ),

@@ -9,6 +9,7 @@ import '../../../../../../constants/assets_strings.dart';
 import '../../../../../../constants/variables.dart';
 import '../../../../../../localization/language_service.dart';
 import '../../../../../authentication/models/student_model.dart';
+import '../../../../controllers/curator_controller.dart';
 import '../../../../controllers/student_profile_controller.dart';
 import '../../../details/student_study_details_page.dart';
 import '../../../profile/student/student_profile_page.dart';
@@ -435,7 +436,7 @@ class StudentDashboardBanners extends StatelessWidget {
                                 height: 25,
                               ),
                               Text(
-                                "Andrey Semyonov",
+                                "Александр Соколов",
                                 style: txtTheme.headlineSmall
                                     ?.copyWith(fontSize: 20),
                                 maxLines: 2,

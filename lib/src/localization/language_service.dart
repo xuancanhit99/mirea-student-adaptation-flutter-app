@@ -115,7 +115,7 @@ class LanguageService {
       'cProfile': 'Profile',
       'cProfileMenu': 'Profile Menu',
       'cEditProfile': 'Edit Profile',
-      'cStudentUpdateProfile': 'Student Update Profile',
+      'cUpdateProfile': 'Update Profile',
       'cChangePassword': 'Change Password',
       'cLogout': 'Logout',
       'cMenu1': 'Settings',
@@ -240,7 +240,7 @@ class LanguageService {
       'cVerifyEmail': 'Подтвердить Email',
       'cResetPassword': 'Сбросить пароль',
       'cSignInWithGoogle': 'Войти с помощью Google',
-      'cSignUpWithGoogle': 'Зарегистрироваться с помощью Google',
+      'cSignUpWithGoogle': 'Зарегистрироваться с Google',
       'cAlreadyHaveAnAccount': 'Уже есть аккаунт? ',
       'cAreYouAnAdmin': 'Вы администратор? ',
       'cAreYouAStudent': 'Вы студент? ',
@@ -287,7 +287,7 @@ class LanguageService {
       'cProfile': 'Профиль',
       'cProfileMenu': 'Меню профиля',
       'cEditProfile': 'Редактировать профиль',
-      'cStudentUpdateProfile': 'Обновить профиль студента',
+      'cUpdateProfile': 'Обновить профиль',
       'cChangePassword': 'Изменить пароль',
       'cLogout': 'Выйти',
       'cMenu1': 'Настройки',
@@ -768,8 +768,8 @@ class LanguageService {
     return _localizedValues[defaultLanguage]!['cEditProfile']!;
   }
 
-  static String get cStudentUpdateProfile {
-    return _localizedValues[defaultLanguage]!['cStudentUpdateProfile']!;
+  static String get cUpdateProfile {
+    return _localizedValues[defaultLanguage]!['cUpdateProfile']!;
   }
 
   static String get cChangePassword {
