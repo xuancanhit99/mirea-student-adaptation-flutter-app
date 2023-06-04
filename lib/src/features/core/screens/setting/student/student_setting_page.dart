@@ -105,6 +105,19 @@ class StudentSettingPage extends StatelessWidget {
                 },
               ),
             ),
+            Obx(
+                  () => RadioListTile(
+                title: Text(LanguageService.cVietnamese),
+                value: "vn",
+                groupValue:
+                studentSettingController.selectedLanguage.toString(),
+                onChanged: (value) {
+                  studentSettingController.selectedLanguage.value = value!;
+                  studentSettingController.changeLanguage();
+                  Get.offAll(() => const StudentDashboard());
+                },
+              ),
+            ),
           ],
         ),
       ),

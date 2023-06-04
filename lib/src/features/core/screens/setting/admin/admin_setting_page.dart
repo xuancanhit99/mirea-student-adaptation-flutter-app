@@ -107,6 +107,19 @@ class AdminSettingPage extends StatelessWidget {
                 },
               ),
             ),
+            Obx(
+                  () => RadioListTile(
+                title: Text(LanguageService.cVietnamese),
+                value: "vn",
+                groupValue:
+                settingController.selectedLanguage.toString(),
+                onChanged: (value) {
+                  settingController.selectedLanguage.value = value!;
+                  settingController.changeLanguage();
+                  Get.offAll(() => const AdminDashboard());
+                },
+              ),
+            ),
           ],
         ),
       ),

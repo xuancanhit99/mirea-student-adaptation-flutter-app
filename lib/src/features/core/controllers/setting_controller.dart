@@ -25,6 +25,8 @@ class SettingController extends GetxController {
         Get.updateLocale(const Locale('en', 'US'));
       } else if (storedLanguage == 'ru') {
         Get.updateLocale(const Locale('ru', 'RU'));
+      } else if (storedLanguage == 'vn') {
+        Get.updateLocale(const Locale('vi', 'VN'));
       }
       LanguageService.language = selectedLanguage.value;
     }
@@ -35,6 +37,8 @@ class SettingController extends GetxController {
          Get.updateLocale(const Locale('en', 'US'));
        } else if (selectedLanguage.value == 'ru') {
          Get.updateLocale(const Locale('ru', 'RU'));
+       } else if (selectedLanguage.value == 'vn') {
+         Get.updateLocale(const Locale('vi', 'VN'));
        }
        // else {
        //   selectedLanguage.value = 'en';
