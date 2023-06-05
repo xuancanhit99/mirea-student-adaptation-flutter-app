@@ -139,12 +139,12 @@ class StudentUpdateProfilePage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text(LanguageService.cIDStudent),
                             prefixIcon: const Icon(Icons.numbers_outlined)),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter student's ID";
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return "Please enter student's ID";
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       const SizedBox(height: 10),
                       // Full name
